@@ -21,7 +21,7 @@
               "apps/code-auditor/src/favicon.ico",
               "apps/code-auditor/src/assets"
             ],
-            "styles": ["apps/code-auditor/src/styles.css"],
+            "styles": ["./node_modules/@angular/material/prebuilt-themes/indigo-pink.css", "apps/code-auditor/src/styles.css"],
             "scripts": []
           },
           "configurations": {
