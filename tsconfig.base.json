@@ -17,7 +17,8 @@
     "baseUrl": ".",
     "paths": {
       "@selise-start/test": ["libs/feature/test/src/index.ts"],
-      "@selise-start/user": ["libs/feature/user/src/index.ts"]
+      "@selise-start/user": ["libs/feature/user/src/index.ts"],
+      "@selise-start/audit": ["libs/feature/audit/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

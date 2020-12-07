@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, NoopAnimationsModule],
+  imports: [BrowserModule, NoopAnimationsModule, AppRoutingModule, RouterModule],
   providers: [],
   bootstrap: [AppComponent],
 })

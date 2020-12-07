@@ -147,6 +147,32 @@
         }
       },
       "schematics": {}
+    },
+    "audit": {
+      "projectType": "library",
+      "root": "libs/feature/audit",
+      "sourceRoot": "libs/feature/audit/src",
+      "prefix": "selise-start",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/feature/audit/tsconfig.lib.json",
+              "libs/feature/audit/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/feature/audit/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/feature/audit/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

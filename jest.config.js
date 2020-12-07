@@ -4,5 +4,6 @@ module.exports = {
     '<rootDir>/libs/test',
     '<rootDir>/libs/feature/test',
     '<rootDir>/libs/feature/user',
+    '<rootDir>/libs/feature/audit',
   ],
 };

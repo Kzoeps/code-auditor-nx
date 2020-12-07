@@ -32,6 +32,9 @@
     },
     "user": {
       "tags": []
+    },
+    "audit": {
+      "tags": []
     }
   },
   "workspaceLayout": {
