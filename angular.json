@@ -21,7 +21,10 @@
               "apps/code-auditor/src/favicon.ico",
               "apps/code-auditor/src/assets"
             ],
-            "styles": ["./node_modules/@angular/material/prebuilt-themes/indigo-pink.css", "apps/code-auditor/src/styles.css"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/code-auditor/src/styles.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -118,6 +121,32 @@
           }
         }
       }
+    },
+    "user": {
+      "projectType": "library",
+      "root": "libs/feature/user",
+      "sourceRoot": "libs/feature/user/src",
+      "prefix": "selise-start",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/feature/user/tsconfig.lib.json",
+              "libs/feature/user/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/feature/user/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/feature/user/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {
