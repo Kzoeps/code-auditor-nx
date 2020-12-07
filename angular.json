@@ -1,0 +1,170 @@
+{
+  "version": 1,
+  "projects": {
+    "code-auditor": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "apps/code-auditor",
+      "sourceRoot": "apps/code-auditor/src",
+      "prefix": "selise-start",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/code-auditor",
+            "index": "apps/code-auditor/src/index.html",
+            "main": "apps/code-auditor/src/main.ts",
+            "polyfills": "apps/code-auditor/src/polyfills.ts",
+            "tsConfig": "apps/code-auditor/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/code-auditor/src/favicon.ico",
+              "apps/code-auditor/src/assets"
+            ],
+            "styles": ["apps/code-auditor/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/code-auditor/src/environments/environment.ts",
+                  "with": "apps/code-auditor/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "code-auditor:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "code-auditor:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "code-auditor:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/code-auditor/tsconfig.app.json",
+              "apps/code-auditor/tsconfig.spec.json",
+              "apps/code-auditor/tsconfig.editor.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/code-auditor/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/code-auditor/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "code-auditor-e2e": {
+      "root": "apps/code-auditor-e2e",
+      "sourceRoot": "apps/code-auditor-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/code-auditor-e2e/cypress.json",
+            "tsConfig": "apps/code-auditor-e2e/tsconfig.e2e.json",
+            "devServerTarget": "code-auditor:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "code-auditor:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/code-auditor-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/code-auditor-e2e/**/*"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "code-auditor"
+}
