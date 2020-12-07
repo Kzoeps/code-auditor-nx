@@ -15,7 +15,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@selise-start/test": ["libs/feature/test/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
