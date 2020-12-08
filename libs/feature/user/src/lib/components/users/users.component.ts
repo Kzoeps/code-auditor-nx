@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserStateService } from '../../services/user-state.service';
+import { UserFacadeService } from '../../services/user-facade.service';
 
 @Component({
   selector: 'selise-start-users',
@@ -7,10 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
-  constructor() {
+  constructor(
+    private userFacadeService: UserFacadeService,
+    private userStateService: UserStateService
+  ) {
   }
 
   ngOnInit(): void {
+    this.getUsers();
+  }
+
+  getUsers() {
+    this.userFacadeService.getUsers();
   }
 
 }
