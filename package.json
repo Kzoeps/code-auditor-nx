@@ -41,6 +41,7 @@
     "@angular/router": "^10.1.0",
     "@codewithdan/observable-store": "^2.2.11",
     "@nrwl/angular": "10.4.4",
+    "json-server": "^0.16.3",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "^0.10.2"
