@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UserStateService } from '../../services/user-state.service';
+import { User, UserStoreState } from '../../models/user';
+import "@angular/compiler"
 import { UserFacadeService } from '../../services/user-facade.service';
+import { ObservableStore } from '@codewithdan/observable-store';
+import { Observable } from 'rxjs';
+import { debug } from 'util';
 
 @Component({
   selector: 'selise-start-users',
@@ -9,18 +13,20 @@ import { UserFacadeService } from '../../services/user-facade.service';
 })
 export class UsersComponent implements OnInit {
 
+  storeState$: Observable<UserStoreState>
+
   constructor(
-    private userFacadeService: UserFacadeService,
-    private userStateService: UserStateService
+    private userFacadeService: UserFacadeService
   ) {
+    this.userFacadeService.initialize();
   }
 
   ngOnInit(): void {
-    this.getUsers();
+    this.getUsers()
   }
 
-  getUsers() {
-    this.userFacadeService.getUsers();
+  getUsers(): void{
+    this.userFacadeService.getUsers().subscribe();
+    this.storeState$ = this.userFacadeService.stateChange();
   }
-
 }

@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { User } from '../models/user';
-import { catchError } from 'rxjs/operators';
-
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,22 +10,9 @@ export class UserApiService {
 
   constructor( private http: HttpClient ) { }
 
-  private usersUrl = 'https://localhost:3000/users';
-  httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
-  };
+  private url = 'http://localhost:3000/users';
 
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.usersUrl)
-      .pipe(
-        catchError(this.handleError<User[]>('getUsers', []))
-      )
-  }
-
-  private handleError<T>(operation = 'operation', result?: T){
-    return (error: any): Observable<T> => {
-      console.error(error);
-      return of(result as T);
-    };
+  getUsers(): Observable<User[]>{
+    return this.http.get<User[]>(this.url);
   }
 }

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FeatureUserModule, UsersComponent } from "@selise-start/user"
+import { FeatureUserModule, UsersComponent, UserDetailComponent } from "@selise-start/user"
 import { UserBaseComponent } from './user-base/user-base.component';
 
 const routes: Routes = [
@@ -11,6 +11,10 @@ const routes: Routes = [
       {
         path: '',
         component: UsersComponent
+      },
+      {
+        path: ':id',
+        component: UserDetailComponent,
       }
     ]
   }

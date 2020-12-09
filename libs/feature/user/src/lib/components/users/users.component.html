@@ -1,1 +1,8 @@
-<p>users works!</p>
+<p class="mat-typography">User.Component works!!!</p>
+<div *ngIf="storeState$ | async as state">
+  <ul>
+    <li *ngFor="let user of state.usersState">
+      {{user.name}}
+    </li>
+  </ul>
+</div>

@@ -40,6 +40,7 @@
     "@angular/platform-browser-dynamic": "^10.1.0",
     "@angular/router": "^10.1.0",
     "@codewithdan/observable-store": "^2.2.11",
+    "@ngneat/until-destroy": "^8.0.3",
     "@nrwl/angular": "10.4.4",
     "json-server": "^0.16.3",
     "rxjs": "~6.5.5",
