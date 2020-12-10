@@ -53,15 +53,18 @@ export class UserDetailComponent implements OnInit {
   }
 
   updateUser(): void {
-    const user = this.userDetailForm.value;
-    this.userFacadeService.updateUser(user)
-      .pipe(untilDestroyed(this))
-      .subscribe({
-        complete: () => {
-          this._snackBar.open('Updated Successfully', '', {
-            duration: 2000
-          });
-        }
-      });
+    console.log(this.userDetailForm.valid);
+    if (this.userDetailForm.valid) {
+      const user = this.userDetailForm.value;
+      this.userFacadeService.updateUser(user)
+        .pipe(untilDestroyed(this))
+        .subscribe({
+          complete: () => {
+            this._snackBar.open('Updated Successfully', '', {
+              duration: 2000
+            });
+          }
+        });
+    }
   }
 }

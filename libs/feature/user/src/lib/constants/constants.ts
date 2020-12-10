@@ -15,6 +15,4 @@ export const USER_FORM = [
   'role',
   'password',
   'confirmPassword',
-  'leadOnTeams',
-  'memberOnTeams'
 ];
