@@ -2,7 +2,9 @@
 <div *ngIf="storeState$ | async as state">
   <ul>
     <li *ngFor="let user of state.usersState">
-      {{user.name}}
+      <a routerLink="/users/{{user.id}}">
+        {{user.profileName}}
+      </a>
     </li>
   </ul>
 </div>

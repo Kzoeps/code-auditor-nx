@@ -23,4 +23,8 @@ export class UserStateService extends ObservableStore<UserStoreState> {
   updateUsers(users: User[]): void {
     this.setState({ usersState: users }, 'UPDATE_USERS');
   }
+
+  updateUser(user: User): void{
+    this.setState({userState: user}, 'UPDATE_USER');
+  }
 }

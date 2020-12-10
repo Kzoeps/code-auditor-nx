@@ -2,15 +2,29 @@
   "users": [
     {
       "id": 1,
-      "name": "Karma Yoezer"
+      "firstName": "Karma",
+      "lastName": "Yoezer",
+      "profileName": "Karma Yoezer",
+      "email": "kzoepa@gmail.com",
+      "password": "abc123",
+      "confirmPassword": "abc123",
+      "role": "front-end",
+      "leadOnTeams": [],
+      "memberOnTeams": [],
+      "admin": false
     },
     {
       "id": 2,
-      "name": "Nima Yoezer"
-    },
-    {
-      "id": 3,
-      "name": "Thinley Darje"
+      "firstName": "Nima",
+      "lastName": "Dhendup",
+      "profileName": "Nima Dhendup",
+      "email": "nd@gmail.com",
+      "password": "abc123",
+      "confirmPassword": "abc123",
+      "role": "front-end",
+      "leadOnTeams": [],
+      "memberOnTeams": [],
+      "admin": false
     }
   ]
 }

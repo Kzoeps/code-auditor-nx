@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { User, UserStoreState } from '../../models/user';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { UserStoreState } from '../../models/user';
 import "@angular/compiler"
 import { UserFacadeService } from '../../services/user-facade.service';
-import { ObservableStore } from '@codewithdan/observable-store';
 import { Observable } from 'rxjs';
-import { debug } from 'util';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Component({
   selector: 'selise-start-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, OnDestroy {
 
   storeState$: Observable<UserStoreState>
 
@@ -24,9 +24,13 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.getUsers()
   }
-
+  ngOnDestroy(): void{
+  }
   getUsers(): void{
-    this.userFacadeService.getUsers().subscribe();
+    this.userFacadeService.getUsers()
+      .pipe(untilDestroyed(this))
+      .subscribe();
     this.storeState$ = this.userFacadeService.stateChange();
   }
+
 }

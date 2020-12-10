@@ -26,4 +26,12 @@ export class UserFacadeService {
       })
     )
   }
+
+  getUser(id: number): Observable<User> {
+    return this.userApiService.getUser(id).pipe(
+      tap(user => {
+        this.userStateService.updateUser(user);
+      })
+    )
+  }
 }

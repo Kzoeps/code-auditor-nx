@@ -15,4 +15,9 @@ export class UserApiService {
   getUsers(): Observable<User[]>{
     return this.http.get<User[]>(this.url);
   }
+
+  getUser(id: number): Observable<User>{
+    const userUrl = `${this.url}/${id}`;
+    return this.http.get<User>(userUrl);
+  }
 }
