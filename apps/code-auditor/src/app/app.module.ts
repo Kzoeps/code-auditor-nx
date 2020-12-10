@@ -15,11 +15,31 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent, NavBarComponent],
-  imports: [BrowserModule, NoopAnimationsModule, AppRoutingModule, RouterModule, HttpClientModule, MatSliderModule, LayoutModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule,
-    MatListModule, MatGridListModule],
+  imports: [
+    CommonModule,
+    BrowserModule,
+    NoopAnimationsModule,
+    AppRoutingModule,
+    RouterModule,
+    HttpClientModule,
+    MatSliderModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatGridListModule,
+    MatSnackBarModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
   exports: [NavBarComponent]

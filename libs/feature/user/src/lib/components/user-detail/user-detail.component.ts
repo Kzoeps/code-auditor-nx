@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { User, UserStoreState } from '../../models/user';
+import { UserStoreState } from '../../models/user';
 import { ActivatedRoute } from '@angular/router';
 import { UserFacadeService } from '../../services/user-facade.service';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { Observable } from 'rxjs';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserFormService } from '../../services/user-form.service';
 import { tap } from 'rxjs/operators';
-import { ROLES } from '../../models/user';
+import { ROLES } from '../../constants/constants';
+import { FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 // COMMENT: Potentially remove the store stateChange(); because we always need to be getting the user
 @UntilDestroy()
@@ -17,21 +19,21 @@ import { ROLES } from '../../models/user';
 })
 export class UserDetailComponent implements OnInit {
   storeState$: Observable<UserStoreState>;
+  userDetailForm: FormGroup;
   roles = ROLES;
-  userDetailForm = this.fb.group({
-    firstName: ['', [Validators.required]],
-    lastName: ['', [Validators.required]],
-    profileName: ['', [Validators.required]],
-    email: ['', [Validators.email]],
-    role: ['', [Validators.required]]
-  });
 
-  constructor(private route: ActivatedRoute, private userFacadeService: UserFacadeService, private fb: FormBuilder) {
+  constructor(
+    private route: ActivatedRoute,
+    private userFacadeService: UserFacadeService,
+    private userFormService: UserFormService,
+    private _snackBar: MatSnackBar
+  ) {
   }
 
   ngOnInit(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.getUser(id);
+    this.userDetailForm = this.userFormService.createForm();
   }
 
   getUser(id: number): void {
@@ -39,19 +41,27 @@ export class UserDetailComponent implements OnInit {
       .pipe(
         untilDestroyed(this),
         tap(user => {
-          // TODO: DRY
-          this.userDetailForm.controls.firstName.setValue(user.firstName);
-          this.userDetailForm.controls.lastName.setValue(user.lastName);
-          this.userDetailForm.controls.profileName.setValue(user.profileName);
-          this.userDetailForm.controls.email.setValue(user.email);
-          this.userDetailForm.controls.role.setValue(user.role);
+          this.userFormService.setForm(this.userDetailForm, user);
         })
       )
       .subscribe();
     this.storeState$ = this.userFacadeService.stateChange();
   }
 
-  byRole(role: string, userRole: string): boolean{
+  byRole(role: string, userRole: string): boolean {
     return userRole === role;
+  }
+
+  updateUser(): void {
+    const user = this.userDetailForm.value;
+    this.userFacadeService.updateUser(user)
+      .pipe(untilDestroyed(this))
+      .subscribe({
+        complete: () => {
+          this._snackBar.open('Updated Successfully', '', {
+            duration: 2000
+          });
+        }
+      });
   }
 }

@@ -3,8 +3,8 @@
     {
       "id": 1,
       "firstName": "Karma",
-      "lastName": "Yoezer",
-      "profileName": "Karma Yoezer",
+      "lastName": "Zoepa",
+      "profileName": "Karma thinley",
       "email": "kzoepa@gmail.com",
       "password": "abc123",
       "confirmPassword": "abc123",
@@ -15,9 +15,9 @@
     },
     {
       "id": 2,
-      "firstName": "Nima",
+      "firstName": "Thinley",
       "lastName": "Dhendup",
-      "profileName": "Nima Dhendup",
+      "profileName": "Thinley Dhendup",
       "email": "nd@gmail.com",
       "password": "abc123",
       "confirmPassword": "abc123",

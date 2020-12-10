@@ -34,4 +34,13 @@ export class UserFacadeService {
       })
     )
   }
+
+  updateUser(user: User): Observable<User>{
+    return this.userApiService.updateUser(user)
+      .pipe(
+        tap( updatedUser => {
+          this.userStateService.updateUser(updatedUser)
+        })
+      )
+  }
 }

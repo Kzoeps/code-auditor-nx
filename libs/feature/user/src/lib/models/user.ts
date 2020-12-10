@@ -18,10 +18,3 @@ export interface UserStoreState {
   userState: User;
 }
 
-export const ROLES = [
-  'front-end',
-  'back-end',
-  'quality-assurance',
-  'UI',
-  'UX'
-]
