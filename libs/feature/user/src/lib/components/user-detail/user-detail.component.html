@@ -1,0 +1,65 @@
+<!--TODO: Ask about state update!-->
+<ng-container *ngIf="(storeState$ | async).userState as user">
+  <h1>{{user.profileName | titlecase}} Details</h1>
+  <hr/>
+  <form [formGroup]="userDetailForm">
+    <h4>User ID: {{user.id}}</h4>
+    <mat-form-field appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input matInput placeholder="Ex. Karma" formControlName="firstName">
+    </mat-form-field>
+    <br/>
+    <span *ngIf="!userDetailForm.controls.firstName.valid">
+      <span *ngIf="userDetailForm.controls.firstName.errors.required">
+        First Name required!
+      </span>
+    </span>
+    <br/>
+    <mat-form-field appearance="outline">
+      <mat-label>Last Name</mat-label>
+      <input matInput placeholder="Ex. Yoezer" formControlName="lastName" type="text">
+    </mat-form-field>
+    <br/>
+    <span *ngIf="!userDetailForm.controls.lastName.valid">
+      <span *ngIf="userDetailForm.controls.lastName.errors.required">
+        Last Name required!
+      </span>
+    </span>
+    <br/>
+    <mat-form-field appearance="outline">
+      <mat-label>Profile Name</mat-label>
+      <input matInput placeholder="Ex. Kzoeps" formControlName="profileName" type="text">
+    </mat-form-field>
+    <br/>
+    <span *ngIf="!userDetailForm.controls.profileName.valid">
+      <span
+        *ngIf="userDetailForm.controls.profileName.errors.required">
+        Profile Name Is Required!
+    </span>
+    </span>
+    <br/>
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input id="email" matInput placeholder="Ex. abc@ab.com" formControlName="email" type="email">
+    </mat-form-field>
+    <br/>
+    <span *ngIf="!userDetailForm.controls.email.valid">
+      <span *ngIf="userDetailForm.controls.email.errors.required">
+        Email Is Required!
+      </span>
+      <span *ngIf="userDetailForm.controls.email.errors.email">
+        Invalid Email Format!
+      </span>
+    </span>
+    <br/>
+    <mat-form-field appearance="outline">
+      <mat-label>Role</mat-label>
+      <mat-select [compareWith]="byRole" value="{{user.role}}" formControlName="role">
+        <mat-option *ngFor="let role of roles" value="{{role}}">{{role}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br/>
+    <br/>
+    <button mat-flat-button color="primary" (click)="updateUser()">Submit</button>
+  </form>
+</ng-container>

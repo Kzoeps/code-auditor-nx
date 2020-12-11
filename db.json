@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Karma",
+      "lastName": "Zoepa",
+      "profileName": "Kzoeps",
+      "email": "kzoepa@gmail.com",
+      "password": "abc123",
+      "confirmPassword": "abc123",
+      "role": "front-end",
+      "leadOnTeams": [],
+      "memberOnTeams": [],
+      "admin": false
+    },
+    {
+      "id": 2,
+      "firstName": "Thinley",
+      "lastName": "Dhendup",
+      "profileName": "Thinley Dhendup",
+      "email": "td@gmail.com",
+      "password": "abc123",
+      "confirmPassword": "abc123",
+      "role": "front-end",
+      "leadOnTeams": [],
+      "memberOnTeams": [],
+      "admin": false
+    }
+  ]
+}
