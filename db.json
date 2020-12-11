@@ -26,5 +26,14 @@
       "memberOnTeams": [],
       "admin": false
     }
+  ],
+  "teams": [
+    {
+      "id": 1,
+      "teamName": "Howdy?",
+      "dateEstd": "12/11/2020",
+      "teamLead": "Karma",
+      "teamMembers": "You"
+    }
   ]
 }

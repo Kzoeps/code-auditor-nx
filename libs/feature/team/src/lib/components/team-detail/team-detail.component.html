@@ -1,0 +1,4 @@
+<ng-container *ngIf="(team$ | async).teamState as team">
+  <h1>{{team.teamName | titlecase}} Details</h1>
+  <hr/>
+</ng-container>
