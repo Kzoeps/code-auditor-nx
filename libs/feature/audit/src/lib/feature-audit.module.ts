@@ -7,4 +7,4 @@ import { AuditsComponent } from './components/audits/audits.component';
   declarations: [AuditsComponent],
   exports: [AuditsComponent],
 })
-export class AuditModule {}
+export class FeatureAuditModule {}
