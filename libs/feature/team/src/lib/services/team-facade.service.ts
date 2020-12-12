@@ -43,6 +43,7 @@ export class TeamFacadeService {
   }
 
   createTeam(team: Team): Observable<Team> {
+    team.teamMembers = this.getTeamMembers();
       return this.teamApiService.createTeam(team).pipe(
         tap(teamState => {
           this.teamStateService.updateTeam(teamState);

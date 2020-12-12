@@ -30,6 +30,9 @@
       "@selise-start/user/model": [
         "libs/feature/user/src/lib/models"
       ],
+      "@selise-start/user/service": [
+        "libs/feature/user/src/lib/services/user-facade.service.ts"
+      ],
       "@selise-start/audit": [
         "libs/feature/audit/src/index.ts"
       ],

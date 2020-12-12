@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { TeamFacadeService } from '../../services/team-facade.service';
 import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { User, UserStoreState } from '../../../../../user/src/lib/models/user';
-import { UserFacadeService } from '../../../../../user/src/lib/services/user-facade.service';
+// @ts-ignore
+import { UserStoreState } from '@selise-start/user/model/user';
+import { UserFacadeService } from '@selise-start/user/service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TeamStoreState } from '../../models/team';

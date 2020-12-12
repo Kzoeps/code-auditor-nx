@@ -29,50 +29,8 @@
   ],
   "teams": [
     {
-      "id": 1,
-      "teamName": "Howdy?",
-      "dateEstd": "12/11/2020",
-      "teamLead": "Karma",
-      "teamMembers": "You"
-    },
-    {
-      "teamName": "adsf",
-      "dateEstd": "2020-12-02T18:00:00.000Z",
-      "teamLead": "2",
-      "teamMembers": "1",
-      "id": 2
-    },
-    {
-      "teamName": "adsf",
-      "dateEstd": "2020-12-09T18:00:00.000Z",
-      "teamLead": "2",
-      "teamMembers": "1",
-      "id": 3
-    },
-    {
-      "teamName": "adsf",
-      "dateEstd": "2020-12-09T18:00:00.000Z",
-      "teamLead": "2",
-      "teamMembers": "1",
-      "id": 4
-    },
-    {
-      "teamName": "adsfadsf",
-      "dateEstd": "2020-12-09T18:00:00.000Z",
-      "teamLead": "2",
-      "teamMembers": "1",
-      "id": 5
-    },
-    {
-      "teamName": "anotherONe",
-      "dateEstd": "2020-12-08T18:00:00.000Z",
-      "teamLead": "2",
-      "teamMembers": "2",
-      "id": 6
-    },
-    {
-      "teamName": "xodus",
-      "dateEstd": "2020-12-22T18:00:00.000Z",
+      "teamName": "codusd",
+      "dateEstd": "2020-12-16T18:00:00.000Z",
       "teamLead": {
         "id": 2,
         "firstName": "Thinley",
@@ -86,69 +44,27 @@
         "memberOnTeams": [],
         "admin": false
       },
-      "teamMembers": {
-        "id": 1,
-        "firstName": "Karma",
-        "lastName": "Zoepa",
-        "profileName": "K yoezer",
-        "email": "kzoepa@gmail.com",
-        "password": "abc123",
-        "confirmPassword": "abc123",
-        "role": "front-end",
-        "leadOnTeams": [],
-        "memberOnTeams": [],
-        "admin": false
-      },
-      "id": 7
+      "teamMembers": [
+        {
+          "id": 1,
+          "firstName": "Karma",
+          "lastName": "Zoepa",
+          "profileName": "K yoezer",
+          "email": "kzoepa@gmail.com",
+          "password": "abc123",
+          "confirmPassword": "abc123",
+          "role": "front-end",
+          "leadOnTeams": [],
+          "memberOnTeams": [],
+          "admin": false
+        }
+      ],
+      "id": 1
     },
     {
-      "teamName": "asdf",
-      "dateEstd": "2020-12-10T18:00:00.000Z",
-      "teamLead": {
-        "id": 1,
-        "firstName": "Karma",
-        "lastName": "Zoepa",
-        "profileName": "K yoezer",
-        "email": "kzoepa@gmail.com",
-        "password": "abc123",
-        "confirmPassword": "abc123",
-        "role": "front-end",
-        "leadOnTeams": [],
-        "memberOnTeams": [],
-        "admin": false
-      },
-      "teamMembers": {
-        "id": 2,
-        "firstName": "Thinley",
-        "lastName": "Dhendup",
-        "profileName": "Thinley Dhendup",
-        "email": "td@gmail.com",
-        "password": "abc123",
-        "confirmPassword": "abc123",
-        "role": "front-end",
-        "leadOnTeams": [],
-        "memberOnTeams": [],
-        "admin": false
-      },
-      "id": 8
-    },
-    {
-      "teamName": "TestDrive",
+      "teamName": "anotherTest",
       "dateEstd": "2020-12-11T18:00:00.000Z",
       "teamLead": {
-        "id": 2,
-        "firstName": "Thinley",
-        "lastName": "Dhendup",
-        "profileName": "Thinley Dhendup",
-        "email": "td@gmail.com",
-        "password": "abc123",
-        "confirmPassword": "abc123",
-        "role": "front-end",
-        "leadOnTeams": [],
-        "memberOnTeams": [],
-        "admin": false
-      },
-      "teamMembers": {
         "id": 1,
         "firstName": "Karma",
         "lastName": "Zoepa",
@@ -161,7 +77,22 @@
         "memberOnTeams": [],
         "admin": false
       },
-      "id": 9
+      "teamMembers": [
+        {
+          "id": 2,
+          "firstName": "Thinley",
+          "lastName": "Dhendup",
+          "profileName": "Thinley Dhendup",
+          "email": "td@gmail.com",
+          "password": "abc123",
+          "confirmPassword": "abc123",
+          "role": "front-end",
+          "leadOnTeams": [],
+          "memberOnTeams": [],
+          "admin": false
+        }
+      ],
+      "id": 2
     }
   ]
 }
