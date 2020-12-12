@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: 'teams',
     loadChildren: () => import('./team/team.module').then(m => m.TeamModule)
-  }
+  },
 ];
 @NgModule({
   imports: [

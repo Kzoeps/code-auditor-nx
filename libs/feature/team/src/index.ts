@@ -1,3 +1,4 @@
 export * from './lib/feature-team.module';
 export { TeamsComponent } from './lib/components/teams/teams.component';
 export { TeamDetailComponent } from './lib/components/team-detail/team-detail.component';
+export { AddTeamComponent } from './lib/components/add-team/add-team.component';

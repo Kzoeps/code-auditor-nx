@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TeamBaseComponent } from './team-base/team-base.component';
-import { TeamDetailComponent, TeamsComponent } from '@selise-start/team';
+import { AddTeamComponent, TeamDetailComponent, TeamsComponent } from '@selise-start/team';
 
 const routes: Routes = [
   {
@@ -11,6 +11,11 @@ const routes: Routes = [
       {
         path: '',
         component: TeamsComponent
+      },
+      {
+        path: 'add-team',
+        pathMatch: 'full',
+        component: AddTeamComponent
       },
       {
         path: ':id',
