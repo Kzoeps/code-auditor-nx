@@ -78,16 +78,15 @@ export class EditTeamComponent implements OnInit {
 
   updateTeam(): void {
     if (this.teamFacadeService.validateForm(this.editTeamForm)){
-      this.teamFacadeService.snackBar('Updated Team');
-      // this.teamFacadeService.updateTeam(this.editTeamForm.value)
-      //   .pipe(
-      //     untilDestroyed(this)
-      //   )
-      //   .subscribe({
-      //     complete: () => {
-      //
-      //     }
-      //   })
+      this.teamFacadeService.updateTeam(this.editTeamForm.value)
+        .pipe(
+          untilDestroyed(this)
+        )
+        .subscribe({
+          complete: () => {
+            this.teamFacadeService.snackBar('Updated Team');
+          }
+        })
     }
   }
 }

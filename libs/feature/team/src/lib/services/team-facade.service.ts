@@ -105,4 +105,14 @@ export class TeamFacadeService {
   removeMember(teamMember): void {
     this.teamStateService.removeMember(teamMember);
   }
+
+  updateTeam(team: Team): Observable<Team> {
+    team.teamMembers = this.getTeamMembers();
+    return this.teamApiService.updateTeam(team)
+      .pipe(
+        tap(teamState => {
+          this.teamStateService.updateTeam(teamState)
+        })
+      )
+  }
 }

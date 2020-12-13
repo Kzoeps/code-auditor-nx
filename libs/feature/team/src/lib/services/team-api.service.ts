@@ -29,4 +29,9 @@ export class TeamApiService {
   createTeam(team: Team): Observable<Team> {
     return this.http.post<Team>(this.url, team, this.httpOptions);
   }
+
+  updateTeam(team: Team): Observable<Team> {
+    const url = `${this.url}/${team.id}`;
+    return this.http.patch<Team>(url, team, this.httpOptions);
+  }
 }
