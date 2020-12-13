@@ -12,6 +12,4 @@ export interface Team {
 export interface TeamStoreState {
   teamsState: Team[];
   teamState: Team;
-  teamLead: User;
-  teamMembers: User[];
 }

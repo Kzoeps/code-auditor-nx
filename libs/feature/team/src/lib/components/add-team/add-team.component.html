@@ -44,10 +44,12 @@
       There has to be atleast one team member
     </span>
     <br/>
-    <div *ngIf="(teamState$ | async).teamMembers as teamMemberState">
-      <div *ngFor="let teamMember of teamMemberState" style="margin-top: 20px">
-        {{teamMember.profileName}}
-        <span style="margin-left: 100px" (click)="removeMember(teamMember)"> remove </span>
+    <div *ngIf="(teamState$ | async).teamState as teamState">
+      <div *ngIf="teamState.teamMembers !== undefined">
+        <div *ngFor="let teamMember of teamState.teamMembers" style="margin-top: 20px">
+          {{teamMember.profileName}}
+          <span style="margin-left: 100px" (click)="removeMember(teamMember)"> remove </span>
+        </div>
       </div>
     </div>
     <br/>

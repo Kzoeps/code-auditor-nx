@@ -19,10 +19,20 @@ export class TeamStateService extends ObservableStore<TeamStoreState> {
   initialState(): void {
     const initialState = {
       teamsState: undefined,
-      teamState: undefined,
-      teamMembers: undefined
+      teamState: undefined
     };
     this.setState(initialState, 'INIT_STATE');
+  }
+
+  initializeTeamState(): void {
+    const initializeTeamState = {
+        id: undefined,
+        teamName: undefined,
+        dateEstd: undefined,
+        teamLead: undefined,
+        teamMembers: undefined
+    }
+    this.setState({teamState: initializeTeamState}, 'INIT_TEAM_STATE')
   }
 
   updateTeams(teams: Team[]): void {
@@ -35,45 +45,52 @@ export class TeamStateService extends ObservableStore<TeamStoreState> {
 
   addTeamMember(user: User): void {
     const teamStoreState = this.getState();
-    if (teamStoreState.teamMembers === undefined) {
-      teamStoreState.teamMembers = [user];
-      this.setState({ teamMembers: teamStoreState.teamMembers }, 'ADD_TEAM_MEMBER');
+    if (teamStoreState.teamState.teamMembers === undefined) {
+      teamStoreState.teamState.teamMembers = [user];
+      this.setState({ teamState: teamStoreState.teamState }, 'ADD_TEAM_MEMBER');
     } else {
-      teamStoreState.teamMembers.push(user);
-      this.setState({ teamMembers: teamStoreState.teamMembers }, 'ADD_TEAM_MEMBER');
+      teamStoreState.teamState.teamMembers.push(user);
+      this.setState({ teamState: teamStoreState.teamState }, 'ADD_TEAM_MEMBER');
     }
+  }
+
+  updateTeamMembers(teamMembers: User[]): void {
+    const teamStoreState = this.getState();
+    teamStoreState.teamState.teamMembers = teamMembers;
+    this.setState({ teamState: teamStoreState.teamState }, 'UPDATE_TEAM_MEMBERS');
   }
 
   updateTeamLead(user: User): void {
     const teamStoreState = this.getState();
-    teamStoreState.teamLead = user;
-    this.setState({ teamLead: teamStoreState.teamLead }, 'UPDATE_TEAM_LEAD');
+    teamStoreState.teamState.teamLead = user;
+    this.setState({ teamState: teamStoreState.teamState }, 'UPDATE_TEAM_LEAD');
   }
 
   removeMember(teamMember): void {
     const teamStoreState = this.getState();
-    const teamMembersState = teamStoreState.teamMembers;
+    const teamMembersState = teamStoreState.teamState.teamMembers;
     teamMembersState.forEach(member => {
       if (member.id === teamMember.id) {
         const memberIndex = teamMembersState.indexOf(member);
         teamMembersState.splice(memberIndex, 1);
       }
     });
-    this.setState({ teamMembers: teamMembersState }, 'REMOVE_TEAM_MEMBER');
+    this.setState({ teamState: teamStoreState.teamState }, 'REMOVE_TEAM_MEMBER');
   }
 
   getTeamLead(): User {
     const teamStoreState = this.getState();
-    return teamStoreState.teamLead;
+    return teamStoreState.teamState.teamLead;
   }
 
   getTeamMembers(): User[] {
     const teamStoreState = this.getState();
-    return teamStoreState.teamMembers;
+    return teamStoreState.teamState.teamMembers;
   }
+
   addTeam(team: Team): void {
     const teamState = this.getState();
     teamState.teamsState.push(team);
-    this.setState({teamsState: teamState.teamsState}, 'ADD_TEAM');
+    this.setState({ teamsState: teamState.teamsState }, 'ADD_TEAM');
   }
 }

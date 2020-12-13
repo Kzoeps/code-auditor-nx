@@ -20,8 +20,8 @@ export class AddTeamComponent implements OnInit {
   constructor(
     private teamFacadeService: TeamFacadeService,
     private userFacadeService: UserFacadeService,
-    private _snackBar: MatSnackBar,
-  ) { }
+  ) {
+  }
 
   addTeamForm: FormGroup;
   users$: Observable<UserStoreState>;
@@ -34,20 +34,22 @@ export class AddTeamComponent implements OnInit {
     this.getUsers();
   }
 
-  createForm(): void{
+  createForm(): void {
     this.addTeamForm = this.teamFacadeService.createAddTeamForm();
+    this.teamFacadeService.initializeTeamState();
     this.teamState$ = this.teamFacadeService.stateChange();
   }
-  getUsers(): void{
+
+  getUsers(): void {
     this.userFacadeService.getUsers()
       .pipe(
         untilDestroyed(this)
       )
-      .subscribe()
+      .subscribe();
     this.users$ = this.userFacadeService.stateChange();
   }
 
-  addMember(): void{
+  addMember(): void {
     this.addMemberSuccess = this.teamFacadeService.addMember(this.addTeamForm.controls.teamMembers.value);
   }
 
@@ -59,23 +61,21 @@ export class AddTeamComponent implements OnInit {
         )
         .subscribe({
           complete: () => {
-            this._snackBar.open('Created Team', '', {
-              duration: 2000
-            });
+            this.teamFacadeService.snackBar('Created Team');
             this.teamFacadeService.clearForm(this.addTeamForm);
             this.createTeamSuccess = true;
           }
-        })
+        });
     } else {
       this.createTeamSuccess = false;
     }
   }
 
-  removeMember(teamMember){
+  removeMember(teamMember) {
     this.teamFacadeService.removeMember(teamMember);
   }
 
-  updateTeamLead(){
-    this.teamFacadeService.updateTeamLead(this.addTeamForm.controls.teamLead.value)
+  updateTeamLead() {
+    this.teamFacadeService.updateTeamLead(this.addTeamForm.controls.teamLead.value);
   }
 }

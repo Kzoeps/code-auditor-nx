@@ -11,14 +11,16 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
+import { EditTeamComponent } from './components/edit-team/edit-team.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   imports: [
     CommonModule, RouterModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatSelectModule,
-    MatOptionModule, MatButtonModule
+    MatOptionModule, MatButtonModule, MatCardModule
 
   ],
-  declarations: [TeamsComponent, TeamDetailComponent, AddTeamComponent],
-  exports: [TeamDetailComponent],
+  declarations: [TeamsComponent, TeamDetailComponent, AddTeamComponent, EditTeamComponent],
+  exports: [TeamDetailComponent, EditTeamComponent],
 })
 export class FeatureTeamModule {}

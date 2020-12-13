@@ -5,9 +5,10 @@ import { TeamFormService } from './team-form.service';
 import { Observable } from 'rxjs';
 import { Team, TeamStoreState } from '../models/team';
 import { tap } from 'rxjs/operators';
-import { FormGroup } from '@angular/forms';
+import { Form, FormGroup } from '@angular/forms';
 // @ts-ignore
 import { User } from '@selise-start/user/model/user';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Injectable({
@@ -18,12 +19,23 @@ export class TeamFacadeService {
   constructor(
     private teamApiService: TeamApiService,
     private teamStateService: TeamStateService,
-    private teamFormService: TeamFormService
+    private teamFormService: TeamFormService,
+    private _snackBar: MatSnackBar
   ) {
   }
 
   stateChange(): Observable<TeamStoreState> {
     return this.teamStateService.stateChanged;
+  }
+
+  initializeTeamState(): void {
+    this.teamStateService.initializeTeamState();
+  }
+
+  snackBar(message){
+    return this._snackBar.open(message,'', {
+      duration: 2000
+    });
   }
 
   getTeams(): Observable<Team[]> {
@@ -34,7 +46,11 @@ export class TeamFacadeService {
 
   getTeam(id: number): Observable<Team> {
     return this.teamApiService.getTeam(id).pipe(
-      tap(team => this.teamStateService.updateTeam(team))
+      tap(team => {
+        this.teamStateService.updateTeam(team);
+        this.teamStateService.updateTeamMembers(team.teamMembers);
+        this.teamStateService.updateTeamLead(team.teamLead);
+      })
     );
   }
 
@@ -44,15 +60,19 @@ export class TeamFacadeService {
 
   createTeam(team: Team): Observable<Team> {
     team.teamMembers = this.getTeamMembers();
-      return this.teamApiService.createTeam(team).pipe(
-        tap(teamState => {
-          this.teamStateService.updateTeam(teamState);
-        })
-      );
+    return this.teamApiService.createTeam(team).pipe(
+      tap(teamState => {
+        this.teamStateService.updateTeam(teamState);
+      })
+    );
   }
 
   clearForm(form: FormGroup): void {
     this.teamFormService.clearForm(form);
+  }
+
+  setForm(form: FormGroup, team: Team) {
+    this.teamFormService.setForm(form, team);
   }
 
   addMember(user: User): boolean {

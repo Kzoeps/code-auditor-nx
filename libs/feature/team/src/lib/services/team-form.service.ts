@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 // @ts-ignore
 import { User } from '@selise-start/user/model/user';
 import { TeamStateService } from './team-state.service';
+import { Team } from '../models/team';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,13 @@ export class TeamFormService {
     return addTeamForm;
   }
 
+  setForm(form: FormGroup, team: Team){
+    Object.keys(form.controls).forEach(controlName => {
+      if (controlName !== 'teamMembers') {
+        form.controls[controlName].setValue(team[controlName])
+      }
+    })
+  }
   clearForm(form: FormGroup): void {
     form.reset();
   }
