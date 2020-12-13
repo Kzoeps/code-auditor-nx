@@ -1,0 +1,20 @@
+<ng-container *ngIf="(team$ | async).teamState as team">
+  <h1>{{team.teamName | titlecase}} Details</h1>
+  <hr/>
+  <div>
+    <div style="display: flex; width: 400px; justify-content: space-between">
+      <h3>Date of Establishment : </h3>
+      <h5>{{team.dateEstd | date}}</h5>
+    </div>
+    <div style="display: flex; width: 400px; justify-content: space-between">
+      <h3>Team Lead : </h3>
+      <h5>{{team.teamLead.profileName}}</h5>
+    </div>
+    <div style="display: flex; width: 400px; justify-content: space-between">
+      <h3>Team Members</h3>
+      <div *ngFor="let teamMember of team.teamMembers">
+        <h5>{{teamMember.profileName}}</h5>
+      </div>
+    </div>
+  </div>
+</ng-container>

@@ -35,6 +35,9 @@
     },
     "audit": {
       "tags": []
+    },
+    "team": {
+      "tags": []
     }
   },
   "workspaceLayout": {
