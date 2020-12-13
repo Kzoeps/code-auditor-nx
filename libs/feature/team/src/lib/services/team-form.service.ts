@@ -39,7 +39,8 @@ export class TeamFormService {
   }
 
   validTeamMember(user: User): boolean {
-    const teamLead = this.teamStateService.getTeamLead();
+    const teamState = this.teamStateService.getTeam();
+    const teamLead = teamState.teamLead;
     return !(user.id === teamLead.id);
   }
 

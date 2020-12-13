@@ -32,8 +32,8 @@ export class TeamFacadeService {
     this.teamStateService.initializeTeamState();
   }
 
-  snackBar(message){
-    return this._snackBar.open(message,'', {
+  snackBar(message) {
+    return this._snackBar.open(message, '', {
       duration: 2000
     });
   }
@@ -61,8 +61,8 @@ export class TeamFacadeService {
   createTeam(team: Team): Observable<Team> {
     team.teamMembers = this.getTeamMembers();
     return this.teamApiService.createTeam(team).pipe(
-      tap(teamState => {
-        this.teamStateService.updateTeam(teamState);
+      tap(() => {
+        this.teamStateService.initializeTeamState();
       })
     );
   }
@@ -106,13 +106,19 @@ export class TeamFacadeService {
     this.teamStateService.removeMember(teamMember);
   }
 
+  getTeamState(): Team {
+    return this.teamStateService.getTeam();
+  }
+
   updateTeam(team: Team): Observable<Team> {
-    team.teamMembers = this.getTeamMembers();
+    const teamState = this.getTeamState();
+    team.teamMembers = teamState.teamMembers;
+    team.id = teamState.id;
     return this.teamApiService.updateTeam(team)
       .pipe(
-        tap(teamState => {
-          this.teamStateService.updateTeam(teamState)
+        tap(updatedTeamState => {
+          this.teamStateService.updateTeam(updatedTeamState);
         })
-      )
+      );
   }
 }

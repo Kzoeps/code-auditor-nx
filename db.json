@@ -29,7 +29,7 @@
   ],
   "teams": [
     {
-      "teamName": "codusd",
+      "teamName": "CodeATNight:)",
       "dateEstd": "2020-12-16T18:00:00.000Z",
       "teamLead": {
         "id": 2,
@@ -93,6 +93,72 @@
         }
       ],
       "id": 2
+    },
+    {
+      "teamName": "xamine",
+      "dateEstd": "2020-12-14T18:00:00.000Z",
+      "teamLead": {
+        "id": 2,
+        "firstName": "Thinley",
+        "lastName": "Dhendup",
+        "profileName": "Thinley Dhendup",
+        "email": "td@gmail.com",
+        "password": "abc123",
+        "confirmPassword": "abc123",
+        "role": "front-end",
+        "leadOnTeams": [],
+        "memberOnTeams": [],
+        "admin": false
+      },
+      "teamMembers": [
+        {
+          "id": 1,
+          "firstName": "Karma",
+          "lastName": "Zoepa",
+          "profileName": "K yoezer",
+          "email": "kzoepa@gmail.com",
+          "password": "abc123",
+          "confirmPassword": "abc123",
+          "role": "front-end",
+          "leadOnTeams": [],
+          "memberOnTeams": [],
+          "admin": false
+        }
+      ],
+      "id": 3
+    },
+    {
+      "teamName": "another trial",
+      "dateEstd": "2020-12-23T18:00:00.000Z",
+      "teamLead": {
+        "id": 1,
+        "firstName": "Karma",
+        "lastName": "Zoepa",
+        "profileName": "K yoezer",
+        "email": "kzoepa@gmail.com",
+        "password": "abc123",
+        "confirmPassword": "abc123",
+        "role": "front-end",
+        "leadOnTeams": [],
+        "memberOnTeams": [],
+        "admin": false
+      },
+      "teamMembers": [
+        {
+          "id": 2,
+          "firstName": "Thinley",
+          "lastName": "Dhendup",
+          "profileName": "Thinley Dhendup",
+          "email": "td@gmail.com",
+          "password": "abc123",
+          "confirmPassword": "abc123",
+          "role": "front-end",
+          "leadOnTeams": [],
+          "memberOnTeams": [],
+          "admin": false
+        }
+      ],
+      "id": 4
     }
   ]
 }

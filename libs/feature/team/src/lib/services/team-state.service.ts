@@ -49,9 +49,21 @@ export class TeamStateService extends ObservableStore<TeamStoreState> {
       teamStoreState.teamState.teamMembers = [user];
       this.setState({ teamState: teamStoreState.teamState }, 'ADD_TEAM_MEMBER');
     } else {
-      teamStoreState.teamState.teamMembers.push(user);
-      this.setState({ teamState: teamStoreState.teamState }, 'ADD_TEAM_MEMBER');
+      if (!(this.findMember(user, teamStoreState.teamState.teamMembers))) {
+        teamStoreState.teamState.teamMembers.push(user);
+        this.setState({ teamState: teamStoreState.teamState }, 'ADD_TEAM_MEMBER');
+      }
     }
+  }
+
+  findMember(user: User, users: User[]): boolean {
+    let memberFound = false
+    users.forEach(teamMember => {
+      if (teamMember.id === user.id) {
+        memberFound = true;
+      }
+    })
+    return memberFound;
   }
 
   updateTeamMembers(teamMembers: User[]): void {
@@ -83,6 +95,10 @@ export class TeamStateService extends ObservableStore<TeamStoreState> {
     return teamStoreState.teamState.teamLead;
   }
 
+  getTeam(): Team {
+    const teamStoreState = this.getState();
+    return teamStoreState.teamState;
+  }
   getTeamMembers(): User[] {
     const teamStoreState = this.getState();
     return teamStoreState.teamState.teamMembers;
