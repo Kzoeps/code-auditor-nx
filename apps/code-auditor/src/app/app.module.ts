@@ -18,6 +18,10 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
+import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [AppComponent, NavBarComponent],
@@ -39,6 +43,12 @@ import { CommonModule } from '@angular/common';
     MatSnackBarModule,
     FormsModule,
     ReactiveFormsModule,
+    MatNativeDateModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
