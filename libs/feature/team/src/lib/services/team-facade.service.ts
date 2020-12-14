@@ -16,6 +16,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class TeamFacadeService {
 
+  //TODO: fix the validation of team lead and team member, has to go both ways.
   constructor(
     private teamApiService: TeamApiService,
     private teamStateService: TeamStateService,

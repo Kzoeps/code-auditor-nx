@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Team, TeamStoreState } from '../models/team';
 import { ObservableStore } from '@codewithdan/observable-store';
 import { User } from '../../../../user/src/lib/models/user';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
