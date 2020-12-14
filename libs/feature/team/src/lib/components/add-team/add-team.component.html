@@ -1,0 +1,60 @@
+<ng-container *ngIf="(users$ | async).usersState as users">
+  <h1>Create A Team</h1>
+  <hr/>
+  <form [formGroup]="addTeamForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Team Name</mat-label>
+      <input matInput placeholder="Ex. XoDus" formControlName="teamName" type="text">
+    </mat-form-field>
+    <br/>
+    <mat-form-field appearance="outline">
+      <mat-label>Date Established</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dateEstd">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <br/>
+    <mat-form-field appearance="outline">
+      <mat-label>Team Lead</mat-label>
+      <mat-select formControlName="teamLead" (ngModelChange)="updateTeamLead()">
+        <mat-option *ngFor="let user of users" [value]="user">
+          {{user.profileName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br/>
+    <span *ngIf="addTeamForm.controls.teamLead.value">
+      <mat-form-field appearance="outline" disabled="true">
+        <mat-label>Team Members</mat-label>
+        <mat-select formControlName="teamMembers">
+          <mat-option *ngFor="let user of users" [value]="user">
+            {{user.profileName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    <button mat-flat-button color="primary" (click)="addMember()">
+      Add Member
+    </button>
+    </span>
+    <br/>
+    <span *ngIf="addMemberSuccess == false" style="color: red">
+      Team Lead Cannot Be A Team Member
+    </span>
+    <span *ngIf="createTeamSuccess == false" style="color: red">
+      There has to be atleast one team member
+    </span>
+    <br/>
+    <div *ngIf="(teamState$ | async).teamState as teamState">
+      <div *ngIf="teamState.teamMembers !== undefined">
+        <div *ngFor="let teamMember of teamState.teamMembers" style="margin-top: 20px">
+          {{teamMember.profileName}}
+          <span style="margin-left: 100px" (click)="removeMember(teamMember)"> remove </span>
+        </div>
+      </div>
+    </div>
+    <br/>
+    <button mat-flat-button color="primary" (click)="addTeam()">
+      Add Team
+    </button>
+  </form>
+</ng-container>

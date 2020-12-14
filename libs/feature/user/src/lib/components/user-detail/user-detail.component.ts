@@ -11,6 +11,7 @@ import { FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 // COMMENT: Potentially remove the store stateChange(); because we always need to be getting the user
+// TODO: Remove the use of form service and have it talk through facade.!!!! Also the use of snackbar
 @UntilDestroy()
 @Component({
   selector: 'selise-start-user-detail',
