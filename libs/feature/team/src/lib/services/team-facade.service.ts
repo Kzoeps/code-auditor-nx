@@ -8,7 +8,7 @@ import { tap } from 'rxjs/operators';
 import { Form, FormGroup } from '@angular/forms';
 // @ts-ignore
 import { User } from '@selise-start/user/model/user';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
 
 
 @Injectable({
@@ -33,7 +33,7 @@ export class TeamFacadeService {
     this.teamStateService.initializeTeamState();
   }
 
-  snackBar(message) {
+  snackBar(message): MatSnackBarRef<TextOnlySnackBar> {
     return this._snackBar.open(message, '', {
       duration: 2000
     });
