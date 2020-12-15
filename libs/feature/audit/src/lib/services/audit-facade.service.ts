@@ -56,7 +56,7 @@ export class AuditFacadeService {
     const auditors = this.getAuditors();
     const audit = auditForm.value;
     audit.auditors = auditors;
-    auditForm.controls.status.setValue('on-going')
+    auditForm.controls.status.setValue('on-going');
     if (auditForm.valid) {
       if (this.validAuditors()) {
         return this.auditFormService.validateForm(audit);
@@ -114,5 +114,16 @@ export class AuditFacadeService {
 
   removeAuditor(auditor: Team): void {
     this.auditStateService.removeAuditor(auditor);
+  }
+
+  getAudits(): Observable<Audit[]> {
+    return this.auditApiService.getAudits()
+      .pipe(
+        tap(
+          audits => {
+            this.auditStateService.updateAudits(audits);
+          }
+        )
+      );
   }
 }

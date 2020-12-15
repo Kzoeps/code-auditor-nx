@@ -73,4 +73,10 @@ export class AuditStateService extends ObservableStore<AuditStoreState>{
     })
     this.setState({auditState: auditStoreState.auditState}, 'REMOVE_AUDITOR')
   }
+
+  updateAudits(audits: Audit[]): void {
+    const auditStoreState = this.getState();
+    auditStoreState.auditsState = audits;
+    this.setState({auditsState: auditStoreState.auditsState}, 'UPDATE_AUDITS')
+  }
 }
