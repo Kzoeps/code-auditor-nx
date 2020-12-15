@@ -14,6 +14,7 @@ export class TeamFormService {
   constructor(private fb: FormBuilder, private teamStateService: TeamStateService) {
   }
 
+  // TODO: rename functions.
   createAddTeamForm() {
     const addTeamForm = this.fb.group({});
     const formValues = ADD_TEAM_FORM;
@@ -27,13 +28,14 @@ export class TeamFormService {
     return addTeamForm;
   }
 
-  setForm(form: FormGroup, team: Team){
+  setForm(form: FormGroup, team: Team) {
     Object.keys(form.controls).forEach(controlName => {
       if (controlName !== 'teamMembers') {
-        form.controls[controlName].setValue(team[controlName])
+        form.controls[controlName].setValue(team[controlName]);
       }
-    })
+    });
   }
+
   clearForm(form: FormGroup): void {
     form.reset();
   }

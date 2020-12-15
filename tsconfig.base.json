@@ -39,6 +39,9 @@
       "@selise-start/team": [
         "libs/feature/team/src/index.ts"
       ]
+//      "@selise-start/team/model": [
+//        "libs/feature/team/src/"
+//      ]
     }
   },
   "exclude": [
