@@ -8,6 +8,7 @@ import { Team, TeamFacadeService } from '@selise-start/team';
 import { tap } from 'rxjs/operators';
 import { AuditStateService } from './audit-state.service';
 import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
+import { ADD_AUDIT_FORM, EDIT_AUDIT_FORM, FORM_TYPES } from '../constants/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -76,8 +77,14 @@ export class AuditFacadeService {
     this.auditFormService.clearForm(form);
   }
 
-  createForm(): FormGroup {
-    return this.auditFormService.createForm();
+  createForm(formType: string): FormGroup {
+    const formTypes = FORM_TYPES;
+    switch (formType) {
+      case formTypes.ADDFORM:
+        return this.auditFormService.createForm(ADD_AUDIT_FORM);
+      case formTypes.EDITFORM:
+        return this.auditFormService.createForm(EDIT_AUDIT_FORM);
+    }
   }
 
   getTeams(): Observable<Team[]> {
@@ -97,13 +104,13 @@ export class AuditFacadeService {
     return this.auditStateService.getAuditee();
   }
 
-  addAuditor(auditor: Team): boolean {
+  addAuditor(auditor: Team): string {
     if (auditor) {
       if (this.auditFormService.validateAuditor(auditor, this.getAuditee())) {
         this.auditStateService.addAuditor(auditor);
-        return true;
+        return "";
       } else {
-        return false;
+        return "Auditor can not be an auditee";
       }
     }
   }
@@ -139,4 +146,24 @@ export class AuditFacadeService {
         })
       )
   }
+
+  setForm(form: FormGroup, audit: Audit): void {
+    this.auditFormService.setForm(form, audit);
+  }
+
+  updateAuditDatabase(auditForm: FormGroup): Observable<Audit>{
+    if (auditForm.valid && this.validAuditors()) {
+      const audit = auditForm.value;
+      audit.auditors = this.getAuditors();
+      return this.auditApiService.updateAudit(audit)
+        .pipe(
+          tap(
+            audit => {
+              this.updateAudit(audit);
+            }
+          )
+        )
+    }
+  }
 }
+

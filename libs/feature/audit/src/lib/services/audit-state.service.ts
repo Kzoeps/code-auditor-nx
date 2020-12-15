@@ -19,7 +19,7 @@ export class AuditStateService extends ObservableStore<AuditStoreState>{
       auditState: new Audit(),
       teamsState: undefined
     }
-    this.setState(initialState,'INIT_STATE')
+    this.setState(initialState,'INIT_STATE');
   }
 
   updateTeamsState(teams: Team[]) {

@@ -414,11 +414,24 @@
         ],
         "id": 1
       },
-      "auditors": [
-        {
-          "teamName": "xamine",
-          "dateEstd": "2020-12-14T18:00:00.000Z",
-          "teamLead": {
+      "auditors": {
+        "teamName": "Xclaimed!",
+        "dateEstd": "2020-12-11T18:00:00.000Z",
+        "teamLead": {
+          "id": 1,
+          "firstName": "Karma",
+          "lastName": "Zoepa",
+          "profileName": "K yoezer",
+          "email": "kzoepa@gmail.com",
+          "password": "abc123",
+          "confirmPassword": "abc123",
+          "role": "front-end",
+          "leadOnTeams": [],
+          "memberOnTeams": [],
+          "admin": false
+        },
+        "teamMembers": [
+          {
             "id": 2,
             "firstName": "Thinley",
             "lastName": "Dhendup",
@@ -430,24 +443,49 @@
             "leadOnTeams": [],
             "memberOnTeams": [],
             "admin": false
-          },
-          "teamMembers": [
-            {
-              "id": 1,
-              "firstName": "Karma",
-              "lastName": "Zoepa",
-              "profileName": "K yoezer",
-              "email": "kzoepa@gmail.com",
-              "password": "abc123",
-              "confirmPassword": "abc123",
-              "role": "front-end",
-              "leadOnTeams": [],
-              "memberOnTeams": [],
-              "admin": false
-            }
-          ],
-          "id": 3
+          }
+        ],
+        "id": 2
+      },
+      "auditStartDate": "2020-12-16T18:00:00.000Z",
+      "status": "on-going",
+      "id": 4
+    },
+    {
+      "auditee": {
+        "teamName": "boring",
+        "dateEstd": "2020-12-29T18:00:00.000Z",
+        "teamLead": {
+          "id": 2,
+          "firstName": "Thinley",
+          "lastName": "Dhendup",
+          "profileName": "Thinley Dhendup",
+          "email": "td@gmail.com",
+          "password": "abc123",
+          "confirmPassword": "abc123",
+          "role": "front-end",
+          "leadOnTeams": [],
+          "memberOnTeams": [],
+          "admin": false
         },
+        "teamMembers": [
+          {
+            "id": 1,
+            "firstName": "Karma",
+            "lastName": "Zoepa",
+            "profileName": "K yoezer",
+            "email": "kzoepa@gmail.com",
+            "password": "abc123",
+            "confirmPassword": "abc123",
+            "role": "front-end",
+            "leadOnTeams": [],
+            "memberOnTeams": [],
+            "admin": false
+          }
+        ],
+        "id": 5
+      },
+      "auditors": [
         {
           "teamName": "another trial",
           "dateEstd": "2020-12-23T18:00:00.000Z",
@@ -482,9 +520,82 @@
           "id": 4
         }
       ],
-      "auditStartDate": "2020-12-16T18:00:00.000Z",
+      "auditStartDate": "2020-12-27T18:00:00.000Z",
       "status": "on-going",
-      "id": 4
+      "id": 5
+    },
+    {
+      "auditee": {
+        "teamName": "another trial",
+        "dateEstd": "2020-12-23T18:00:00.000Z",
+        "teamLead": {
+          "id": 1,
+          "firstName": "Karma",
+          "lastName": "Zoepa",
+          "profileName": "K yoezer",
+          "email": "kzoepa@gmail.com",
+          "password": "abc123",
+          "confirmPassword": "abc123",
+          "role": "front-end",
+          "leadOnTeams": [],
+          "memberOnTeams": [],
+          "admin": false
+        },
+        "teamMembers": [
+          {
+            "id": 2,
+            "firstName": "Thinley",
+            "lastName": "Dhendup",
+            "profileName": "Thinley Dhendup",
+            "email": "td@gmail.com",
+            "password": "abc123",
+            "confirmPassword": "abc123",
+            "role": "front-end",
+            "leadOnTeams": [],
+            "memberOnTeams": [],
+            "admin": false
+          }
+        ],
+        "id": 4
+      },
+      "auditors": [
+        {
+          "teamName": "Xclaimed!",
+          "dateEstd": "2020-12-11T18:00:00.000Z",
+          "teamLead": {
+            "id": 1,
+            "firstName": "Karma",
+            "lastName": "Zoepa",
+            "profileName": "K yoezer",
+            "email": "kzoepa@gmail.com",
+            "password": "abc123",
+            "confirmPassword": "abc123",
+            "role": "front-end",
+            "leadOnTeams": [],
+            "memberOnTeams": [],
+            "admin": false
+          },
+          "teamMembers": [
+            {
+              "id": 2,
+              "firstName": "Thinley",
+              "lastName": "Dhendup",
+              "profileName": "Thinley Dhendup",
+              "email": "td@gmail.com",
+              "password": "abc123",
+              "confirmPassword": "abc123",
+              "role": "front-end",
+              "leadOnTeams": [],
+              "memberOnTeams": [],
+              "admin": false
+            }
+          ],
+          "id": 2
+        }
+      ],
+      "auditStartDate": "2020-12-15T18:00:00.000Z",
+      "status": "on-going",
+      "id": 6
     }
   ]
 }

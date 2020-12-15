@@ -12,21 +12,26 @@ export class AuditFormService {
   constructor(private fb: FormBuilder) {
   }
 
-  createForm(): FormGroup {
+  createForm(formValues: Object): FormGroup {
     const form = this.fb.group({});
-    const formValues = ADD_AUDIT_FORM;
-    formValues.forEach((formValue) => {
-      if (formValue === 'auditors') {
-        form.addControl(formValue, new FormControl(''));
-      } else {
-        form.addControl(formValue, new FormControl('', [Validators.required]));
-      }
-    });
+    // tslint:disable-next-line:forin
+    for (const control in formValues) {
+      form.addControl(control, new FormControl(''));
+      form.controls[control].setValidators(formValues[control]);
+    }
     return form;
   }
 
   validateAuditor(auditor: Team, auditee: Team): boolean {
     return !(auditor.id === auditee.id);
+  }
+
+  setForm(form: FormGroup, audit: Audit) {
+    Object.keys(form.controls).forEach(controlName => {
+      if (controlName !== 'auditors') {
+        form.controls[controlName].setValue(audit[controlName]);
+      }
+    })
   }
 
   validateForm(audit: Audit): string {
