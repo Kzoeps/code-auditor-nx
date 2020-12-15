@@ -24,4 +24,9 @@ export class AuditApiService {
   createAudit(audit: Audit): Observable<Audit> {
     return this.http.post<Audit>(this.url, audit, this.httpOptions);
   }
+
+  getAudit(id: number): Observable<Audit> {
+    const url = `${this.url}/${id}`;
+    return this.http.get<Audit>(url);
+  }
 }

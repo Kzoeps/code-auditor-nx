@@ -79,4 +79,10 @@ export class AuditStateService extends ObservableStore<AuditStoreState>{
     auditStoreState.auditsState = audits;
     this.setState({auditsState: auditStoreState.auditsState}, 'UPDATE_AUDITS')
   }
+
+  updateAudit(audit: Audit): void{
+    const auditStoreState = this.getState();
+    auditStoreState.auditState = audit;
+    this.setState({auditState: audit},'UPDATE_AUDIT');
+  }
 }

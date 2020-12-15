@@ -11,10 +11,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
+import { AuditDetailComponent } from './components/audit-detail/audit-detail.component';
 
 @NgModule({
   imports: [CommonModule, MatFormFieldModule, MatSelectModule, MatInputModule, MatDatepickerModule, MatButtonModule, ReactiveFormsModule, MatCardModule, MatListModule, RouterModule],
-  declarations: [AuditsComponent, AddAuditComponent],
-  exports: [AuditsComponent],
+  declarations: [AuditsComponent, AddAuditComponent, AuditDetailComponent],
+  exports: [AuditsComponent, AuditDetailComponent],
 })
 export class FeatureAuditModule {}
