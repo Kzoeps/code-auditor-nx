@@ -126,4 +126,17 @@ export class AuditFacadeService {
         )
       );
   }
+
+  updateAudit(audit: Audit): void{
+    this.auditStateService.updateAudit(audit);
+  }
+
+  getAudit(id: number): Observable<Audit>{
+    return this.auditApiService.getAudit(id)
+      .pipe(
+        tap( audit => {
+          this.updateAudit(audit);
+        })
+      )
+  }
 }
