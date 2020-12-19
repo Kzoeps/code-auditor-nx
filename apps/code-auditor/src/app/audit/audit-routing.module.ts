@@ -6,7 +6,7 @@ import {
   AuditsComponent,
   AddAuditComponent,
   AuditDetailComponent,
-  EditAuditComponent
+  EditAuditComponent, MemoCompComponent
 } from '@selise-start/audit';
 
 const routes: Routes = [
@@ -29,6 +29,10 @@ const routes: Routes = [
       {
         path: ':id/edit-audit',
         component: EditAuditComponent
+      },
+      {
+        path: ':id/memo-comp',
+        component: MemoCompComponent
       }
     ]
   }

@@ -25,6 +25,19 @@
       "leadOnTeams": [],
       "memberOnTeams": [],
       "admin": false
+    },
+    {
+      "id": 3,
+      "firstName": "Yeki",
+      "lastName": "Yixuan",
+      "profileName": "Yeki",
+      "email": "yeeee@gmail.com",
+      "password": "abc123",
+      "confirmPassword": "abc123",
+      "role": "front-end",
+      "leadOnTeams": [],
+      "memberOnTeams": [],
+      "admin": false
     }
   ],
   "teams": [
@@ -192,6 +205,52 @@
         }
       ],
       "id": 5
+    },
+    {
+      "teamName": "yeyey",
+      "dateEstd": "2020-12-17T18:00:00.000Z",
+      "teamLead": {
+        "id": 3,
+        "firstName": "Yeki",
+        "lastName": "Yixuan",
+        "profileName": "Yeki",
+        "email": "yeeee@gmail.com",
+        "password": "abc123",
+        "confirmPassword": "abc123",
+        "role": "front-end",
+        "leadOnTeams": [],
+        "memberOnTeams": [],
+        "admin": false
+      },
+      "teamMembers": [
+        {
+          "id": 1,
+          "firstName": "Karma",
+          "lastName": "Zoepa",
+          "profileName": "K yoezer",
+          "email": "kzoepa@gmail.com",
+          "password": "abc123",
+          "confirmPassword": "abc123",
+          "role": "front-end",
+          "leadOnTeams": [],
+          "memberOnTeams": [],
+          "admin": false
+        },
+        {
+          "id": 2,
+          "firstName": "Thinley",
+          "lastName": "Dhendup",
+          "profileName": "Thinley Dhendup",
+          "email": "td@gmail.com",
+          "password": "abc123",
+          "confirmPassword": "abc123",
+          "role": "front-end",
+          "leadOnTeams": [],
+          "memberOnTeams": [],
+          "admin": false
+        }
+      ],
+      "id": 6
     }
   ],
   "audits": [
@@ -305,7 +364,66 @@
       "auditors": [],
       "auditStartDate": "2020-12-07T18:00:00.000Z",
       "status": "on-going",
-      "id": 2
+      "id": 2,
+      "memos": [
+        {
+          "id": "023e08f7-1599-4b5a-9b7d-f5921a2126c0",
+          "description": "Another Memo",
+          "assignedTo": [
+            {
+              "id": 1,
+              "firstName": "Karma",
+              "lastName": "Zoepa",
+              "profileName": "K yoezer",
+              "email": "kzoepa@gmail.com",
+              "password": "abc123",
+              "confirmPassword": "abc123",
+              "role": "front-end",
+              "leadOnTeams": [],
+              "memberOnTeams": [],
+              "admin": false
+            }
+          ],
+          "section": "memos",
+          "newMemoAssignee": ""
+        }
+      ],
+      "resolved": [
+        {
+          "id": "2742b2e4-17ea-4b64-9eaa-7a241315d45e",
+          "description": "BIENNN",
+          "assignedTo": [
+            {
+              "id": 1,
+              "firstName": "Karma",
+              "lastName": "Zoepa",
+              "profileName": "K yoezer",
+              "email": "kzoepa@gmail.com",
+              "password": "abc123",
+              "confirmPassword": "abc123",
+              "role": "front-end",
+              "leadOnTeams": [],
+              "memberOnTeams": [],
+              "admin": false
+            }
+          ],
+          "section": "resolved",
+          "newMemoAssignee": {
+            "id": 1,
+            "firstName": "Karma",
+            "lastName": "Zoepa",
+            "profileName": "K yoezer",
+            "email": "kzoepa@gmail.com",
+            "password": "abc123",
+            "confirmPassword": "abc123",
+            "role": "front-end",
+            "leadOnTeams": [],
+            "memberOnTeams": [],
+            "admin": false
+          }
+        }
+      ],
+      "tbd": []
     },
     {
       "auditee": {
@@ -377,8 +495,56 @@
         }
       ],
       "auditStartDate": "2020-12-22T18:00:00.000Z",
-      "status": "on-going",
-      "id": 3
+      "status": "cancelled",
+      "id": 3,
+      "memoDescription": "Some other stuff",
+      "memoAssignee": {
+        "id": 1,
+        "firstName": "Karma",
+        "lastName": "Zoepa",
+        "profileName": "K yoezer",
+        "email": "kzoepa@gmail.com",
+        "password": "abc123",
+        "confirmPassword": "abc123",
+        "role": "front-end",
+        "leadOnTeams": [],
+        "memberOnTeams": [],
+        "admin": false
+      },
+      "memos": [
+        {
+          "description": "adsffadsf",
+          "assignedTo": {
+            "id": 1,
+            "firstName": "Karma",
+            "lastName": "Zoepa",
+            "profileName": "K yoezer",
+            "email": "kzoepa@gmail.com",
+            "password": "abc123",
+            "confirmPassword": "abc123",
+            "role": "front-end",
+            "leadOnTeams": [],
+            "memberOnTeams": [],
+            "admin": false
+          }
+        },
+        {
+          "description": "Some other stuff",
+          "assignedTo": {
+            "id": 1,
+            "firstName": "Karma",
+            "lastName": "Zoepa",
+            "profileName": "K yoezer",
+            "email": "kzoepa@gmail.com",
+            "password": "abc123",
+            "confirmPassword": "abc123",
+            "role": "front-end",
+            "leadOnTeams": [],
+            "memberOnTeams": [],
+            "admin": false
+          }
+        }
+      ]
     },
     {
       "auditee": {
@@ -522,7 +688,40 @@
       ],
       "auditStartDate": "2020-12-27T18:00:00.000Z",
       "status": "on-going",
-      "id": 5
+      "id": 5,
+      "memoDescription": "asdfadsnf",
+      "memoAssignee": {
+        "id": 1,
+        "firstName": "Karma",
+        "lastName": "Zoepa",
+        "profileName": "K yoezer",
+        "email": "kzoepa@gmail.com",
+        "password": "abc123",
+        "confirmPassword": "abc123",
+        "role": "front-end",
+        "leadOnTeams": [],
+        "memberOnTeams": [],
+        "admin": false
+      },
+      "memos": [
+        {
+          "description": "frontend validation",
+          "assignedTo": {
+            "id": 1,
+            "firstName": "Karma",
+            "lastName": "Zoepa",
+            "profileName": "K yoezer",
+            "email": "kzoepa@gmail.com",
+            "password": "abc123",
+            "confirmPassword": "abc123",
+            "role": "front-end",
+            "leadOnTeams": [],
+            "memberOnTeams": [],
+            "admin": false
+          },
+          "id": "6b51c049-d4ea-4672-b3de-873859763900"
+        }
+      ]
     },
     {
       "auditee": {
@@ -596,6 +795,142 @@
       "auditStartDate": "2020-12-15T18:00:00.000Z",
       "status": "on-going",
       "id": 6
+    },
+    {
+      "auditee": {
+        "teamName": "yeyey",
+        "dateEstd": "2020-12-17T18:00:00.000Z",
+        "teamLead": {
+          "id": 3,
+          "firstName": "Yeki",
+          "lastName": "Yixuan",
+          "profileName": "Yeki",
+          "email": "yeeee@gmail.com",
+          "password": "abc123",
+          "confirmPassword": "abc123",
+          "role": "front-end",
+          "leadOnTeams": [],
+          "memberOnTeams": [],
+          "admin": false
+        },
+        "teamMembers": [
+          {
+            "id": 1,
+            "firstName": "Karma",
+            "lastName": "Zoepa",
+            "profileName": "K yoezer",
+            "email": "kzoepa@gmail.com",
+            "password": "abc123",
+            "confirmPassword": "abc123",
+            "role": "front-end",
+            "leadOnTeams": [],
+            "memberOnTeams": [],
+            "admin": false
+          },
+          {
+            "id": 2,
+            "firstName": "Thinley",
+            "lastName": "Dhendup",
+            "profileName": "Thinley Dhendup",
+            "email": "td@gmail.com",
+            "password": "abc123",
+            "confirmPassword": "abc123",
+            "role": "front-end",
+            "leadOnTeams": [],
+            "memberOnTeams": [],
+            "admin": false
+          }
+        ],
+        "id": 6
+      },
+      "auditors": [
+        {
+          "teamName": "xamine",
+          "dateEstd": "2020-12-14T18:00:00.000Z",
+          "teamLead": {
+            "id": 2,
+            "firstName": "Thinley",
+            "lastName": "Dhendup",
+            "profileName": "Thinley Dhendup",
+            "email": "td@gmail.com",
+            "password": "abc123",
+            "confirmPassword": "abc123",
+            "role": "front-end",
+            "leadOnTeams": [],
+            "memberOnTeams": [],
+            "admin": false
+          },
+          "teamMembers": [
+            {
+              "id": 1,
+              "firstName": "Karma",
+              "lastName": "Zoepa",
+              "profileName": "K yoezer",
+              "email": "kzoepa@gmail.com",
+              "password": "abc123",
+              "confirmPassword": "abc123",
+              "role": "front-end",
+              "leadOnTeams": [],
+              "memberOnTeams": [],
+              "admin": false
+            }
+          ],
+          "id": 3
+        }
+      ],
+      "auditStartDate": "2020-12-17T18:00:00.000Z",
+      "status": "on-going",
+      "id": 7,
+      "memos": [],
+      "resolved": [],
+      "tbd": [
+        {
+          "id": "d9421a50-cb6e-4704-a0fb-190e52a22e3b",
+          "description": "WORKINNN!!!",
+          "assignedTo": [
+            {
+              "id": 1,
+              "firstName": "Karma",
+              "lastName": "Zoepa",
+              "profileName": "K yoezer",
+              "email": "kzoepa@gmail.com",
+              "password": "abc123",
+              "confirmPassword": "abc123",
+              "role": "front-end",
+              "leadOnTeams": [],
+              "memberOnTeams": [],
+              "admin": false
+            },
+            {
+              "id": 2,
+              "firstName": "Thinley",
+              "lastName": "Dhendup",
+              "profileName": "Thinley Dhendup",
+              "email": "td@gmail.com",
+              "password": "abc123",
+              "confirmPassword": "abc123",
+              "role": "front-end",
+              "leadOnTeams": [],
+              "memberOnTeams": [],
+              "admin": false
+            }
+          ],
+          "section": "tbd",
+          "newMemoAssignee": {
+            "id": 2,
+            "firstName": "Thinley",
+            "lastName": "Dhendup",
+            "profileName": "Thinley Dhendup",
+            "email": "td@gmail.com",
+            "password": "abc123",
+            "confirmPassword": "abc123",
+            "role": "front-end",
+            "leadOnTeams": [],
+            "memberOnTeams": [],
+            "admin": false
+          }
+        }
+      ]
     }
   ]
 }

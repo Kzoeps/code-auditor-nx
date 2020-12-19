@@ -1,4 +1,5 @@
 import { Validators } from '@angular/forms';
+import { strictEqual } from 'assert';
 
 export const ADD_AUDIT_FORM = {
   auditee: [Validators.required],
@@ -19,12 +20,31 @@ export const EDIT_AUDIT_FORM = {
   auditors: [],
   auditStartDate: [Validators.required],
   status: [Validators.required],
-  memos: [],
-  resolved: [],
-  tbd: []
+  createMemoDescription: [],
+  createMemoAssignee: [],
+  createMemoDesignatedAssignees: [],
 }
 
+export const EDIT_AUDIT_FORMARRAYS = [
+  'memos',
+  'resolved',
+  'tbd'
+]
 export const FORM_TYPES = {
   ADDFORM: 'ADD_AUDIT_FORM',
   EDITFORM: 'EDIT_AUDIT_FORM',
+  MEMOFORM: 'MEMO_FORM'
 }
+
+export const MEMO_FORM = {
+  id: [Validators.required],
+  description: [Validators.required],
+  assignedTo: [],
+  section: [],
+  newMemoAssignee: [],
+}
+export const MEMO_SECTIONS = [
+  'memos',
+  'resolved',
+  'tbd'
+]

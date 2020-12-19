@@ -13,10 +13,11 @@ import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 import { AuditDetailComponent } from './components/audit-detail/audit-detail.component';
 import { EditAuditComponent } from './components/edit-audit/edit-audit.component';
+import { MemoCompComponent } from './components/memo-comp/memo-comp.component';
 
 @NgModule({
   imports: [CommonModule, MatFormFieldModule, MatSelectModule, MatInputModule, MatDatepickerModule, MatButtonModule, ReactiveFormsModule, MatCardModule, MatListModule, RouterModule],
-  declarations: [AuditsComponent, AddAuditComponent, AuditDetailComponent, EditAuditComponent],
+  declarations: [AuditsComponent, AddAuditComponent, AuditDetailComponent, EditAuditComponent, MemoCompComponent],
   exports: [AuditsComponent, AuditDetailComponent, EditAuditComponent],
 })
 export class FeatureAuditModule {}
