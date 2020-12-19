@@ -5,6 +5,7 @@ import { AuditStoreState } from '../../models/audit';
 import { Observable } from 'rxjs';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Team } from '@selise-start/team';
+import { FORM_TYPES } from '../../constants/constants';
 
 @UntilDestroy()
 @Component({
@@ -28,12 +29,17 @@ export class AddAuditComponent implements OnInit {
   }
 
   initializer(): void {
+    this.initialState();
     this.createForm();
     this.getTeams();
   }
 
+  initialState(): void {
+    this.auditFacadeService.initialState();
+  }
+
   createForm(): void {
-    this.addAuditForm = this.auditFacadeService.createForm();
+    this.addAuditForm = this.auditFacadeService.createForm(FORM_TYPES.ADDFORM);
   }
 
   getTeams(): void {
@@ -46,8 +52,8 @@ export class AddAuditComponent implements OnInit {
   }
 
   createAudit(): void {
-    const errorMessage = this.auditFacadeService.validateForm(this.addAuditForm)
-    if (errorMessage === "") {
+    const errorMessage = this.auditFacadeService.validateForm(this.addAuditForm);
+    if (errorMessage === '') {
       this.auditFacadeService.createAudit(this.addAuditForm)
         .pipe(
           untilDestroyed(this)
@@ -56,9 +62,9 @@ export class AddAuditComponent implements OnInit {
           complete: () => {
             this.auditFacadeService.snackBar('Created Audit');
             this.auditFacadeService.clearForm(this.addAuditForm);
-            this.errorMessage = "";
+            this.errorMessage = '';
           }
-        })
+        });
     } else {
       this.errorMessage = errorMessage;
     }
@@ -66,10 +72,10 @@ export class AddAuditComponent implements OnInit {
 
   addAuditor(): void {
     const teamToAdd = this.addAuditForm.controls.auditors.value;
-    this.auditFacadeService.addAuditor(teamToAdd)
+    this.auditFacadeService.addAuditor(teamToAdd);
   }
 
-  removeAuditor(auditor: Team): void{
-    this.auditFacadeService.removeAuditor(auditor)
+  removeAuditor(auditor: Team): void {
+    this.auditFacadeService.removeAuditor(auditor);
   }
 }

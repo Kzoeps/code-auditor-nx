@@ -29,4 +29,9 @@ export class AuditApiService {
     const url = `${this.url}/${id}`;
     return this.http.get<Audit>(url);
   }
+
+  updateAudit(audit: Audit): Observable<Audit>{
+    const url = `${this.url}/${audit.id}`;
+    return this.http.patch<Audit>(url, audit, this.httpOptions);
+  }
 }

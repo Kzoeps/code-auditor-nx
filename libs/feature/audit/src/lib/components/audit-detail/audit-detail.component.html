@@ -10,10 +10,6 @@
       <mat-card-title>Audit Start Date</mat-card-title>
       <mat-card-content>{{audit.auditStartDate | date}}</mat-card-content>
     </mat-card>
-    <mat-card style="margin-top: 10px;">
-      <mat-card-title>Status</mat-card-title>
-      <mat-card-content>{{audit.status}}</mat-card-content>
-    </mat-card>
     <div style="display: flex; flex-direction: column; margin-top: 10px;">
       <mat-card>
         <mat-card-title>Auditors</mat-card-title>
@@ -24,19 +20,114 @@
         </mat-card-content>
       </mat-card>
     </div>
-    <span *ngIf="audit.memos">
-      <mat-card style="margin-top: 10px;">
-        Hello
+  </div>
+  <form [formGroup]="editAuditForm">
+    <mat-card style="margin-top: 10px;">
+      <mat-card-title>Status</mat-card-title>
+      <mat-form-field appearance="outline">
+        <mat-label>
+          status
+        </mat-label>
+        <mat-select formControlName="status">
+          <mat-option *ngFor="let status of auditStatus" [value]="status">
+            {{status}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card>
+    <h3>Memos</h3>
+    <hr/>
+    <span style="display: flex; justify-content: space-between; width: 100%">
+        <mat-form-field appearance="outline" style="width: 300px">
+          <mat-label>
+            Memo Description
+          </mat-label>
+          <textarea matInput placeholder="Ex. Frontend validation work" formControlName="memoDescription"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 140px;">
+          <mat-label>
+            Memo Assignee
+          </mat-label>
+          <mat-select formControlName="memoAssignee">
+<!--            TODO: append teamLead to teamMembers on create team-->
+            <mat-option *ngFor="let auditeeMember of audit.auditee.teamMembers"
+                        [value]="auditeeMember">{{auditeeMember.profileName}}</mat-option>
+          </mat-select>
+      </mat-form-field>
+     <button mat-flat-button color="primary" (click)="addMemo()" style="width: 70px; height: 30px">
+        Add Memo
+      </button>
+      </span>
+
+<!--    <span *ngIf="audit.memos">-->
+<!--      <mat-card style="margin-top: 10px; display: flex; justify-content: space-between; width: 100%"-->
+<!--                *ngFor="let memo of audit.memos">-->
+<!--        <mat-card-content>-->
+<!--          Description: {{memo.description}}-->
+<!--          <br/>-->
+<!--          Assignee: {{memo.assignedTo.profileName}}-->
+<!--        </mat-card-content>-->
+<!--        <button mat-flat-button color="warn" style="width: 90px; height: 40px" (click)="removeMemo(memo)">-->
+<!--          Remove-->
+<!--        </button>-->
+<!--        <span>-->
+<!--          <mat-form-field appearance="outline">-->
+<!--            <mat-label>-->
+<!--              move to-->
+<!--            </mat-label>-->
+<!--            <mat-select [(value)]="selectedOption">-->
+<!--              <mat-option *ngFor="let memoSection of memoSections" [value]="memoSection">-->
+<!--                {{memoSection}}-->
+<!--              </mat-option>-->
+<!--            </mat-select>-->
+<!--          </mat-form-field>-->
+<!--          <button mat-flat-button color="primary" (click)="move(memo, 'memos')">-->
+<!--            Move-->
+<!--          </button>-->
+<!--        </span>-->
+<!--      </mat-card>-->
+<!--    </span>-->
+    <span *ngIf="audit.resolved">
+      <h3>Resolved</h3>
+      <hr/>
+      <mat-card *ngFor="let memo of audit.resolved" style="margin-top: 10px; display: flex; flex-direction: column">
+        <mat-card-content>
+          Description: {{memo.description}};
+          <br/>
+          Assigned To: {{memo.assignedTo.profileName}};
+        </mat-card-content>
       </mat-card>
     </span>
-    <span *ngIf="audit.resolved">
-      <mat-card></mat-card>
-    </span>
     <span *ngIf="audit.tbd"></span>
-  </div>
-  <div style="display: flex; margin-top: 10px; justify-content: flex-end">
-    <button mat-flat-button color="primary" routerLink="/audits/{{audit.id}}/edit-audit">
-      Edit
-    </button>
-  </div>
+    <div formArrayName="memo" *ngFor="let eachMemo of editAuditForm.controls.memo?.controls; let i = index">
+      <div [formGroup]="eachMemo">
+        <mat-card>
+          <mat-card-content>
+            <mat-form-field appearance="outline">
+              <mat-label>
+                Description
+              </mat-label>
+              <textarea matInput placeholder="Ex. Frontend validation err" [value]="eachMemo.description"
+                        formControlName="description"></textarea>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>
+                Assigned To
+              </mat-label>
+              <mat-select [value]="eachMemo.assignedTo" [compareWith]="byId">
+                <mat-option *ngFor="let teamMember of audit.auditee.teamMembers" [value]="teamMember">
+                  {{teamMember.profileName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div style="display: flex; margin-top: 10px; justify-content: flex-end">
+        <button mat-flat-button color="primary" (click)="updateAudit()">
+          Update
+        </button>
+      </div>
+    </div>
+  </form>
 </ng-container>
