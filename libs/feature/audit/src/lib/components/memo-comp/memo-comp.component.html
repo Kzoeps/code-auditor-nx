@@ -1,4 +1,4 @@
-<ng-container *ngIf="(auditStoreState$ | async).auditState as audit">
+<ng-container *ngIf="audit">
   <h1>Auditee : {{audit.auditee.teamName}}</h1>
   <form [formGroup]="auditForm" style="display: flex; flex-direction: column">
     <mat-form-field appearance="outline">

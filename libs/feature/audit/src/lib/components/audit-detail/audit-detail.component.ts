@@ -4,9 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuditStoreState } from '../../models/audit';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { FormGroup } from '@angular/forms';
-import { FORM_TYPES, STATUS } from '../../constants/constants';
-import { tap } from 'rxjs/operators';
 
 @UntilDestroy()
 @Component({
@@ -17,8 +14,6 @@ import { tap } from 'rxjs/operators';
 export class AuditDetailComponent implements OnInit {
 
   auditStoreState$: Observable<AuditStoreState>;
-  editAuditForm: FormGroup;
-  auditStatus = STATUS;
 
   constructor(
     private auditFacadeService: AuditFacadeService,
@@ -32,35 +27,15 @@ export class AuditDetailComponent implements OnInit {
   initializer(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.getAudit(id);
-    this.createForm();
-  }
-
-  createForm(): void {
-    this.editAuditForm = this.auditFacadeService.createForm(FORM_TYPES.EDITFORM);
   }
 
   getAudit(id: number): void {
     this.auditFacadeService.getAudit(id)
       .pipe(
         untilDestroyed(this),
-        tap(audit => {
-          this.auditFacadeService.setForm(this.editAuditForm, audit);
-        })
       )
       .subscribe();
     this.auditStoreState$ = this.auditFacadeService.stateChange();
-  }
-
-  updateAudit(): void {
-    this.auditFacadeService.updateAuditDatabase(this.editAuditForm)
-      .pipe (
-        untilDestroyed(this)
-      )
-      .subscribe({
-        complete: () => {
-          this.auditFacadeService.snackBar('Update Audit!');
-        }
-      });
   }
 
   test(memo): void{

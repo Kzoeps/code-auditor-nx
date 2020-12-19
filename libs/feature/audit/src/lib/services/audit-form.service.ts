@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { ADD_AUDIT_FORM, EDIT_AUDIT_FORMARRAYS, MEMO_FORM } from '../constants/constants';
+import { EDIT_AUDIT_FORMARRAYS, MEMO_FORM } from '../constants/constants';
 import { Team } from '@selise-start/team';
 import { Audit } from '../models/audit';
 import { User } from '@selise-start/user';
@@ -38,7 +38,9 @@ export class AuditFormService {
   }
 
   setForm(form: FormGroup, formValues: Object) {
+    debugger;
     Object.keys(form.controls).forEach(controlName => {
+      debugger
       if (formValues[controlName] && EDIT_AUDIT_FORMARRAYS.includes(controlName)) {
         const array = form.get(controlName) as FormArray;
         formValues[controlName].forEach((eachMemo) => {
