@@ -18,7 +18,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <button mat-flat-button color="primary" (click)="addMemoAssignee()" style="width: 150px; height: 45px">
+      <button mat-flat-button color="primary" (click)="addMemoAssignee('')" style="width: 150px; height: 45px">
         Add Assignee
       </button>
     </span>
@@ -42,7 +42,7 @@
     </div>
       <h1>Memos</h1>
       <span formArrayName="memos" *ngFor="let eachMemo of testForm.controls.memos?.controls; let i = index">
-        <div [formGroup]="eachMemo">
+        <span [formGroup]="eachMemo">
           <mat-card style="display: flex; flex-direction: column;">
             <mat-card-content>
               <span style="display: flex; justify-content: space-between">
@@ -105,12 +105,12 @@
               Remove Memo
             </button>
           </mat-card>
-        </div>
+        </span>
       </span>
-    <!--    TODO: BIG TIME: make this into its seperate components if theres time.-->
+    <!--    TODO: BIG TIME: make this into its separate components if theres time.-->
       <h1>Resolved</h1>
       <span formArrayName="resolved" *ngFor="let eachMemo of testForm.controls.resolved?.controls;let i = index">
-        <div [formGroup]="eachMemo">
+        <span [formGroup]="eachMemo">
           <mat-card style="display: flex; flex-direction: column;">
             <mat-card-content>
               <span style="display: flex; justify-content: space-between">
@@ -174,11 +174,12 @@
               </button>
             </mat-card-content>
           </mat-card>
-        </div>
+        </span>
       </span>
+    <h1>TBD</h1>
     <span formArrayName="tbd" *ngFor="let eachMemo of testForm.controls.tbd?.controls;let i = index">
-        <h1>TBD</h1>
-        <div [formGroup]="eachMemo">
+
+        <span [formGroup]="eachMemo">
           <mat-card style="display: flex; flex-direction: column;">
             <mat-card-content>
               <span style="display: flex; justify-content: space-between">
@@ -242,7 +243,7 @@
               </button>
             </mat-card-content>
           </mat-card>
-        </div>
+        </span>
       </span>
     <button mat-flat-button color="primary" (click)="updateAudit()">
       Update
