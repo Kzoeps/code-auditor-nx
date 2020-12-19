@@ -18,9 +18,10 @@ import { User } from '@selise-start/user';
 export class MemoCompComponent implements OnInit {
 
   auditStoreState$: Observable<AuditStoreState>;
-  testForm: FormGroup;
+  auditForm: FormGroup;
   memoSuccess: string;
-  sections: string[];
+  sections = MEMO_SECTIONS;
+  statuses = STATUS;
 
   constructor(
     private auditFacadeService: AuditFacadeService,
@@ -36,7 +37,6 @@ export class MemoCompComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.getAudit(id);
     this.createForm();
-    this.sections = MEMO_SECTIONS;
   }
 
   getAudit(id: number): void {
@@ -45,7 +45,7 @@ export class MemoCompComponent implements OnInit {
         untilDestroyed(this),
         tap(audit => {
           this.createFormArray();
-          this.auditFacadeService.setForm(this.testForm, audit);
+          this.auditFacadeService.setForm(this.auditForm, audit);
         })
       )
       .subscribe();
@@ -53,20 +53,20 @@ export class MemoCompComponent implements OnInit {
   }
 
   createForm(): void {
-    this.testForm = this.auditFacadeService.createForm(FORM_TYPES.EDITFORM);
+    this.auditForm = this.auditFacadeService.createForm(FORM_TYPES.EDITFORM);
   }
 
   createFormArray(): void {
-    this.auditFacadeService.createFormArray(this.testForm);
+    this.auditFacadeService.createFormArray(this.auditForm);
   }
 
   addMemo(): void {
-    this.memoSuccess = this.auditFacadeService.addMemo(this.testForm);
+    this.memoSuccess = this.auditFacadeService.addMemo(this.auditForm);
   }
 
   updateAudit(): void {
-    if (this.auditFacadeService.validateAssignees(this.testForm)) {
-      this.auditFacadeService.updateAuditDatabase(this.testForm)
+    if (this.auditFacadeService.validateAssignees(this.auditForm)) {
+      this.auditFacadeService.updateAuditDatabase(this.auditForm)
         .pipe(
           untilDestroyed(this)
         )
@@ -79,19 +79,19 @@ export class MemoCompComponent implements OnInit {
   }
 
   addMemoAssignee(section: 'memos'|'resolved'|'tbd'|'',index?): void {
-    this.auditFacadeService.addMemoAssignee(this.testForm, section,index);
+    this.auditFacadeService.addMemoAssignee(this.auditForm, section,index);
   }
 
 
   removeAssignee(assignee: User, section: 'resolved' | 'memos' | 'tbd', index?: number): void {
-    this.auditFacadeService.removeMemoAssignee(assignee, this.testForm, section, index);
+    this.auditFacadeService.removeMemoAssignee(assignee, this.auditForm, section, index);
   }
 
   removeMemo(index: number, section: 'resolved' | 'memos' | 'tbd'): void {
-    this.auditFacadeService.removeMemo(index, this.testForm, section);
+    this.auditFacadeService.removeMemo(index, this.auditForm, section);
   }
 
   moveMemo(memoIndex: number, section: 'memos' | 'resolved' | 'tbd'): void {
-    this.auditFacadeService.moveMemo(memoIndex, section, this.testForm);
+    this.auditFacadeService.moveMemo(memoIndex, section, this.auditForm);
   }
 }

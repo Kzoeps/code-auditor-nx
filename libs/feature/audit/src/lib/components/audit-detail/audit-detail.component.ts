@@ -5,10 +5,8 @@ import { Observable } from 'rxjs';
 import { AuditStoreState } from '../../models/audit';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { FormGroup } from '@angular/forms';
-import { FORM_TYPES, MEMO_SECTIONS, STATUS } from '../../constants/constants';
+import { FORM_TYPES, STATUS } from '../../constants/constants';
 import { tap } from 'rxjs/operators';
-import { Memo } from '../../models/memo';
-import { User } from '@selise-start/user';
 
 @UntilDestroy()
 @Component({
@@ -21,8 +19,6 @@ export class AuditDetailComponent implements OnInit {
   auditStoreState$: Observable<AuditStoreState>;
   editAuditForm: FormGroup;
   auditStatus = STATUS;
-  memoSections = MEMO_SECTIONS;
-  selectedOption: 'memos'|'resolved'|'tbd';
 
   constructor(
     private auditFacadeService: AuditFacadeService,
@@ -43,25 +39,16 @@ export class AuditDetailComponent implements OnInit {
     this.editAuditForm = this.auditFacadeService.createForm(FORM_TYPES.EDITFORM);
   }
 
-  createFormArray(): void{
-    this.auditFacadeService.createFormArray(this.editAuditForm)
-  }
-
   getAudit(id: number): void {
     this.auditFacadeService.getAudit(id)
       .pipe(
         untilDestroyed(this),
         tap(audit => {
           this.auditFacadeService.setForm(this.editAuditForm, audit);
-          this.createFormArray();
         })
       )
       .subscribe();
     this.auditStoreState$ = this.auditFacadeService.stateChange();
-  }
-
-  addMemo(): void {
-    this.auditFacadeService.addMemo(this.editAuditForm);
   }
 
   updateAudit(): void {
@@ -74,18 +61,6 @@ export class AuditDetailComponent implements OnInit {
           this.auditFacadeService.snackBar('Update Audit!');
         }
       });
-  }
-
-  // removeMemo(memo: Memo): void {
-  //   this.auditFacadeService.removeMemoFromState(memo);
-  // }
-
-  move(memo: Memo, fromSection: string): void {
-    this.auditFacadeService.moveMemoFromState(memo, fromSection, this.selectedOption);
-  }
-
-  byId(teamMember: User, user: User ) {
-    return teamMember.id === user.id;
   }
 
   test(memo): void{
