@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { AuditFacadeService } from '../../services/audit-facade.service';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Audit } from '../../models/audit';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { FormGroup } from '@angular/forms';
@@ -13,31 +13,46 @@ import { User } from '@selise-start/user';
   templateUrl: './memo-comp.component.html',
   styleUrls: ['./memo-comp.component.css']
 })
-export class MemoCompComponent implements OnInit,OnChanges {
+export class MemoCompComponent implements OnInit, OnChanges {
 
-  @Input() audit: Audit;
+  private _audit = new BehaviorSubject<Audit>(new Audit());
+  @Input()
+  set audit(audit) {
+    this._audit.next(audit);
+  }
+
+  get audit() {
+    return this._audit.getValue();
+  }
+
   auditForm: FormGroup;
   memoSuccess: string;
   sections = MEMO_SECTIONS;
   statuses = STATUS;
 
   constructor(
-    private auditFacadeService: AuditFacadeService,
+    private auditFacadeService: AuditFacadeService
   ) {
   }
 
   ngOnInit(): void {
-    debugger;
     this.initializer();
   }
 
-  ngOnChanges(changes: SimpleChanges): void{
-    debugger;
-    this.auditFacadeService.setForm(this.auditForm, this.audit);
+  ngOnChanges(changes: SimpleChanges): void {
   }
 
   initializer(): void {
     this.createForm();
+    this._audit
+      .pipe(
+        untilDestroyed(this)
+      )
+      .subscribe(
+        () => {
+          this.auditFacadeService.setForm(this.auditForm, this.audit)
+        }
+      );
   }
 
   createForm(): void {
@@ -68,8 +83,8 @@ export class MemoCompComponent implements OnInit,OnChanges {
     }
   }
 
-  addMemoAssignee(section: 'memos'|'resolved'|'tbd'|'',index?): void {
-    this.auditFacadeService.addMemoAssignee(this.auditForm, section,index);
+  addMemoAssignee(section: 'memos' | 'resolved' | 'tbd' | '', index?): void {
+    this.auditFacadeService.addMemoAssignee(this.auditForm, section, index);
   }
 
 

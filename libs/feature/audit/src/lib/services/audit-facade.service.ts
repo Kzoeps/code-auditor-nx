@@ -179,7 +179,6 @@ export class AuditFacadeService {
     delete audit['createMemoAssignee'];
     delete audit['createMemoDesignatedAssignees'];
     audit.auditors = this.getAuditors();
-    audit.memos = auditForm.controls.memos.value;
     return this.auditApiService.updateAudit(audit)
       .pipe(
         tap(
@@ -196,11 +195,9 @@ export class AuditFacadeService {
       memo.id = uuid();
       memo.description = auditForm.controls.createMemoDescription.value;
       memo.assignedTo = auditForm.controls.createMemoDesignatedAssignees.value;
-      // this.auditStateService.addMemo('memos', memo);
       const memoFormGroup = this.createForm(FORM_TYPES.MEMOFORM);
       this.setForm(memoFormGroup, memo);
       this.addControlToArray('memos', auditForm, memoFormGroup);
-      // this.auditStateService.addMemo(memo);
       auditForm.controls.createMemoDescription.setValue('');
       auditForm.controls.createMemoDesignatedAssignees.setValue('');
       auditForm.controls.createMemoAssignee.setValue('');
@@ -258,13 +255,12 @@ export class AuditFacadeService {
 
   moveMemo(memoIndex: number, fromSection: 'memos' | 'resolved' | 'tbd', auditForm: FormGroup): void {
     const memoStatus = this.auditFormService.moveMemo(memoIndex, fromSection, auditForm);
-    const hasMemoMoved = memoStatus[0];
-    const memoMoveSection = memoStatus[1];
-    const memo = memoStatus[2];
-    if (hasMemoMoved) {
-      this.auditStateService.addMemo(memoMoveSection, memo);
-      this.removeMemoFromState(memoIndex, fromSection);
-    }
+    // const hasMemoMoved = memoStatus[0];
+    // const memoMoveSection = memoStatus[1];
+    // const memo = memoStatus[2];
+    // if (hasMemoMoved) {
+    //   this.auditStateService.addMemo(memoMoveSection, memo);
+    //   this.removeMemoFromState(memoIndex, fromSection);
   }
 }
 

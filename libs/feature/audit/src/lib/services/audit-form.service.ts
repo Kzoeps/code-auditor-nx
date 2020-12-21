@@ -38,15 +38,16 @@ export class AuditFormService {
   }
 
   setForm(form: FormGroup, formValues: Object) {
-    debugger;
     Object.keys(form.controls).forEach(controlName => {
-      debugger
       if (formValues[controlName] && EDIT_AUDIT_FORMARRAYS.includes(controlName)) {
+        const formArrayValues = form.get(controlName).value;
         const array = form.get(controlName) as FormArray;
         formValues[controlName].forEach((eachMemo) => {
-          const memoForm = this.createForm(MEMO_FORM);
-          this.setForm(memoForm, eachMemo);
-          array.push(memoForm);
+          if(!(this.findMember(formArrayValues, eachMemo))){
+            const memoForm = this.createForm(MEMO_FORM);
+            this.setForm(memoForm, eachMemo);
+            array.push(memoForm);
+          }
         });
       } else {
         if (formValues[controlName]) {
@@ -78,7 +79,7 @@ export class AuditFormService {
     form.reset();
   }
 
-  findMember(memoAssignees: User[], memoAssignee: User): boolean {
+  findMember(memoAssignees: User[] | Memo[], memoAssignee: User|Memo): boolean {
     let found = false;
     memoAssignees.forEach((eachAssignee) => {
       if (eachAssignee.id === memoAssignee.id) {

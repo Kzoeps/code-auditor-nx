@@ -1,7 +1,6 @@
 <ng-container *ngIf="audit">
-  <h1>Auditee : {{audit.auditee.teamName}}</h1>
   <form [formGroup]="auditForm" style="display: flex; flex-direction: column">
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" style="margin-top: 30px;">
       <mat-label>
         Status
       </mat-label>
@@ -11,6 +10,7 @@
           </mat-option>
         </mat-select>
     </mat-form-field>
+    <h1>Create Memo</h1>
     <mat-form-field appearance="outline" style="width: 500px">
       <mat-label>
         Description
@@ -53,7 +53,7 @@
       <h1>Memos</h1>
       <span formArrayName="memos" *ngFor="let eachMemo of auditForm.controls.memos?.controls; let i = index">
         <span [formGroup]="eachMemo">
-          <mat-card style="display: flex; flex-direction: column;">
+          <mat-card style="display: flex; flex-direction: column; margin-top: 40px;">
             <mat-card-content>
               <span style="display: flex; justify-content: space-between">
                 <mat-form-field appearance="outline" style="width: 300px">
@@ -121,7 +121,7 @@
       <h1>Resolved</h1>
       <span formArrayName="resolved" *ngFor="let eachMemo of auditForm.controls.resolved?.controls;let i = index">
         <span [formGroup]="eachMemo">
-          <mat-card style="display: flex; flex-direction: column;">
+          <mat-card style="display: flex; flex-direction: column; margin-top: 40px;">
             <mat-card-content>
               <span style="display: flex; justify-content: space-between">
                 <mat-form-field appearance="outline" style="width: 300px">
@@ -190,7 +190,7 @@
     <span formArrayName="tbd" *ngFor="let eachMemo of auditForm.controls.tbd?.controls;let i = index">
 
         <span [formGroup]="eachMemo">
-          <mat-card style="display: flex; flex-direction: column;">
+          <mat-card style="display: flex; flex-direction: column;margin-top: 40px;">
             <mat-card-content>
               <span style="display: flex; justify-content: space-between">
                 <mat-form-field appearance="outline" style="width: 300px">
@@ -213,7 +213,7 @@
                   </mat-select>
                 </mat-form-field>
                 <button mat-flat-button color="primary" style="width: 100px; height: 45px"
-                        (click)="moveMemo(i,'resolved')">
+                        (click)="moveMemo(i,'tbd')">
                   Move
                 </button>
               </span>
