@@ -1,0 +1,262 @@
+<ng-container *ngIf="audit">
+  <form [formGroup]="auditForm" style="display: flex; flex-direction: column">
+    <mat-form-field appearance="outline" style="margin-top: 30px;">
+      <mat-label>
+        Status
+      </mat-label>
+        <mat-select formControlName="status" [value]="auditForm.controls.status.value">
+          <mat-option *ngFor="let status of statuses" [value]="status">
+            {{status}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <h1>Create Memo</h1>
+    <mat-form-field appearance="outline" style="width: 500px">
+      <mat-label>
+        Description
+      </mat-label>
+      <textarea matInput formControlName="createMemoDescription"></textarea>
+    </mat-form-field>
+    <span style="display: flex; justify-content: space-between">
+      <mat-form-field appearance="outline" style="width: 300px">
+        <mat-label>
+          assign to
+        </mat-label>
+        <mat-select formControlName="createMemoAssignee">
+          <mat-option *ngFor="let teamMember of audit.auditee.teamMembers" [value]="teamMember">
+            {{teamMember.profileName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-flat-button color="primary" (click)="addMemoAssignee('')" style="width: 150px; height: 45px">
+        Add Assignee
+      </button>
+    </span>
+    <span *ngIf="auditForm.controls.createMemoDesignatedAssignees.value">
+        <mat-card *ngFor="let assignee of auditForm.controls.createMemoDesignatedAssignees.value"
+                  style="display: flex; width: 100%; justify-content: space-between">
+          <mat-card-content>
+            {{assignee.profileName}}
+          </mat-card-content>
+          <button mat-flat-button color="warn" style="width: 150px; height: 45px"
+                  (click)="removeAssignee(assignee,'memos')">
+            Remove
+          </button>
+        </mat-card>
+    </span>
+    <button mat-flat-button color="primary" (click)="addMemo()" style="margin-top: 15px; margin-bottom: 15px;">
+      Add Memo
+    </button>
+    <div *ngIf="memoSuccess">
+      {{memoSuccess}}
+    </div>
+      <h1>Memos</h1>
+      <span formArrayName="memos" *ngFor="let eachMemo of auditForm.controls.memos?.controls; let i = index">
+        <span [formGroup]="eachMemo">
+          <mat-card style="display: flex; flex-direction: column; margin-top: 40px;">
+            <mat-card-content>
+              <span style="display: flex; justify-content: space-between">
+                <mat-form-field appearance="outline" style="width: 300px">
+                  <mat-label>
+                    Description
+                  </mat-label>
+                  <textarea matInput placeholder="Ex.Frontend Validation Error" [value]="eachMemo.description"
+                            formControlName="description"
+                  ></textarea>
+                </mat-form-field>
+                <mat-form-field appearance="outline" style="width: 130px">
+                  <mat-label>
+                    Section
+                  </mat-label>
+                  <mat-select formControlName="section">
+                    <mat-option *ngFor="let section of sections" [value]="section">
+                      {{section}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <button mat-flat-button color="primary" style="width: 100px; height: 45px"
+                        (click)="moveMemo(i, 'memos')">
+                  Move
+                </button>
+              </span>
+              <div *ngIf="eachMemo.get('description').hasError('required')" style="color: red">
+                Description is required
+              </div>
+              <span style="display: flex; justify-content: space-between">
+                <mat-form-field appearance="outline" style="display: flex;">
+                  <mat-label>
+                    Assign To
+                  </mat-label>
+                  <mat-select formControlName="newMemoAssignee">
+                    <mat-option *ngFor="let teamMember of audit.auditee.teamMembers" [value]="teamMember">
+                      {{teamMember.profileName}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <button mat-flat-button color="accent" style="width: 150px; height: 45px"
+                        (click)="addMemoAssignee('memos',i)">
+                  Add Assignee
+                </button>
+              </span>
+              <mat-card-content *ngFor="let eachAssignee of eachMemo.controls.assignedTo?.value"
+                                style="display: flex;flex-direction: column;">
+                <mat-card style="display: flex; width: 80%; justify-content: space-between">
+                  <mat-card-content>
+                    {{eachAssignee.profileName}}
+                  </mat-card-content>
+                  <button mat-flat-button color="warn" (click)="removeAssignee(eachAssignee, 'memos',i)"
+                          style="width: 130px; height: 45px">
+                    Remove Assignee
+                  </button>
+                </mat-card>
+              </mat-card-content>
+            </mat-card-content>
+            <button mat-flat-button color="warn" (click)="removeMemo(i, 'memos')">
+              Remove Memo
+            </button>
+          </mat-card>
+        </span>
+      </span>
+    <!--    TODO: BIG TIME: make this into its separate components if theres time.-->
+      <h1>Resolved</h1>
+      <span formArrayName="resolved" *ngFor="let eachMemo of auditForm.controls.resolved?.controls;let i = index">
+        <span [formGroup]="eachMemo">
+          <mat-card style="display: flex; flex-direction: column; margin-top: 40px;">
+            <mat-card-content>
+              <span style="display: flex; justify-content: space-between">
+                <mat-form-field appearance="outline" style="width: 300px">
+                  <mat-label>
+                    Description
+                  </mat-label>
+                  <textarea matInput placeholder="Ex.Frontend Validation Error" [value]="eachMemo.description"
+                            formControlName="description"
+                  >
+                  </textarea>
+                </mat-form-field>
+                <mat-form-field appearance="outline" style="width: 130px">
+                  <mat-label>
+                    Section
+                  </mat-label>
+                  <mat-select formControlName="section">
+                    <mat-option *ngFor="let section of sections" [value]="section">
+                      {{section}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <button mat-flat-button color="primary" style="width: 100px; height: 45px"
+                        (click)="moveMemo(i,'resolved')">
+                  Move
+                </button>
+              </span>
+              <div *ngIf="eachMemo.get('description').hasError('required')" style="color: red">
+                Description is required
+              </div>
+              <span style="display: flex; justify-content: space-between">
+                <mat-form-field appearance="outline">
+                  <mat-label>
+                    Assign To
+                  </mat-label>
+                  <mat-select formControlName="newMemoAssignee">
+                    <mat-option *ngFor="let teamMember of audit.auditee.teamMembers" [value]="teamMember">
+                      {{teamMember.profileName}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <button mat-flat-button color="accent" style="width: 150px; height: 45px"
+                        (click)="addMemoAssignee('resolved', i)">
+                    Add Assignee
+                </button>
+              </span>
+              <mat-card-content *ngFor="let eachAssignee of eachMemo.controls.assignedTo?.value"
+                                style="display: flex;flex-direction: column;">
+                <mat-card style="display: flex; width: 80%; justify-content: space-between">
+                  <mat-card-content>
+                    {{eachAssignee.profileName}}
+                  </mat-card-content>
+                  <button mat-flat-button color="warn" (click)="removeAssignee(eachAssignee,'resolved',i)"
+                          style="width: 130px; height: 45px">
+                    Remove Assignee
+                  </button>
+                </mat-card>
+              </mat-card-content>
+              <button mat-flat-button color="warn" (click)="removeMemo(i, 'resolved')">
+                Remove
+              </button>
+            </mat-card-content>
+          </mat-card>
+        </span>
+      </span>
+    <h1>TBD</h1>
+    <span formArrayName="tbd" *ngFor="let eachMemo of auditForm.controls.tbd?.controls;let i = index">
+
+        <span [formGroup]="eachMemo">
+          <mat-card style="display: flex; flex-direction: column;margin-top: 40px;">
+            <mat-card-content>
+              <span style="display: flex; justify-content: space-between">
+                <mat-form-field appearance="outline" style="width: 300px">
+                  <mat-label>
+                    Description
+                  </mat-label>
+                  <textarea matInput placeholder="Ex.Frontend Validation Error" [value]="eachMemo.description"
+                            formControlName="description"
+                  >
+                  </textarea>
+                </mat-form-field>
+                <mat-form-field appearance="outline" style="width: 130px">
+                  <mat-label>
+                    Section
+                  </mat-label>
+                  <mat-select formControlName="section">
+                    <mat-option *ngFor="let section of sections" [value]="section">
+                      {{section}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <button mat-flat-button color="primary" style="width: 100px; height: 45px"
+                        (click)="moveMemo(i,'tbd')">
+                  Move
+                </button>
+              </span>
+              <div *ngIf="eachMemo.get('description').hasError('required')" style="color: red">
+                Description is required
+              </div>
+              <span style="display: flex; justify-content: space-between">
+                <mat-form-field appearance="outline">
+                  <mat-label>
+                    Assign To
+                  </mat-label>
+                  <mat-select formControlName="newMemoAssignee">
+                    <mat-option *ngFor="let teamMember of audit.auditee.teamMembers" [value]="teamMember">
+                      {{teamMember.profileName}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <button mat-flat-button color="accent" style="width: 150px; height: 45px"
+                        (click)="addMemoAssignee('tbd', i)">
+                    Add Assignee
+                </button>
+              </span>
+              <mat-card-content *ngFor="let eachAssignee of eachMemo.controls.assignedTo?.value"
+                                style="display: flex;flex-direction: column;">
+                <mat-card style="display: flex; width: 80%; justify-content: space-between">
+                  <mat-card-content>
+                    {{eachAssignee.profileName}}
+                  </mat-card-content>
+                  <button mat-flat-button color="warn" (click)="removeAssignee(eachAssignee,'tbd',i)"
+                          style="width: 130px; height: 45px">
+                    Remove Assignee
+                  </button>
+                </mat-card>
+              </mat-card-content>
+              <button mat-flat-button color="warn" (click)="removeMemo(i, 'tbd')">
+                Remove
+              </button>
+            </mat-card-content>
+          </mat-card>
+        </span>
+      </span>
+    <button mat-flat-button color="primary" (click)="updateAudit()">
+      Update
+    </button>
+  </form>
+</ng-container>

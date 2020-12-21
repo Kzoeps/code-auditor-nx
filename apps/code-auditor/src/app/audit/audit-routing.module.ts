@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuditBaseComponent } from './audit-base/audit-base.component';
-import {  FeatureAuditModule, AuditsComponent } from '@selise-start/audit';
+import {
+  FeatureAuditModule,
+  AuditsComponent,
+  AddAuditComponent,
+  AuditDetailComponent,
+  MemoCompComponent
+} from '@selise-start/audit';
 
 const routes: Routes = [
   {
@@ -11,7 +17,15 @@ const routes: Routes = [
       {
         path: '',
         component: AuditsComponent
-      }
+      },
+      {
+        path: 'add-audit',
+        component: AddAuditComponent
+      },
+      {
+        path: ':id',
+        component: AuditDetailComponent
+      },
     ]
   }
 ];
