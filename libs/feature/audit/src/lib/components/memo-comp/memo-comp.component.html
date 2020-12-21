@@ -1,6 +1,16 @@
-<ng-container *ngIf="(auditStoreState$ | async).auditState as audit">
-  <h1>Auditee : {{audit.auditee.teamName}}</h1>
-  <form [formGroup]="testForm" style="display: flex; flex-direction: column">
+<ng-container *ngIf="audit">
+  <form [formGroup]="auditForm" style="display: flex; flex-direction: column">
+    <mat-form-field appearance="outline" style="margin-top: 30px;">
+      <mat-label>
+        Status
+      </mat-label>
+        <mat-select formControlName="status" [value]="auditForm.controls.status.value">
+          <mat-option *ngFor="let status of statuses" [value]="status">
+            {{status}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <h1>Create Memo</h1>
     <mat-form-field appearance="outline" style="width: 500px">
       <mat-label>
         Description
@@ -22,8 +32,8 @@
         Add Assignee
       </button>
     </span>
-    <span *ngIf="testForm.controls.createMemoDesignatedAssignees.value">
-        <mat-card *ngFor="let assignee of testForm.controls.createMemoDesignatedAssignees.value"
+    <span *ngIf="auditForm.controls.createMemoDesignatedAssignees.value">
+        <mat-card *ngFor="let assignee of auditForm.controls.createMemoDesignatedAssignees.value"
                   style="display: flex; width: 100%; justify-content: space-between">
           <mat-card-content>
             {{assignee.profileName}}
@@ -41,9 +51,9 @@
       {{memoSuccess}}
     </div>
       <h1>Memos</h1>
-      <span formArrayName="memos" *ngFor="let eachMemo of testForm.controls.memos?.controls; let i = index">
+      <span formArrayName="memos" *ngFor="let eachMemo of auditForm.controls.memos?.controls; let i = index">
         <span [formGroup]="eachMemo">
-          <mat-card style="display: flex; flex-direction: column;">
+          <mat-card style="display: flex; flex-direction: column; margin-top: 40px;">
             <mat-card-content>
               <span style="display: flex; justify-content: space-between">
                 <mat-form-field appearance="outline" style="width: 300px">
@@ -109,9 +119,9 @@
       </span>
     <!--    TODO: BIG TIME: make this into its separate components if theres time.-->
       <h1>Resolved</h1>
-      <span formArrayName="resolved" *ngFor="let eachMemo of testForm.controls.resolved?.controls;let i = index">
+      <span formArrayName="resolved" *ngFor="let eachMemo of auditForm.controls.resolved?.controls;let i = index">
         <span [formGroup]="eachMemo">
-          <mat-card style="display: flex; flex-direction: column;">
+          <mat-card style="display: flex; flex-direction: column; margin-top: 40px;">
             <mat-card-content>
               <span style="display: flex; justify-content: space-between">
                 <mat-form-field appearance="outline" style="width: 300px">
@@ -177,10 +187,10 @@
         </span>
       </span>
     <h1>TBD</h1>
-    <span formArrayName="tbd" *ngFor="let eachMemo of testForm.controls.tbd?.controls;let i = index">
+    <span formArrayName="tbd" *ngFor="let eachMemo of auditForm.controls.tbd?.controls;let i = index">
 
         <span [formGroup]="eachMemo">
-          <mat-card style="display: flex; flex-direction: column;">
+          <mat-card style="display: flex; flex-direction: column;margin-top: 40px;">
             <mat-card-content>
               <span style="display: flex; justify-content: space-between">
                 <mat-form-field appearance="outline" style="width: 300px">
@@ -203,7 +213,7 @@
                   </mat-select>
                 </mat-form-field>
                 <button mat-flat-button color="primary" style="width: 100px; height: 45px"
-                        (click)="moveMemo(i,'resolved')">
+                        (click)="moveMemo(i,'tbd')">
                   Move
                 </button>
               </span>

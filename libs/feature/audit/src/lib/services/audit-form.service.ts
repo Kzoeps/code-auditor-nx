@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { ADD_AUDIT_FORM, EDIT_AUDIT_FORMARRAYS, MEMO_FORM } from '../constants/constants';
+import { EDIT_AUDIT_FORMARRAYS, MEMO_FORM } from '../constants/constants';
 import { Team } from '@selise-start/team';
 import { Audit } from '../models/audit';
 import { User } from '@selise-start/user';
@@ -40,11 +40,14 @@ export class AuditFormService {
   setForm(form: FormGroup, formValues: Object) {
     Object.keys(form.controls).forEach(controlName => {
       if (formValues[controlName] && EDIT_AUDIT_FORMARRAYS.includes(controlName)) {
+        const formArrayValues = form.get(controlName).value;
         const array = form.get(controlName) as FormArray;
         formValues[controlName].forEach((eachMemo) => {
-          const memoForm = this.createForm(MEMO_FORM);
-          this.setForm(memoForm, eachMemo);
-          array.push(memoForm);
+          if(!(this.findMember(formArrayValues, eachMemo))){
+            const memoForm = this.createForm(MEMO_FORM);
+            this.setForm(memoForm, eachMemo);
+            array.push(memoForm);
+          }
         });
       } else {
         if (formValues[controlName]) {
@@ -76,7 +79,7 @@ export class AuditFormService {
     form.reset();
   }
 
-  findMember(memoAssignees: User[], memoAssignee: User): boolean {
+  findMember(memoAssignees: User[] | Memo[], memoAssignee: User|Memo): boolean {
     let found = false;
     memoAssignees.forEach((eachAssignee) => {
       if (eachAssignee.id === memoAssignee.id) {

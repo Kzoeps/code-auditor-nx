@@ -26,10 +26,6 @@ const routes: Routes = [
         path: ':id',
         component: AuditDetailComponent
       },
-      {
-        path: ':id/memo-comp',
-        component: MemoCompComponent
-      }
     ]
   }
 ];
