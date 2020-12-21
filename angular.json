@@ -199,6 +199,32 @@
         }
       },
       "schematics": {}
+    },
+    "auth": {
+      "projectType": "library",
+      "root": "libs/feature/auth",
+      "sourceRoot": "libs/feature/auth/src",
+      "prefix": "selise-start",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/feature/auth/tsconfig.lib.json",
+              "libs/feature/auth/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/feature/auth/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/feature/auth/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {
