@@ -38,6 +38,9 @@
     },
     "team": {
       "tags": []
+    },
+    "auth": {
+      "tags": []
     }
   },
   "workspaceLayout": {

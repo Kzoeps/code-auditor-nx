@@ -11,6 +11,7 @@ export class User {
   memberOnTeams: string[];
   admin: boolean;
   approved: boolean;
+  token: string;
   constructor() {
     this.id = undefined;
     this.firstName = undefined;
