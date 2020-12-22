@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { AddUserComponent } from './components/add-user/add-user.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,7 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     MatButtonModule
   ],
-  declarations: [UserDetailComponent, UsersComponent],
-  exports: [UserDetailComponent, UsersComponent],
+  declarations: [UserDetailComponent, UsersComponent, AddUserComponent],
+  exports: [UserDetailComponent, UsersComponent, AddUserComponent],
 })
 export class FeatureUserModule {}

@@ -9,8 +9,10 @@ import { Team } from '../models/team';
 export class TeamApiService {
 
   private url = 'http://localhost:3000/teams';
+  private token = JSON.parse(localStorage.getItem('user')).token;
   httpOptions = {
     headers: new HttpHeaders({
+      'Authorization': 'Bearer '+this.token,
       'Content-Type': 'application/json'
     })
   };
@@ -18,12 +20,12 @@ export class TeamApiService {
   constructor(private http: HttpClient) { }
 
   getTeams(): Observable<Team[]>{
-    return this.http.get<Team[]>(this.url)
+    return this.http.get<Team[]>(this.url, this.httpOptions)
   }
 
   getTeam(id: number): Observable<Team> {
     const teamURL = `${this.url}/${id}`;
-    return this.http.get<Team>(teamURL);
+    return this.http.get<Team>(teamURL, this.httpOptions);
   }
 
   createTeam(team: Team): Observable<Team> {

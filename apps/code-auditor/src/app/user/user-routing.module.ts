@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FeatureUserModule, UsersComponent, UserDetailComponent } from "@selise-start/user"
+import { FeatureUserModule, UsersComponent, UserDetailComponent, AddUserComponent } from '@selise-start/user';
 import { UserBaseComponent } from './user-base/user-base.component';
 import { AuthGuardGuard } from '@selise-start/auth';
 
@@ -13,6 +13,10 @@ const routes: Routes = [
       {
         path: '',
         component: UsersComponent
+      },
+      {
+        path: 'add-user',
+        component: AddUserComponent
       },
       {
         path: ':id',

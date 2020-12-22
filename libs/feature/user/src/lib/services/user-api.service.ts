@@ -9,8 +9,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class UserApiService {
 
   private url = 'http://localhost:3000/users';
+  private token = JSON.parse(localStorage.getItem('user')).token;
   httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
+    headers: new HttpHeaders({
+      'Authorization': 'Bearer '+this.token,
+      'Content-Type': 'application/json'
+    })
   };
 
   constructor( private http: HttpClient ) { }
