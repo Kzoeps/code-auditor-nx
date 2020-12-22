@@ -22,6 +22,7 @@ import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
+import { JwtModule } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [AppComponent, NavBarComponent],
@@ -49,6 +50,11 @@ import { MatSelectModule } from '@angular/material/select';
     MatSelectModule,
     MatOptionModule,
     MatButtonModule,
+    JwtModule.forRoot({
+      config: {
+        allowedDomains: ['localhost:4200']
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],

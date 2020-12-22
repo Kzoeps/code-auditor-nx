@@ -10,6 +10,18 @@
       "role": "FE",
       "approved": false,
       "id": 1
+    },
+    {
+      "email": "karma@yoezer.com",
+      "password": "$2a$10$3Urk9KRS00qM4XDFCtwbbuBI7ypgnzgdC5qbx3.5GmYMK.RWKGKLO",
+      "firstName": "karma",
+      "profileName": "karma yoezer",
+      "lastName": "yoezer",
+      "confirmPassword": "karma123",
+      "role": "FE",
+      "approved": "true",
+      "admin": "true",
+      "id": 2
     }
   ],
   "teams": [],

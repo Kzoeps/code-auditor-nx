@@ -3,6 +3,8 @@ import { AuthFacadeService } from '../../services/auth-facade.service';
 import { FormGroup } from '@angular/forms';
 import { FORM_TYPES } from '../../constants/constants';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { throwUnknownPortalTypeError } from '@angular/cdk/portal/portal-errors';
+import { switchMap, tap } from 'rxjs/operators';
 
 @UntilDestroy()
 @Component({
@@ -31,12 +33,33 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void{
+    let tokenPayload;
+    let tokenAccess;
+    let uid;
     this.authFacadeService.login(this.loginForm)
       .pipe(
-        untilDestroyed(this)
+        untilDestroyed(this),
+        tap ((token) => {
+          // @ts-ignore
+          tokenAccess = token.accessToken;
+          // @ts-ignore
+          tokenPayload = this.authFacadeService.decodeJWT(token.accessToken);
+          // @ts-ignore
+          uid = +tokenPayload.sub;
+        }),
+        switchMap(() => this.authFacadeService.getUser(uid))
       )
-      .subscribe((token) => {
-        console.log(token);
+      .subscribe((user) => {
+        if (user.approved) {
+          const currentUser = {
+            token: tokenAccess,
+            email: user.email,
+            id: user.id,
+            admin: user.admin,
+            approved: user.approved,
+          }
+          localStorage.setItem('user', JSON.stringify(currentUser));
+        }
       })
   }
 

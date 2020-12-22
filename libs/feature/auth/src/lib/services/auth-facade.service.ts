@@ -61,28 +61,33 @@ export class AuthFacadeService {
     return JSON.parse(jsonPayload);
   }
 
+  getUser(uid: number): Observable<User> {
+    return this.userFacadeService.getUser(uid);
+  }
+
   login(loginForm: FormGroup): Observable<Object> {
     return this.authApiService.login(loginForm.value)
-      .pipe(
-        tap((token) => {
-          // @ts-ignore
-          const tokenPayload = this.decodeJWT(token.accessToken);
-          // @ts-ignore
-          const uid = +tokenPayload.sub;
-          this.userFacadeService.getUser(uid)
-            .pipe(
-              untilDestroyed(this)
-            )
-            .subscribe( (user) => {
-              if (user.approved) {
-                // @ts-ignore
-                user.token = token.accessToken;
-                localStorage.setItem('user', JSON.stringify(user));
-                localStorage.setItem('isLoggedIn', 'true');
-              }
-            })
-        })
-      )
+      // .pipe(
+        // tap((token) => {
+        //   // @ts-ignore
+        //   const tokenPayload = this.decodeJWT(token.accessToken);
+        //   // @ts-ignore
+        //   const uid = +tokenPayload.sub;
+        //   debugger;
+        //   this.userFacadeService.getUser(uid)
+        //     .pipe(
+        //       untilDestroyed(this)
+        //     )
+        //     .subscribe( (user) => {
+        //       if (user.approved) {
+        //         // @ts-ignore
+        //         user.token = token.accessToken;
+        //         localStorage.setItem('user', JSON.stringify(user));
+        //         localStorage.setItem('isLoggedIn', 'true');
+        //       }
+        //     })
+        // })
+      // )
   }
 
   assignValues(objectToAssign: Object, objectAssigner: Object): void {
@@ -95,7 +100,10 @@ export class AuthFacadeService {
 
   isAuthenticated(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
-    const token = user.token;
-    return !this.jwtHelper.isTokenExpired(token);
+    if (user) {
+      const token = user.token;
+      return !this.jwtHelper.isTokenExpired(token);
+    }
+    return false;
   }
 }

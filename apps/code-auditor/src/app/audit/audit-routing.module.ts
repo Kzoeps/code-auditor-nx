@@ -8,11 +8,13 @@ import {
   AuditDetailComponent,
   MemoCompComponent
 } from '@selise-start/audit';
+import { AuthGuardGuard } from '@selise-start/auth';
 
 const routes: Routes = [
   {
     path: '',
     component: AuditBaseComponent,
+    canActivate: [AuthGuardGuard],
     children: [
       {
         path: '',

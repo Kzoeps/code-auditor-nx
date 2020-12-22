@@ -7,10 +7,23 @@ import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginComponent } from './components/login/login.component';
+import { JwtModule } from '@auth0/angular-jwt';
 
 @NgModule({
-  imports: [CommonModule, MatFormFieldModule, MatInputModule, MatSelectModule, ReactiveFormsModule, MatButtonModule],
+  imports: [
+    CommonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    JwtModule.forRoot({
+      config: {
+        allowedDomains: ['localhost:4200']
+      }
+    })],
   declarations: [SignupComponent, LoginComponent],
-  exports: [SignupComponent, LoginComponent],
+  exports: [SignupComponent, LoginComponent]
 })
-export class FeatureAuthModule {}
+export class FeatureAuthModule {
+}
