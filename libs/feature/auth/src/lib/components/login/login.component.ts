@@ -5,6 +5,7 @@ import { FORM_TYPES } from '../../constants/constants';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { throwUnknownPortalTypeError } from '@angular/cdk/portal/portal-errors';
 import { switchMap, tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @UntilDestroy()
 @Component({
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor(
-    private authFacadeService: AuthFacadeService
+    private authFacadeService: AuthFacadeService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -59,6 +61,8 @@ export class LoginComponent implements OnInit {
             approved: user.approved,
           }
           localStorage.setItem('user', JSON.stringify(currentUser));
+        } else {
+          this.router.navigate(['auth/unapproved'])
         }
       })
   }

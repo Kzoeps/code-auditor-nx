@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginComponent } from './components/login/login.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { UnapprovedUserComponent } from './components/unapproved-user/unapproved-user.component';
 
 @NgModule({
   imports: [
@@ -22,8 +23,8 @@ import { JwtModule } from '@auth0/angular-jwt';
         allowedDomains: ['localhost:4200']
       }
     })],
-  declarations: [SignupComponent, LoginComponent],
-  exports: [SignupComponent, LoginComponent]
+  declarations: [SignupComponent, LoginComponent, UnapprovedUserComponent],
+  exports: [SignupComponent, LoginComponent, UnapprovedUserComponent]
 })
 export class FeatureAuthModule {
 }

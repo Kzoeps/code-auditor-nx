@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent, SignupComponent } from '@selise-start/auth';
+import { LoginComponent, SignupComponent, UnapprovedUserComponent } from '@selise-start/auth';
 import { AuthBaseComponent } from './auth-base/auth-base.component';
 
 const routes: Routes = [
@@ -15,6 +15,10 @@ const routes: Routes = [
       {
         path: 'signup',
         component: SignupComponent
+      },
+      {
+        path: 'unapproved',
+        component: UnapprovedUserComponent
       }
     ]
   }
