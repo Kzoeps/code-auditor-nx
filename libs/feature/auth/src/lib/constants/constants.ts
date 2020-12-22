@@ -1,5 +1,4 @@
 import { Validators } from '@angular/forms';
-import { matchingPasswords } from '../services/auth-form.service';
 
 export const SIGN_UP_FORM = {
   firstName: {

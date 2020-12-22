@@ -11,17 +11,26 @@ export class UserFormService {
   constructor( private fb: FormBuilder) {
   }
 
-  createForm(): FormGroup {
-    const userForm = this.fb.group({});
-    this.formValues.forEach((formValue) => {
-      if (formValue === 'email') {
-        userForm.addControl(formValue, new FormControl('',[Validators.required, Validators.email]))
-      } else {
-        userForm.addControl(formValue, new FormControl('', [Validators.required]));
-      }
+  createForm(formValues: Object): FormGroup {
+    const form = this.fb.group({});
+    Object.keys(formValues).forEach((eachControl) => {
+      form.addControl(eachControl, new FormControl(formValues[eachControl]['value']))
+      form.controls[eachControl].setValidators(formValues[eachControl]['validators']);
     })
-    return userForm;
+    return form;
   }
+
+  // createForm(): FormGroup {
+  //   const userForm = this.fb.group({});
+  //   this.formValues.forEach((formValue) => {
+  //     if (formValue === 'email') {
+  //       userForm.addControl(formValue, new FormControl('',[Validators.required, Validators.email]))
+  //     } else {
+  //       userForm.addControl(formValue, new FormControl('', [Validators.required]));
+  //     }
+  //   })
+  //   return userForm;
+  // }
 
   setForm(form: FormGroup, user: User) {
     Object.keys(form.controls).forEach(controlName => {
