@@ -15,7 +15,7 @@ export class SignupComponent implements OnInit {
 
   signUpForm: FormGroup;
   roles = ROLES;
-  returnUrl = '/audits';
+  returnUrl = '/auth/login';
 
   constructor(
     private authFacadeService: AuthFacadeService,

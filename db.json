@@ -1,8 +1,17 @@
 {
   "users": [
+    {
+      "email": "kzoeps@gmail.com",
+      "password": "$2a$10$WntzJaL4ktLQcHPkXqQPtuflS0uC0h40G50olp1INXNJLaOUjRgoC",
+      "firstName": "karma",
+      "profileName": "karma yoezer",
+      "lastName": "yoezer",
+      "confirmPassword": "kzoeps123",
+      "role": "FE",
+      "approved": false,
+      "id": 1
+    }
   ],
-  "teams": [
-  ]t ,
-  "audits": [
-  ]
+  "teams": [],
+  "audits": []
 }
