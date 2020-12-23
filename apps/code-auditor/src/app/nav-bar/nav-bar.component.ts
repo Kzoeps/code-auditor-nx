@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'selise-start-nav-bar',
@@ -10,12 +7,9 @@ import { map, shareReplay } from 'rxjs/operators';
 })
 export class NavBarComponent {
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
+  constructor() {}
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
-
+  logout(): void{
+    localStorage.removeItem('user');
+  }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Team, TeamStoreState } from '../models/team';
 import { ObservableStore } from '@codewithdan/observable-store';
-import { User } from '../../../../user/src/lib/models/user';
+import { User } from '@selise-start/user';
 
 @Injectable({
   providedIn: 'root'
@@ -17,21 +17,10 @@ export class TeamStateService extends ObservableStore<TeamStoreState> {
 
   initialState(): void {
     const initialState = {
-      teamsState: undefined,
-      teamState: undefined
+      teamsState: [],
+      teamState: new Team()
     };
     this.setState(initialState, 'INIT_STATE');
-  }
-
-  initializeTeamState(): void {
-    const initializeTeamState = {
-        id: undefined,
-        teamName: undefined,
-        dateEstd: undefined,
-        teamLead: undefined,
-        teamMembers: undefined
-    }
-    this.setState({teamState: initializeTeamState}, 'INIT_TEAM_STATE')
   }
 
   updateTeams(teams: Team[]): void {

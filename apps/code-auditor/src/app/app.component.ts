@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'code-auditor';
+  //TODO: remove nav from app and also reroute on logout.
+  logout(): void {
+    localStorage.removeItem('user');
+  }
 }

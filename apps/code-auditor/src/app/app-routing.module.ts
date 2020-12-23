@@ -14,6 +14,10 @@ const routes: Routes = [
     path: 'teams',
     loadChildren: () => import('./team/team.module').then(m => m.TeamModule)
   },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+  }
 ];
 @NgModule({
   imports: [
