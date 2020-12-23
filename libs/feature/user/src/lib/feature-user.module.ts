@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { AdminApprovalComponent } from './components/admin-approval/admin-approval.component';
 import { MatCardModule } from '@angular/material/card';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,7 @@ import { MatCardModule } from '@angular/material/card';
     MatButtonModule,
     MatCardModule
   ],
-  declarations: [UserDetailComponent, UsersComponent, AddUserComponent, AdminApprovalComponent],
-  exports: [UserDetailComponent, UsersComponent, AddUserComponent, AdminApprovalComponent],
+  declarations: [UserDetailComponent, UsersComponent, AddUserComponent, AdminApprovalComponent, EditUserComponent],
+  exports: [UserDetailComponent, UsersComponent, AddUserComponent, AdminApprovalComponent, EditUserComponent],
 })
 export class FeatureUserModule {}

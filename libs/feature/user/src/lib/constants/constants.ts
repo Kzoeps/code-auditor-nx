@@ -1,15 +1,32 @@
 import { Validators } from '@angular/forms';
 
-export const USER_FORM = [
-  'id',
-  'firstName',
-  'lastName',
-  'profileName',
-  'email',
-  'role',
-  'password',
-  'confirmPassword',
-];
+export const EDIT_USER_FORM = {
+  id: {
+    validators: [Validators.required],
+    value: '',
+  },
+  firstName: {
+    validators: [Validators.required],
+    value: ''
+  },
+  lastName: {
+    validators: [Validators.required],
+    value: ''
+  },
+  email: {
+    validators: [Validators.required, Validators.email],
+    value: ''
+  },
+  profileName: {
+    validators: [Validators.required, Validators.minLength(6)],
+    value: ''
+  },
+  role: {
+    validators: [Validators.required],
+    value: ''
+  }
+}
+
 
 export const ADD_USER_FORM = {
   firstName: {

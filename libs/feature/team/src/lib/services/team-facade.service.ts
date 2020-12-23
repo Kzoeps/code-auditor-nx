@@ -64,7 +64,11 @@ export class TeamFacadeService {
     return this.teamApiService.createTeam(team).pipe(
       tap((teamState)=> {
         // TODO: Subscription within subscription!
-        this.addTeamToUsers(team.teamMembers, teamState.id)
+        const teamObjectUser = {
+          id: teamState.id,
+          name: teamState.teamName
+        }
+        this.addTeamToUsers(team.teamMembers, teamObjectUser)
         team.teamMembers.forEach((eachMember) => {
           this.userFacadeService.updateUser(eachMember)
             .pipe(untilDestroyed(this))
@@ -74,9 +78,9 @@ export class TeamFacadeService {
     );
   }
 
-  addTeamToUsers(users: User[], teamID: number): void{
+  addTeamToUsers(users: User[], teamObject: Object): void{
     users.map((eachUser) => {
-      eachUser.memberOnTeams.push(teamID);
+      eachUser.memberOnTeams.push(teamObject);
     })
   }
 

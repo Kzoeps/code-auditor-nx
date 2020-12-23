@@ -8,7 +8,7 @@ export class User {
   confirmPassword: string;
   role: string;
   leadOnTeams: string[];
-  memberOnTeams: number[];
+  memberOnTeams: Object[];
   admin: boolean;
   approved: boolean;
   token: string;

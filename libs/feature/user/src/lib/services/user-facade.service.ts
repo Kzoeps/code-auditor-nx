@@ -5,7 +5,7 @@ import { User, UserStoreState } from '../models/user';
 import { map, tap } from 'rxjs/operators';
 import { UserStateService } from './user-state.service';
 import { FormGroup } from '@angular/forms';
-import { ADD_USER_FORM, FORM_TYPES } from '../constants/constants';
+import { ADD_USER_FORM, EDIT_USER_FORM, FORM_TYPES } from '../constants/constants';
 import { UserFormService } from './user-form.service';
 import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
 
@@ -69,6 +69,8 @@ export class UserFacadeService {
         const userForm = this.userFormService.createForm(ADD_USER_FORM);
         this.userFormService.setMatchingPasswordValidator(userForm.controls['confirmPassword'], userForm.controls['password']);
         return userForm;
+      case FORM_TYPES.EDITUSERFORM:
+        return this.userFormService.createForm(EDIT_USER_FORM);
     }
   }
 
@@ -94,8 +96,12 @@ export class UserFacadeService {
     return this.userApiService.updateUser(user)
       .pipe(
         tap((approvedUser)=> {
-          this.userStateService.removeUser(user);
+          this.userStateService.removeUser(approvedUser);
         })
       )
+  }
+
+  setForm(form: FormGroup, user: User): void {
+    this.userFormService.setForm(form, user);
   }
 }
