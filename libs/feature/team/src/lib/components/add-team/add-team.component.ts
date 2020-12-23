@@ -36,7 +36,6 @@ export class AddTeamComponent implements OnInit {
 
   createForm(): void {
     this.addTeamForm = this.teamFacadeService.createAddTeamForm();
-    this.teamFacadeService.initializeTeamState();
     this.teamState$ = this.teamFacadeService.stateChange();
   }
 
@@ -60,6 +59,9 @@ export class AddTeamComponent implements OnInit {
           untilDestroyed(this)
         )
         .subscribe({
+          next: (whatIsthis) => {
+            console.log(whatIsthis)
+          },
           complete: () => {
             this.teamFacadeService.snackBar('Created Team');
             this.teamFacadeService.clearForm(this.addTeamForm);

@@ -5,12 +5,14 @@ import { TeamFormService } from './team-form.service';
 import { Observable } from 'rxjs';
 import { Team, TeamStoreState } from '../models/team';
 import { tap } from 'rxjs/operators';
-import { Form, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 // @ts-ignore
-import { User } from '@selise-start/user/model/user';
+import { User } from '@selise-start/user';
 import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
+import { UserFacadeService } from '@selise-start/user/service';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
-
+@UntilDestroy()
 @Injectable({
   providedIn: 'root'
 })
@@ -21,16 +23,13 @@ export class TeamFacadeService {
     private teamApiService: TeamApiService,
     private teamStateService: TeamStateService,
     private teamFormService: TeamFormService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private userFacadeService: UserFacadeService
   ) {
   }
 
   stateChange(): Observable<TeamStoreState> {
     return this.teamStateService.stateChanged;
-  }
-
-  initializeTeamState(): void {
-    this.teamStateService.initializeTeamState();
   }
 
   snackBar(message): MatSnackBarRef<TextOnlySnackBar> {
@@ -61,11 +60,24 @@ export class TeamFacadeService {
 
   createTeam(team: Team): Observable<Team> {
     team.teamMembers = this.getTeamMembers();
+    team.teamMembers.push(team.teamLead);
     return this.teamApiService.createTeam(team).pipe(
-      tap(() => {
-        this.teamStateService.initializeTeamState();
-      })
+      tap((teamState)=> {
+        // TODO: Subscription within subscription!
+        this.addTeamToUsers(team.teamMembers, teamState.id)
+        team.teamMembers.forEach((eachMember) => {
+          this.userFacadeService.updateUser(eachMember)
+            .pipe(untilDestroyed(this))
+            .subscribe()
+        })
+      }),
     );
+  }
+
+  addTeamToUsers(users: User[], teamID: number): void{
+    users.map((eachUser) => {
+      eachUser.memberOnTeams.push(teamID);
+    })
   }
 
   clearForm(form: FormGroup): void {

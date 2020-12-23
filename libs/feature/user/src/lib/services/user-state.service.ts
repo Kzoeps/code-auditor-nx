@@ -9,10 +9,10 @@ export class UserStateService extends ObservableStore<UserStoreState> {
 
   constructor() {
     super({ trackStateHistory: true });
-    this.intialState();
+    this.initialState();
   }
 
-  intialState(): void {
+  initialState(): void {
     const initialState = {
       usersState: undefined,
       userState: undefined
@@ -26,5 +26,11 @@ export class UserStateService extends ObservableStore<UserStoreState> {
 
   updateUser(user: User): void{
     this.setState({userState: user}, 'UPDATE_USER');
+  }
+
+  removeUser(user: User): void {
+    let users = this.getState().usersState;
+    users = users.filter((eachUser) => user.id !== eachUser.id);
+    this.setState({usersState: users});
   }
 }

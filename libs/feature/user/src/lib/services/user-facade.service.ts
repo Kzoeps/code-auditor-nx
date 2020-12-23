@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { UserApiService } from './user-api.service';
 import { Observable } from 'rxjs';
 import { User, UserStoreState } from '../models/user';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { UserStateService } from './user-state.service';
 import { FormGroup } from '@angular/forms';
 import { ADD_USER_FORM, FORM_TYPES } from '../constants/constants';
 import { UserFormService } from './user-form.service';
+import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +17,19 @@ export class UserFacadeService {
   constructor(
     private userFormService: UserFormService,
     private userApiService: UserApiService,
-    private userStateService: UserStateService
+    private userStateService: UserStateService,
+    private _snackBar: MatSnackBar
   ) {
   }
 
   initialize(): void {
-    this.userStateService.intialState();
+    this.userStateService.initialState();
+  }
+
+  snackBar(message: string): MatSnackBarRef<TextOnlySnackBar> {
+    return this._snackBar.open(message, '', {
+      duration: 2000
+    });
   }
 
   stateChange(): Observable<UserStoreState> {
@@ -34,6 +42,17 @@ export class UserFacadeService {
         this.userStateService.updateUsers(users);
       })
     );
+  }
+
+  getUnapprovedUsers(): Observable<User[]> {
+    return this.userApiService.getUsers()
+      .pipe(
+        map((users) => {
+          users = users.filter((user) => user.approved === false);
+          this.userStateService.updateUsers(users);
+          return users;
+        })
+      );
   }
 
   getUser(id: number): Observable<User> {
@@ -67,5 +86,16 @@ export class UserFacadeService {
     user.profileName = user.firstName + ' ' + user.lastName;
     user.approved = true;
     return this.userApiService.addUser(user);
+  }
+
+  approveUser(user: User): Observable<User> {
+    user.approved = true;
+    this.userStateService.removeUser(user);
+    return this.userApiService.updateUser(user)
+      .pipe(
+        tap((approvedUser)=> {
+          this.userStateService.removeUser(user);
+        })
+      )
   }
 }
