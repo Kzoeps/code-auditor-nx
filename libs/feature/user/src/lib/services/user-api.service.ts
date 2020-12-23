@@ -9,11 +9,24 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class UserApiService {
 
   private url = 'http://localhost:3000/users';
+  private token = this.getToken();
   httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
+    headers: new HttpHeaders({
+      'Authorization': 'Bearer '+this.token,
+      'Content-Type': 'application/json'
+    })
   };
 
   constructor( private http: HttpClient ) { }
+
+  getToken(): Object|'' {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+      return user.token;
+    } else {
+      return ''
+    }
+  }
 
   getUsers(): Observable<User[]>{
     return this.http.get<User[]>(this.url);
@@ -27,5 +40,9 @@ export class UserApiService {
   updateUser(user: User): Observable<User>{
     const url = `${this.url}/${user.id}`;
     return this.http.patch<User>(url, user, this.httpOptions);
+  }
+
+  addUser(user: User): Observable<Object> {
+    return this.http.post<Object>(this.url, user, this.httpOptions);
   }
 }

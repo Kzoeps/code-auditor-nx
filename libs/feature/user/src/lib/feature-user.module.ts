@@ -10,6 +10,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { AddUserComponent } from './components/add-user/add-user.component';
+import { AdminApprovalComponent } from './components/admin-approval/admin-approval.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   imports: [
@@ -22,9 +25,10 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatSelectModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule
   ],
-  declarations: [UserDetailComponent, UsersComponent],
-  exports: [UserDetailComponent, UsersComponent],
+  declarations: [UserDetailComponent, UsersComponent, AddUserComponent, AdminApprovalComponent],
+  exports: [UserDetailComponent, UsersComponent, AddUserComponent, AdminApprovalComponent],
 })
 export class FeatureUserModule {}

@@ -9,8 +9,10 @@ import { Audit } from '../models/audit';
 export class AuditApiService {
 
   private url = 'http://localhost:3000/audits';
+  private token = JSON.parse(localStorage.getItem('user')).token;
   httpOptions = {
     headers: new HttpHeaders({
+      'Authorization': 'Bearer ' + this.token,
       'Content-Type': 'application/json'
     })
   }
@@ -18,7 +20,7 @@ export class AuditApiService {
   constructor( private http: HttpClient ) { }
 
   getAudits(): Observable<Audit[]> {
-    return this.http.get<Audit[]>(this.url);
+    return this.http.get<Audit[]>(this.url, this.httpOptions);
   }
 
   createAudit(audit: Audit): Observable<Audit> {
@@ -27,7 +29,7 @@ export class AuditApiService {
 
   getAudit(id: number): Observable<Audit> {
     const url = `${this.url}/${id}`;
-    return this.http.get<Audit>(url);
+    return this.http.get<Audit>(url, this.httpOptions);
   }
 
   updateAudit(audit: Audit): Observable<Audit>{

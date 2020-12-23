@@ -34,7 +34,7 @@ export class UserDetailComponent implements OnInit {
   ngOnInit(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.getUser(id);
-    this.userDetailForm = this.userFormService.createForm();
+    // this.userDetailForm = this.userFormService.createForm();
   }
 
   getUser(id: number): void {

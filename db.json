@@ -1,8 +1,115 @@
 {
   "users": [
+    {
+      "email": "kzoeps@gmail.com",
+      "password": "$2a$10$WntzJaL4ktLQcHPkXqQPtuflS0uC0h40G50olp1INXNJLaOUjRgoC",
+      "firstName": "karma",
+      "profileName": "karma yoezer",
+      "lastName": "yoezer",
+      "confirmPassword": "kzoeps123",
+      "role": "FE",
+      "memberOnTeams": [],
+      "approved": true,
+      "id": 1
+    },
+    {
+      "email": "karma@yoezer.com",
+      "password": "$2a$10$3Urk9KRS00qM4XDFCtwbbuBI7ypgnzgdC5qbx3.5GmYMK.RWKGKLO",
+      "firstName": "karma",
+      "profileName": "karma yoezer",
+      "lastName": "yoezer",
+      "confirmPassword": "karma123",
+      "role": "FE",
+      "memberOnTeams": [],
+      "approved": true,
+      "admin": true,
+      "id": 2
+    },
+    {
+      "email": "g@g.com",
+      "password": "$2a$10$mXA2Q2Z2PiLZ5JNe6V0vKOMxUK4pwDRzWWGFFzCOUt.x6aj.CXdyi",
+      "memberOnTeams": [],
+      "firstName": "g",
+      "lastName": "g",
+      "confirmPassword": "g12345",
+      "role": "FE",
+      "profileName": "g g",
+      "approved": true,
+      "id": 3
+    },
+    {
+      "email": "t@g.com",
+      "password": "$2a$10$osZPH9zwiQiTGY0FmOwrRu/pH8jCqxOVUoEXz4202zMdllxPhYZgO",
+      "firstName": "test",
+      "lastName": "drive",
+      "memberOnTeams": [
+        1
+      ],
+      "confirmPassword": "t@g123",
+      "role": "UI",
+      "profileName": "test drive",
+      "approved": true,
+      "id": 4
+    },
+    {
+      "email": "ming@ming.com",
+      "password": "$2a$10$astTJEIofrbgbXFzHk3aLubEF7lleRg1b/EBaUM1qKIAn904Vy0m6",
+      "firstName": "ming",
+      "profileName": "ming ming",
+      "lastName": "ming",
+      "memberOnTeams": [
+        1
+      ],
+      "confirmPassword": "ming123",
+      "role": "FE",
+      "approved": true,
+      "id": 5
+    }
   ],
   "teams": [
+    {
+      "teamName": "skrr",
+      "dateEstd": "2020-12-29T18:00:00.000Z",
+      "teamLead": {
+        "email": "t@g.com",
+        "password": "$2a$10$osZPH9zwiQiTGY0FmOwrRu/pH8jCqxOVUoEXz4202zMdllxPhYZgO",
+        "firstName": "test",
+        "lastName": "drive",
+        "memberOnTeams": [],
+        "confirmPassword": "t@g123",
+        "role": "UI",
+        "profileName": "test drive",
+        "approved": true,
+        "id": 4
+      },
+      "teamMembers": [
+        {
+          "email": "ming@ming.com",
+          "password": "$2a$10$astTJEIofrbgbXFzHk3aLubEF7lleRg1b/EBaUM1qKIAn904Vy0m6",
+          "firstName": "ming",
+          "profileName": "ming ming",
+          "lastName": "ming",
+          "memberOnTeams": [],
+          "confirmPassword": "ming123",
+          "role": "FE",
+          "approved": true,
+          "id": 5
+        },
+        {
+          "email": "t@g.com",
+          "password": "$2a$10$osZPH9zwiQiTGY0FmOwrRu/pH8jCqxOVUoEXz4202zMdllxPhYZgO",
+          "firstName": "test",
+          "lastName": "drive",
+          "memberOnTeams": [],
+          "confirmPassword": "t@g123",
+          "role": "UI",
+          "profileName": "test drive",
+          "approved": true,
+          "id": 4
+        }
+      ],
+      "id": 1
+    }
   ],
-  "audits": [
-  ]
+  "audits": []
 }

@@ -8,7 +8,7 @@ export class User {
   confirmPassword: string;
   role: string;
   leadOnTeams: string[];
-  memberOnTeams: string[];
+  memberOnTeams: number[];
   admin: boolean;
   approved: boolean;
   token: string;
@@ -20,7 +20,8 @@ export class User {
     this.email = undefined;
     this.password = undefined;
     this.confirmPassword = undefined;
-    this.role = undefined
+    this.role = undefined;
+    this.memberOnTeams = [];
   }
 }
 
