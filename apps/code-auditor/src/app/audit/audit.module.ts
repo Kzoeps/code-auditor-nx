@@ -9,7 +9,7 @@ import { AuditBaseComponent } from './audit-base/audit-base.component';
   declarations: [AuditBaseComponent],
   imports: [
     CommonModule,
-    AuditRoutingModule
+    AuditRoutingModule,
   ]
 })
 export class AuditModule { }

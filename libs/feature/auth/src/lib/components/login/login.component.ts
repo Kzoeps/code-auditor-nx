@@ -61,6 +61,7 @@ export class LoginComponent implements OnInit {
             approved: user.approved,
           }
           localStorage.setItem('user', JSON.stringify(currentUser));
+          this.router.navigate(['users'])
         } else {
           this.router.navigate(['auth/unapproved'])
         }

@@ -5,8 +5,7 @@ import { FormGroup } from '@angular/forms';
 import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
 import { User } from '@selise-start/user';
 import { AuthApiService } from './auth-api.service';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 import { UserFacadeService } from '@selise-start/user/service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -67,27 +66,6 @@ export class AuthFacadeService {
 
   login(loginForm: FormGroup): Observable<Object> {
     return this.authApiService.login(loginForm.value)
-      // .pipe(
-        // tap((token) => {
-        //   // @ts-ignore
-        //   const tokenPayload = this.decodeJWT(token.accessToken);
-        //   // @ts-ignore
-        //   const uid = +tokenPayload.sub;
-        //   debugger;
-        //   this.userFacadeService.getUser(uid)
-        //     .pipe(
-        //       untilDestroyed(this)
-        //     )
-        //     .subscribe( (user) => {
-        //       if (user.approved) {
-        //         // @ts-ignore
-        //         user.token = token.accessToken;
-        //         localStorage.setItem('user', JSON.stringify(user));
-        //         localStorage.setItem('isLoggedIn', 'true');
-        //       }
-        //     })
-        // })
-      // )
   }
 
   assignValues(objectToAssign: Object, objectAssigner: Object): void {

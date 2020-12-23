@@ -22,6 +22,17 @@
       "approved": "true",
       "admin": "true",
       "id": 2
+    },
+    {
+      "email": "g@g.com",
+      "password": "$2a$10$mXA2Q2Z2PiLZ5JNe6V0vKOMxUK4pwDRzWWGFFzCOUt.x6aj.CXdyi",
+      "firstName": "g",
+      "lastName": "g",
+      "confirmPassword": "g12345",
+      "role": "FE",
+      "profileName": "g g",
+      "approved": true,
+      "id": 3
     }
   ],
   "teams": [],

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { USER_FORM } from '../constants/constants';
 import { User } from '../models/user';
 
@@ -18,6 +18,10 @@ export class UserFormService {
       form.controls[eachControl].setValidators(formValues[eachControl]['validators']);
     })
     return form;
+  }
+
+  setMatchingPasswordValidator(control: AbstractControl, password: AbstractControl): void {
+    control.setValidators([Validators.required, matchingPasswords(password)]);
   }
 
   // createForm(): FormGroup {
@@ -41,4 +45,10 @@ export class UserFormService {
   validForm(form: FormGroup): boolean {
     return form.valid;
   }
+}
+export function matchingPasswords(password: AbstractControl): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    const match = password.value === control.value;
+    return match ? null : { matchingPasswords: { value: control.value } };
+  };
 }

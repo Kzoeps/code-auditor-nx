@@ -17,21 +17,23 @@ export class UserFacadeService {
     private userFormService: UserFormService,
     private userApiService: UserApiService,
     private userStateService: UserStateService
-  ) { }
+  ) {
+  }
 
-  initialize(): void{
+  initialize(): void {
     this.userStateService.intialState();
   }
 
   stateChange(): Observable<UserStoreState> {
-    return this.userStateService.stateChanged
+    return this.userStateService.stateChanged;
   }
-  getUsers(): Observable<User[]>{
+
+  getUsers(): Observable<User[]> {
     return this.userApiService.getUsers().pipe(
       tap(users => {
         this.userStateService.updateUsers(users);
       })
-    )
+    );
   }
 
   getUser(id: number): Observable<User> {
@@ -39,21 +41,31 @@ export class UserFacadeService {
       tap(user => {
         this.userStateService.updateUser(user);
       })
-    )
+    );
   }
 
-  createForm(formType: string): FormGroup{
+  createForm(formType: string): FormGroup {
     switch (formType) {
       case FORM_TYPES.ADDUSERFORM:
-        return this.userFormService.createForm(ADD_USER_FORM);
+        const userForm = this.userFormService.createForm(ADD_USER_FORM);
+        this.userFormService.setMatchingPasswordValidator(userForm.controls['confirmPassword'], userForm.controls['password']);
+        return userForm;
     }
   }
-  updateUser(user: User): Observable<User>{
+
+  updateUser(user: User): Observable<User> {
     return this.userApiService.updateUser(user)
       .pipe(
-        tap( updatedUser => {
-          this.userStateService.updateUser(updatedUser)
+        tap(updatedUser => {
+          this.userStateService.updateUser(updatedUser);
         })
-      )
+      );
+  }
+
+  addUser(addUserForm: FormGroup): Observable<Object> {
+    const user = addUserForm.value;
+    user.profileName = user.firstName + ' ' + user.lastName;
+    user.approved = true;
+    return this.userApiService.addUser(user);
   }
 }

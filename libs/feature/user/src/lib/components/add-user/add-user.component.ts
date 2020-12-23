@@ -3,7 +3,9 @@ import { ROLES } from '../../constants/constants';
 import { FormGroup } from '@angular/forms';
 import { UserFacadeService } from '@selise-start/user/service';
 import { FORM_TYPES } from '../../constants/constants';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Component({
   selector: 'selise-start-add-user',
   templateUrl: './add-user.component.html',
@@ -31,7 +33,17 @@ export class AddUserComponent implements OnInit {
   }
 
   addUser(): void{
-    console.log(this.addUserForm.value);
+    if (this.addUserForm.valid) {
+      this.userFacadeService.addUser(this.addUserForm)
+        .pipe(
+          untilDestroyed(this)
+        )
+        .subscribe(
+          (token) => {
+            console.log(token);
+          }
+        )
+    }
   }
 
 }

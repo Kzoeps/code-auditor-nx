@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'selise-start-audit-base',
-  template: '<router-outlet></router-outlet>',
+  templateUrl: './audit-base.component.html'
 })
 export class AuditBaseComponent  {
 }
