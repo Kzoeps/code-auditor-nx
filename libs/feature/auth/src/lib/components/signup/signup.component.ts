@@ -16,6 +16,7 @@ export class SignupComponent implements OnInit {
   signUpForm: FormGroup;
   roles = ROLES;
   returnUrl = '/auth/login';
+  unAuthenticated: boolean;
 
   constructor(
     private authFacadeService: AuthFacadeService,
@@ -28,7 +29,12 @@ export class SignupComponent implements OnInit {
   }
 
   initializer(): void {
-    this.createForm();
+    if (!(this.authFacadeService.isAuthenticated())) {
+      this.createForm();
+      this.unAuthenticated = true;
+    } else {
+      this.authFacadeService.goBack();
+    }
   }
 
   createForm(): void {

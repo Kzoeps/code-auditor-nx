@@ -16,10 +16,11 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  unAuthenticated: boolean;
 
   constructor(
     private authFacadeService: AuthFacadeService,
-    private router: Router
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -27,7 +28,12 @@ export class LoginComponent implements OnInit {
   }
 
   initializer(): void {
-    this.createForm();
+    if (!(this.authFacadeService.isAuthenticated())) {
+      this.createForm();
+      this.unAuthenticated = true;
+    } else {
+      this.authFacadeService.goBack();
+    }
   }
 
   createForm(): void {

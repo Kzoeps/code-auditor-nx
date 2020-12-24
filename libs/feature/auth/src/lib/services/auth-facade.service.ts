@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { UserFacadeService } from '@selise-start/user/service';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Location } from '@angular/common';
 
 @UntilDestroy()
 @Injectable({
@@ -21,7 +22,8 @@ export class AuthFacadeService {
     private _snackBar: MatSnackBar,
     private authApiService: AuthApiService,
     private userFacadeService: UserFacadeService,
-    private jwtHelper: JwtHelperService
+    private jwtHelper: JwtHelperService,
+    private _location: Location
   ) {
   }
 
@@ -97,5 +99,9 @@ export class AuthFacadeService {
   isResourceOwner(id: number): boolean{
     const user = this.getUserFromStorage();
     return user.id === id;
+  }
+
+  goBack(): void{
+    this._location.back();
   }
 }
