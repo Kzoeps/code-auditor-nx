@@ -5,9 +5,9 @@ import { FormGroup } from '@angular/forms';
 import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
 import { User } from '@selise-start/user';
 import { AuthApiService } from './auth-api.service';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { UserFacadeService } from '@selise-start/user/service';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { UntilDestroy } from '@ngneat/until-destroy';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @UntilDestroy()
@@ -65,7 +65,7 @@ export class AuthFacadeService {
   }
 
   login(loginForm: FormGroup): Observable<Object> {
-    return this.authApiService.login(loginForm.value)
+    return this.authApiService.login(loginForm.value);
   }
 
   assignValues(objectToAssign: Object, objectAssigner: Object): void {
@@ -77,11 +77,25 @@ export class AuthFacadeService {
   }
 
   isAuthenticated(): boolean {
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = this.getUserFromStorage();
     if (user) {
       const token = user.token;
       return !this.jwtHelper.isTokenExpired(token);
     }
     return false;
+  }
+
+  getUserFromStorage(): User {
+    return JSON.parse(localStorage.getItem('user'));
+  }
+
+  isAdmin(): boolean {
+    const user = this.getUserFromStorage();
+    return user.admin === true;
+  }
+
+  isResourceOwner(id: number): boolean{
+    const user = this.getUserFromStorage();
+    return user.id === id;
   }
 }

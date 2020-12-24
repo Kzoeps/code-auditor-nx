@@ -13,7 +13,7 @@ import { User } from '@selise-start/user';
   templateUrl: './memo-comp.component.html',
   styleUrls: ['./memo-comp.component.css']
 })
-export class MemoCompComponent implements OnInit, OnChanges {
+export class MemoCompComponent implements OnInit{
 
   private _audit = new BehaviorSubject<Audit>(new Audit());
   @Input()
@@ -29,17 +29,15 @@ export class MemoCompComponent implements OnInit, OnChanges {
   memoSuccess: string;
   sections = MEMO_SECTIONS;
   statuses = STATUS;
+  editStatus: boolean;
 
   constructor(
-    private auditFacadeService: AuditFacadeService
+    private auditFacadeService: AuditFacadeService,
   ) {
   }
 
   ngOnInit(): void {
     this.initializer();
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
   }
 
   initializer(): void {
@@ -50,7 +48,8 @@ export class MemoCompComponent implements OnInit, OnChanges {
       )
       .subscribe(
         () => {
-          this.auditFacadeService.setForm(this.auditForm, this.audit)
+          this.auditFacadeService.setForm(this.auditForm, this.audit);
+          this.editStatus = this.auditFacadeService.isStatusEditable(this.audit.auditors);
         }
       );
   }

@@ -19,6 +19,7 @@ import {
 } from '../constants/constants';
 import { Memo } from '../models/memo';
 import { User } from '@selise-start/user';
+import { SharedServiceService } from '@selise-start/shared';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,7 @@ export class AuditFacadeService {
     private auditFormService: AuditFormService,
     private teamFacadeService: TeamFacadeService,
     private auditStateService: AuditStateService,
+    private sharedService: SharedServiceService,
     private _snackBar: MatSnackBar
   ) {
   }
@@ -249,18 +251,22 @@ export class AuditFacadeService {
     this.auditFormService.removeMemo(index, section, auditForm);
   }
 
-  removeMemoFromState(memoIndex: number, section: 'resolved' | 'memos' | 'tbd') {
-    this.auditStateService.removeMemo(memoIndex, section);
-  }
+  // removeMemoFromState(memoIndex: number, section: 'resolved' | 'memos' | 'tbd') {
+  //   this.auditStateService.removeMemo(memoIndex, section);
+  // }
 
   moveMemo(memoIndex: number, fromSection: 'memos' | 'resolved' | 'tbd', auditForm: FormGroup): void {
-    const memoStatus = this.auditFormService.moveMemo(memoIndex, fromSection, auditForm);
-    // const hasMemoMoved = memoStatus[0];
-    // const memoMoveSection = memoStatus[1];
-    // const memo = memoStatus[2];
-    // if (hasMemoMoved) {
-    //   this.auditStateService.addMemo(memoMoveSection, memo);
-    //   this.removeMemoFromState(memoIndex, fromSection);
+    this.auditFormService.moveMemo(memoIndex, fromSection, auditForm);
+  }
+
+  getUserFromStorage(): User{
+    return this.sharedService.getUserFromStorage();
+  }
+
+  isStatusEditable(auditors: Team[]): boolean{
+    const currentUserID = this.getUserFromStorage().id;
+    // auditors.filter((eachAuditor) => {eachAuditor.teamLead.id === currentUserID).length};
+    return auditors.filter((eachAuditor) => eachAuditor.teamLead.id === currentUserID).length > 0
   }
 }
 
