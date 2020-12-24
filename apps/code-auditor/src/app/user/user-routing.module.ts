@@ -5,7 +5,8 @@ import {
   UsersComponent,
   UserDetailComponent,
   AddUserComponent,
-  AdminApprovalComponent
+  AdminApprovalComponent,
+  EditUserComponent
 } from '@selise-start/user';
 import { UserBaseComponent } from './user-base/user-base.component';
 import { AuthGuardGuard } from '@selise-start/auth';
@@ -26,12 +27,17 @@ const routes: Routes = [
       },
       {
         path: 'approval',
-        component: AdminApprovalComponent,
+        component: AdminApprovalComponent
+      },
+      {
+        path: ':id/edit-user',
+        pathMatch: 'full',
+        component: EditUserComponent
       },
       {
         path: ':id',
-        component: UserDetailComponent,
-      },
+        component: UserDetailComponent
+      }
     ]
   }
 ];
@@ -40,4 +46,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes), FeatureUserModule],
   exports: [RouterModule]
 })
-export class UserRoutingModule { }
+export class UserRoutingModule {
+}

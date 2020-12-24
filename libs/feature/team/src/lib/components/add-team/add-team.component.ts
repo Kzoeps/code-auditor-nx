@@ -59,9 +59,6 @@ export class AddTeamComponent implements OnInit {
           untilDestroyed(this)
         )
         .subscribe({
-          next: (whatIsthis) => {
-            console.log(whatIsthis)
-          },
           complete: () => {
             this.teamFacadeService.snackBar('Created Team');
             this.teamFacadeService.clearForm(this.addTeamForm);

@@ -225,6 +225,32 @@
         }
       },
       "schematics": {}
+    },
+    "shared": {
+      "projectType": "library",
+      "root": "libs/feature/shared",
+      "sourceRoot": "libs/feature/shared/src",
+      "prefix": "selise-start",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/feature/shared/tsconfig.lib.json",
+              "libs/feature/shared/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/feature/shared/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/feature/shared/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

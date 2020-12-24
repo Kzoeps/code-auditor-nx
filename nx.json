@@ -41,6 +41,9 @@
     },
     "auth": {
       "tags": []
+    },
+    "shared": {
+      "tags": []
     }
   },
   "workspaceLayout": {

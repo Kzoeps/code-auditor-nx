@@ -1,3 +1,5 @@
+import { Team } from '@selise-start/team';
+
 export class User {
   id: number;
   firstName: string;
@@ -28,5 +30,6 @@ export class User {
 export interface UserStoreState {
   usersState: User[];
   userState: User;
+  teams: Team[];
 }
 
