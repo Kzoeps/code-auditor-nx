@@ -9,7 +9,7 @@ import {
   EditUserComponent
 } from '@selise-start/user';
 import { UserBaseComponent } from './user-base/user-base.component';
-import { AuthGuardGuard, RoleGuard } from '@selise-start/auth';
+import { AdminGuard, AuthGuardGuard, RoleGuard } from '@selise-start/auth';
 
 const routes: Routes = [
   {
@@ -23,7 +23,8 @@ const routes: Routes = [
       },
       {
         path: 'add-user',
-        component: AddUserComponent
+        component: AddUserComponent,
+        canActivate: [AdminGuard]
       },
       {
         path: 'approval',

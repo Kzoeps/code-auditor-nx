@@ -1,6 +1,11 @@
 <!--TODO: Ask about state update!-->
 <ng-container *ngIf="(storeState$ | async).userState as user">
-  <h1>{{user.profileName | titlecase}} Details</h1>
+  <div style="display: flex; justify-content: space-between; width: 100%">
+    <h1>{{user.profileName | titlecase}} Details</h1>
+    <button mat-flat-button color="primary" style="height: 40px; width: 100px; margin-top: 20px;" routerLink="/users/{{user.id}}/edit-user">
+      Edit User
+    </button>
+  </div>
   <hr/>
     <h4>User ID: {{user.id}}</h4>
   <mat-card style="margin-top: 30px;">
