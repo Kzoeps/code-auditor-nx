@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TeamBaseComponent } from './team-base/team-base.component';
 import { AddTeamComponent, EditTeamComponent, TeamDetailComponent, TeamsComponent } from '@selise-start/team';
-import { AuthGuardGuard } from '@selise-start/auth';
+import { AuthGuardGuard, AdminGuard } from '@selise-start/auth';
 
 const routes: Routes = [
   {
@@ -17,6 +17,7 @@ const routes: Routes = [
       {
         path: 'add-team',
         pathMatch: 'full',
+        canActivate: [AdminGuard],
         component: AddTeamComponent
       },
       {
@@ -25,6 +26,7 @@ const routes: Routes = [
       },
       {
         path: ':id/edit-team',
+        canActivate: [AdminGuard],
         component: EditTeamComponent
       }
     ]
