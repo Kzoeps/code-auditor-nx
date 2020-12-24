@@ -10,7 +10,7 @@ export class User {
   confirmPassword: string;
   role: string;
   leadOnTeams: string[];
-  memberOnTeams: Object[];
+  memberOnTeams: number[];
   admin: boolean;
   approved: boolean;
   token: string;

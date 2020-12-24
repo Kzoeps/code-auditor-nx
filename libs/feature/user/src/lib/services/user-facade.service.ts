@@ -70,16 +70,18 @@ export class UserFacadeService {
     return this.getUser(id).pipe(
       switchMap((user) => this.getTeams(user)
         .pipe(
-          tap((teams) => {this.userStateService.setTeam(teams)})
+          tap((teams) => {
+            this.userStateService.setTeam(teams);
+          })
         )
       )
-    )
+    );
   }
 
   getTeams(user): Observable<any> {
     return forkJoin(
-      user.memberOnTeams.map((team: Team) => this.getTeam(team.id))
-    )
+      user.memberOnTeams.map((teamID: number) => this.getTeam(teamID))
+    );
   }
 
   createForm(formType: string): FormGroup {
@@ -112,15 +114,16 @@ export class UserFacadeService {
   addTeamToState(team: Team): void {
     this.userStateService.addTeam(team);
   }
+
   approveUser(user: User): Observable<User> {
     user.approved = true;
     this.userStateService.removeUser(user);
     return this.userApiService.updateUser(user)
       .pipe(
-        tap((approvedUser)=> {
+        tap((approvedUser) => {
           this.userStateService.removeUser(approvedUser);
         })
-      )
+      );
   }
 
   setForm(form: FormGroup, user: User): void {

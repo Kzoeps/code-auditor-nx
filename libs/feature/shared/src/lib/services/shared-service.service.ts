@@ -34,8 +34,8 @@ export class SharedServiceService {
     return this.http.get<User[]>(this.usersURL, this.httpOptions);
   }
 
-  getUser(user: User): Observable<User> {
-    const usersURL = `${this.usersURL}/${user.id}`;
+  getUser(id: number): Observable<User> {
+    const usersURL = `${this.usersURL}/${id}`;
     return this.http.get<User>(usersURL, this.httpOptions);
   }
 

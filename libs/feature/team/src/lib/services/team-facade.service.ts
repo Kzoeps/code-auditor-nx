@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { TeamApiService } from './team-api.service';
 import { TeamStateService } from './team-state.service';
 import { TeamFormService } from './team-form.service';
-import { Observable } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 import { Team, TeamStoreState } from '../models/team';
-import { tap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
 import { FormGroup } from '@angular/forms';
 // @ts-ignore
 import { User } from '@selise-start/user';
@@ -38,6 +38,10 @@ export class TeamFacadeService {
     });
   }
 
+  initialState(): void{
+    this.teamStateService.initialState();
+  }
+
   getTeams(): Observable<Team[]> {
     return this.teamApiService.getTeams().pipe(
       tap(teams => this.teamStateService.updateTeams(teams))
@@ -62,26 +66,22 @@ export class TeamFacadeService {
     team.teamMembers = this.getTeamMembers();
     team.teamMembers.push(team.teamLead);
     return this.teamApiService.createTeam(team).pipe(
-      tap((teamState)=> {
-        // TODO: Subscription within subscription!
-        const teamObjectUser = {
-          id: teamState.id,
-          name: teamState.teamName
-        }
-        this.addTeamToUsers(team.teamMembers, teamObjectUser)
-        team.teamMembers.forEach((eachMember) => {
-          this.sharedServiceService.updateUser(eachMember)
-            .pipe(untilDestroyed(this))
-            .subscribe()
-        })
-      }),
+      tap(()=>this.initialState()),
+      switchMap((updatedTeam: Team) => this.updateUsers(updatedTeam).pipe())
     );
   }
 
-  addTeamToUsers(users: User[], teamObject: Object): void{
-    users.map((eachUser) => {
-      eachUser.memberOnTeams.push(teamObject);
-    })
+  updateUsers(team: Team): Observable<any> {
+    return forkJoin(
+      team.teamMembers.map((user: User) => {
+        user.memberOnTeams.push(team.id);
+        return this.updateUser(user);
+      })
+    )
+  }
+
+  updateUser(user: User): Observable<User> {
+    return this.sharedServiceService.updateUser(user);
   }
 
   clearForm(form: FormGroup): void {
