@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ObservableStore } from '@codewithdan/observable-store';
 import { User, UserStoreState } from '../models/user';
+import { Team } from '@selise-start/team';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,9 @@ export class UserStateService extends ObservableStore<UserStoreState> {
 
   initialState(): void {
     const initialState = {
-      usersState: undefined,
-      userState: undefined
+      usersState: [],
+      userState: new User(),
+      teams: []
     };
     this.setState(initialState, 'INIT_STATE');
   }
@@ -32,5 +34,17 @@ export class UserStateService extends ObservableStore<UserStoreState> {
     let users = this.getState().usersState;
     users = users.filter((eachUser) => user.id !== eachUser.id);
     this.setState({usersState: users});
+  }
+
+  addTeam(team: Team): void {
+    const teams = this.getState().teams;
+    teams.push(team);
+    this.setState({teams: teams});
+  }
+
+  setTeam(teams: Team[]): void {
+    let teams$ = this.getState().teams;
+    teams$ = teams;
+    this.setState({teams: teams$});
   }
 }

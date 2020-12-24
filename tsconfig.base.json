@@ -24,7 +24,8 @@
       ],
       "@selise-start/audit": ["libs/feature/audit/src/index.ts"],
       "@selise-start/team": ["libs/feature/team/src/index.ts"],
-      "@selise-start/auth": ["libs/feature/auth/src/index.ts"]
+      "@selise-start/auth": ["libs/feature/auth/src/index.ts"],
+      "@selise-start/shared": ["libs/feature/shared/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -28,13 +28,16 @@
       Role: {{user.role}}
     </mat-card-content>
   </mat-card>
-  <mat-card style="margin-top: 10px;">
+  <mat-card style="margin-top: 10px;" *ngIf="(storeState$ | async).teams as teams">
     <mat-card-title>
       Teams
     </mat-card-title>
-    <mat-card *ngFor="let team of user.memberOnTeams" style="margin-top: 10px">
-      <mat-card-content>
-        {{team.name}}
+    <mat-card *ngFor="let team of teams" style="margin-top: 10px">
+      <mat-card-content style="display: flex; justify-content: space-between">
+        {{team.teamName}}
+        <span *ngIf="team.teamLead.id === user.id">
+          Team Lead
+        </span>
       </mat-card-content>
     </mat-card>
   </mat-card>

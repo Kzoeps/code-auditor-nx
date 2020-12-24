@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { UserApiService } from './user-api.service';
-import { Observable } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 import { User, UserStoreState } from '../models/user';
-import { map, tap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { UserStateService } from './user-state.service';
 import { FormGroup } from '@angular/forms';
 import { ADD_USER_FORM, EDIT_USER_FORM, FORM_TYPES } from '../constants/constants';
 import { UserFormService } from './user-form.service';
 import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
+import { SharedServiceService } from '@selise-start/shared';
+import { Team } from '@selise-start/team';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +20,8 @@ export class UserFacadeService {
     private userFormService: UserFormService,
     private userApiService: UserApiService,
     private userStateService: UserStateService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private sharedService: SharedServiceService
   ) {
   }
 
@@ -63,6 +66,22 @@ export class UserFacadeService {
     );
   }
 
+  getUserWithTeam(id: number): Observable<Team[]> {
+    return this.getUser(id).pipe(
+      switchMap((user) => this.getTeams(user)
+        .pipe(
+          tap((teams) => {this.userStateService.setTeam(teams)})
+        )
+      )
+    )
+  }
+
+  getTeams(user): Observable<any> {
+    return forkJoin(
+      user.memberOnTeams.map((team: Team) => this.getTeam(team.id))
+    )
+  }
+
   createForm(formType: string): FormGroup {
     switch (formType) {
       case FORM_TYPES.ADDUSERFORM:
@@ -90,6 +109,9 @@ export class UserFacadeService {
     return this.userApiService.addUser(user);
   }
 
+  addTeamToState(team: Team): void {
+    this.userStateService.addTeam(team);
+  }
   approveUser(user: User): Observable<User> {
     user.approved = true;
     this.userStateService.removeUser(user);
@@ -104,4 +126,9 @@ export class UserFacadeService {
   setForm(form: FormGroup, user: User): void {
     this.userFormService.setForm(form, user);
   }
+
+  getTeam(id: number): Observable<Team> {
+    return this.sharedService.getTeam(id);
+  }
+
 }

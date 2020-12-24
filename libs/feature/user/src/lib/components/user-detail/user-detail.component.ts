@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { UserStoreState } from '../../models/user';
+import { User, UserStoreState } from '../../models/user';
 import { ActivatedRoute } from '@angular/router';
-import { UserFacadeService } from '../../services/user-facade.service';
+import { UserFacadeService } from '@selise-start/user/service';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
-import { Observable } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { Team } from '@selise-start/team';
 
 @UntilDestroy()
 @Component({
@@ -26,12 +28,11 @@ export class UserDetailComponent implements OnInit {
   }
 
   getUser(id: number): void {
-    this.userFacadeService.getUser(id)
+    this.userFacadeService.getUserWithTeam(id)
       .pipe(
         untilDestroyed(this),
       )
       .subscribe()
     this.storeState$ = this.userFacadeService.stateChange();
   }
-
 }
