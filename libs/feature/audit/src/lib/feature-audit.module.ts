@@ -13,10 +13,14 @@ import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 import { AuditDetailComponent } from './components/audit-detail/audit-detail.component';
 import { MemoCompComponent } from './components/memo-comp/memo-comp.component';
+import { SharedModule } from '@selise-start/shared';
 
 @NgModule({
-  imports: [CommonModule, MatFormFieldModule, MatSelectModule, MatInputModule, MatDatepickerModule, MatButtonModule, ReactiveFormsModule, MatCardModule, MatListModule, RouterModule],
+  imports: [CommonModule, MatFormFieldModule, MatSelectModule, MatInputModule, MatDatepickerModule, MatButtonModule, ReactiveFormsModule, MatCardModule, MatListModule, RouterModule,
+    SharedModule
+  ],
   declarations: [AuditsComponent, AddAuditComponent, AuditDetailComponent, MemoCompComponent],
-  exports: [AuditsComponent, AuditDetailComponent],
+  exports: [AuditsComponent, AuditDetailComponent]
 })
-export class FeatureAuditModule {}
+export class FeatureAuditModule {
+}

@@ -13,11 +13,12 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { EditTeamComponent } from './components/edit-team/edit-team.component';
 import { MatCardModule } from '@angular/material/card';
+import { SharedModule } from '@selise-start/shared';
 
 @NgModule({
   imports: [
     CommonModule, RouterModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatSelectModule,
-    MatOptionModule, MatButtonModule, MatCardModule
+    MatOptionModule, MatButtonModule, MatCardModule, SharedModule
 
   ],
   declarations: [TeamsComponent, TeamDetailComponent, AddTeamComponent, EditTeamComponent],

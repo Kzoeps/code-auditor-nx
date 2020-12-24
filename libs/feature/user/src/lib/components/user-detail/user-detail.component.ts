@@ -5,7 +5,6 @@ import { UserFacadeService } from '@selise-start/user/service';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { forkJoin, Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { Team } from '@selise-start/team';
 
 @UntilDestroy()
 @Component({

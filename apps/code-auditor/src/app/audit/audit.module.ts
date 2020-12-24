@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AuditRoutingModule } from './audit-routing.module';
 import { AuditBaseComponent } from './audit-base/audit-base.component';
+import { SharedModule } from '../../../../../libs/feature/shared/src';
 
 
 @NgModule({
@@ -10,6 +11,7 @@ import { AuditBaseComponent } from './audit-base/audit-base.component';
   imports: [
     CommonModule,
     AuditRoutingModule,
+    SharedModule
   ]
 })
 export class AuditModule { }

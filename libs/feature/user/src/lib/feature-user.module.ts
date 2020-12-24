@@ -14,6 +14,7 @@ import { AddUserComponent } from './components/add-user/add-user.component';
 import { AdminApprovalComponent } from './components/admin-approval/admin-approval.component';
 import { MatCardModule } from '@angular/material/card';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { SharedModule } from '@selise-start/shared';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
     MatSelectModule,
     FormsModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    SharedModule
   ],
   declarations: [UserDetailComponent, UsersComponent, AddUserComponent, AdminApprovalComponent, EditUserComponent],
   exports: [UserDetailComponent, UsersComponent, AddUserComponent, AdminApprovalComponent, EditUserComponent],

@@ -138,4 +138,8 @@ export class TeamFacadeService {
         })
       );
   }
+
+  getUsers(): Observable<User[]> {
+    return this.sharedServiceService.getUsers();
+  }
 }

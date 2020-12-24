@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSliderModule } from '@angular/material/slider';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -23,9 +22,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { JwtModule } from '@auth0/angular-jwt';
+import { SharedModule } from '@selise-start/shared';
 
 @NgModule({
-  declarations: [AppComponent, NavBarComponent],
+  declarations: [AppComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -50,6 +50,7 @@ import { JwtModule } from '@auth0/angular-jwt';
     MatSelectModule,
     MatOptionModule,
     MatButtonModule,
+    SharedModule,
     JwtModule.forRoot({
       config: {
         allowedDomains: ['localhost:4200']
@@ -58,7 +59,7 @@ import { JwtModule } from '@auth0/angular-jwt';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [NavBarComponent]
+  exports: []
 })
 export class AppModule {
 }

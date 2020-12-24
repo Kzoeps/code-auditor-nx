@@ -9,6 +9,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { LoginComponent } from './components/login/login.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { UnapprovedUserComponent } from './components/unapproved-user/unapproved-user.component';
+import { SharedModule } from '@selise-start/shared';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -18,11 +20,14 @@ import { UnapprovedUserComponent } from './components/unapproved-user/unapproved
     MatSelectModule,
     ReactiveFormsModule,
     MatButtonModule,
+    SharedModule,
     JwtModule.forRoot({
       config: {
         allowedDomains: ['localhost:4200']
       }
-    })],
+    }),
+    RouterModule
+  ],
   declarations: [SignupComponent, LoginComponent, UnapprovedUserComponent],
   exports: [SignupComponent, LoginComponent, UnapprovedUserComponent]
 })

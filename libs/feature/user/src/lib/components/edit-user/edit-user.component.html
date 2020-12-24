@@ -1,3 +1,4 @@
+<selise-start-nav></selise-start-nav>
 <span *ngIf="(userState$ |async).userState as user">
   <h1>Edit {{user.profileName}}</h1>
   <form [formGroup]="editUserForm" style="display: flex; flex-direction: column">

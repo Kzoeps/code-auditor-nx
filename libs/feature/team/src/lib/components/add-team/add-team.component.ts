@@ -4,10 +4,9 @@ import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 // @ts-ignore
 import { UserStoreState } from '@selise-start/user/model/user';
-import { UserFacadeService } from '@selise-start/user/service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { TeamStoreState } from '../../models/team';
+import { User } from '@selise-start/user';
 
 @UntilDestroy()
 @Component({
@@ -19,12 +18,11 @@ export class AddTeamComponent implements OnInit {
 
   constructor(
     private teamFacadeService: TeamFacadeService,
-    private userFacadeService: UserFacadeService,
   ) {
   }
 
   addTeamForm: FormGroup;
-  users$: Observable<UserStoreState>;
+  users: User[];
   teamState$: Observable<TeamStoreState>;
   addMemberSuccess: boolean;
   createTeamSuccess: boolean;
@@ -40,12 +38,15 @@ export class AddTeamComponent implements OnInit {
   }
 
   getUsers(): void {
-    this.userFacadeService.getUsers()
+    this.teamFacadeService.getUsers()
       .pipe(
         untilDestroyed(this)
       )
-      .subscribe();
-    this.users$ = this.userFacadeService.stateChange();
+      .subscribe(
+        (users) => {
+          this.users = users;
+        }
+      );
   }
 
   addMember(): void {
