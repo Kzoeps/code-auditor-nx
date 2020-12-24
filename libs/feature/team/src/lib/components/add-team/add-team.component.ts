@@ -60,7 +60,6 @@ export class AddTeamComponent implements OnInit {
         )
         .subscribe({
           complete: () => {
-            // TODO: Remove team members from teamstate;
             this.teamFacadeService.snackBar('Created Team');
             this.teamFacadeService.clearForm(this.addTeamForm);
             this.createTeamSuccess = true;
