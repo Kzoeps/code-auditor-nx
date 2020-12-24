@@ -1,6 +1,6 @@
 <ng-container *ngIf="audit">
   <form [formGroup]="auditForm" style="display: flex; flex-direction: column">
-    <mat-form-field appearance="outline" style="margin-top: 30px;">
+    <mat-form-field appearance="outline" style="margin-top: 30px;" *ngIf="editStatus;else noEdit">
       <mat-label>
         Status
       </mat-label>
@@ -10,6 +10,9 @@
           </mat-option>
         </mat-select>
     </mat-form-field>
+    <ng-template #noEdit>
+      <h3> Status: {{auditForm.controls.status.value}}</h3>
+    </ng-template>
     <h1>Create Memo</h1>
     <mat-form-field appearance="outline" style="width: 500px">
       <mat-label>

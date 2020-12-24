@@ -52,4 +52,8 @@ export class SharedServiceService {
   getTeams(): Observable<Team[]> {
     return this.http.get<Team[]>(this.teamsURL, this.httpOptions);
   }
+
+  getUserFromStorage(): User{
+    return JSON.parse(localStorage.getItem('user'));
+  }
 }
