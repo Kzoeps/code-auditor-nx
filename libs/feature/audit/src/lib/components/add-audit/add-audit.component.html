@@ -10,7 +10,6 @@
       <mat-label>
         Auditee
       </mat-label>
-      <!--      TODO: Optimize (ngModelChange) here as well-->
       <mat-select formControlName="auditee">
         <mat-option *ngFor="let team of auditStoreState.teamsState" [value]="team">
           {{team.teamName}}

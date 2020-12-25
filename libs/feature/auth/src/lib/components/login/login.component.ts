@@ -6,7 +6,6 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { switchMap, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
-// TODO: Incorrect password and email.
 @UntilDestroy()
 @Component({
   selector: 'selise-start-login',
@@ -17,6 +16,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   unAuthenticated: boolean;
+  error: string;
 
   constructor(
     private authFacadeService: AuthFacadeService,
@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
         switchMap(() => this.authFacadeService.getUser(uid))
       )
       .subscribe((user) => {
+        this.error = ''
         if (user.approved) {
           const currentUser = {
             token: tokenAccess,
@@ -71,6 +72,8 @@ export class LoginComponent implements OnInit {
         } else {
           this.router.navigate(['auth/unapproved'])
         }
+      },() => {
+        this.error = "Sorry :( Credentials Dont Match!"
       })
   }
 
