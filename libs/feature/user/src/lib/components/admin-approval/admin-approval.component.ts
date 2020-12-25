@@ -38,9 +38,6 @@ export class AdminApprovalComponent implements OnInit {
         untilDestroyed(this)
       )
       .subscribe({
-        next: (tuser) => {
-          console.log(tuser);
-        },
         complete: () => {
           this.userFacadeService.snackBar('Approved Successfully');
         }

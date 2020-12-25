@@ -18,7 +18,8 @@ export class TeamStateService extends ObservableStore<TeamStoreState> {
   initialState(): void {
     const initialState = {
       teamsState: [],
-      teamState: new Team()
+      teamState: new Team(),
+      previousTeamMembers: []
     };
     this.setState(initialState, 'INIT_STATE');
   }
@@ -27,8 +28,16 @@ export class TeamStateService extends ObservableStore<TeamStoreState> {
     this.setState({ teamsState: teams }, 'UPDATE_TEAMS');
   }
 
+  getPreviousMembers(): User[] {
+    return this.getState().previousTeamMembers;
+  }
+
   updateTeam(team: Team): void {
     this.setState({ teamState: team }, 'UPDATE_TEAM');
+  }
+
+  setPreviousTeamMembers(teamMembers: User[]): void {
+    this.setState({previousTeamMembers: teamMembers}, 'SET_PREVIOUS_TEAM_MEMBERS');
   }
 
   addTeamMember(user: User): void {

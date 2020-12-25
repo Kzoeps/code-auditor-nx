@@ -2,17 +2,16 @@ import { Injectable } from '@angular/core';
 import { TeamApiService } from './team-api.service';
 import { TeamStateService } from './team-state.service';
 import { TeamFormService } from './team-form.service';
-import { forkJoin, Observable } from 'rxjs';
+import { forkJoin, Observable, of } from 'rxjs';
 import { Team, TeamStoreState } from '../models/team';
-import { switchMap, tap } from 'rxjs/operators';
+import { concatMap, switchMap, tap } from 'rxjs/operators';
 import { FormGroup } from '@angular/forms';
 // @ts-ignore
 import { User } from '@selise-start/user';
 import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+// tslint:disable-next-line:nx-enforce-module-boundaries
 import { SharedServiceService } from '@selise-start/shared';
 
-@UntilDestroy()
 @Injectable({
   providedIn: 'root'
 })
@@ -38,7 +37,7 @@ export class TeamFacadeService {
     });
   }
 
-  initialState(): void{
+  initialState(): void {
     this.teamStateService.initialState();
   }
 
@@ -54,6 +53,7 @@ export class TeamFacadeService {
         this.teamStateService.updateTeam(team);
         this.teamStateService.updateTeamMembers(team.teamMembers);
         this.teamStateService.updateTeamLead(team.teamLead);
+        this.teamStateService.setPreviousTeamMembers(team.allMembers);
       })
     );
   }
@@ -64,20 +64,21 @@ export class TeamFacadeService {
 
   createTeam(team: Team): Observable<Team> {
     team.teamMembers = this.getTeamMembers();
-    team.teamMembers.push(team.teamLead);
+    team.allMembers = [...team.teamMembers];
+    team.allMembers.push(team.teamLead);
     return this.teamApiService.createTeam(team).pipe(
-      tap(()=>this.initialState()),
-      switchMap((updatedTeam: Team) => this.updateUsers(updatedTeam).pipe())
+      tap(() => this.initialState()),
+      switchMap((updatedTeam: Team) => this.updateUsers(updatedTeam))
     );
   }
 
   updateUsers(team: Team): Observable<any> {
     return forkJoin(
-      team.teamMembers.map((user: User) => {
+      team.allMembers.map((user: User) => {
         user.memberOnTeams.push(team.id);
         return this.updateUser(user);
       })
-    )
+    );
   }
 
   updateUser(user: User): Observable<User> {
@@ -127,16 +128,61 @@ export class TeamFacadeService {
     return this.teamStateService.getTeam();
   }
 
+  getPreviousMembersState(): User[] {
+    return this.teamStateService.getPreviousMembers();
+  }
+
   updateTeam(team: Team): Observable<Team> {
     const teamState = this.getTeamState();
+    const previousMembers = this.getPreviousMembersState();
     team.teamMembers = teamState.teamMembers;
+    team.allMembers = [...teamState.teamMembers];
+    team.allMembers.push(teamState.teamLead);
     team.id = teamState.id;
+    const nonMembers = this.findConflicts(previousMembers, team.allMembers);
+    const newMembers = this.findConflicts(team.allMembers, previousMembers);
     return this.teamApiService.updateTeam(team)
       .pipe(
         tap(updatedTeamState => {
           this.teamStateService.updateTeam(updatedTeamState);
+          this.teamStateService.setPreviousTeamMembers(updatedTeamState.allMembers);
+        }),
+        switchMap(() => this.updateNewMembers(team.id, newMembers)),
+        switchMap(() => this.removeTeamFromUsers(nonMembers, team.id))
+      );
+  }
+
+  updateNewMembers(id: number, newMembers: User[]): Observable<any> {
+    if (newMembers.length > 0) {
+      return forkJoin(
+        newMembers.map((eachNewMember: User) => {
+          eachNewMember.memberOnTeams.push(id);
+          return this.updateUser(eachNewMember);
         })
       );
+    } else {
+      return of([]);
+    }
+  }
+
+  removeTeamFromUsers(nonMembers: User[], id): Observable<any> {
+    return forkJoin(
+      nonMembers.map((eachNonMember: User) => {
+        eachNonMember.memberOnTeams.filter((eachTeamId) => id !== eachTeamId);
+        return this.updateUser(eachNonMember);
+      })
+    );
+  }
+
+  findConflicts(teamMembers: User[], teamMembers2: User[]): User[] {
+    const nonMembers = [];
+    teamMembers.forEach((eachPreviousMember) => {
+      const isCurrentMember = teamMembers2.filter((eachCurrentMember) => eachCurrentMember.id === eachPreviousMember.id);
+      if (isCurrentMember.length === 0) {
+        nonMembers.push(eachPreviousMember);
+      }
+    });
+    return nonMembers;
   }
 
   getUsers(): Observable<User[]> {

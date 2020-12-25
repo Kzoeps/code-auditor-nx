@@ -1,6 +1,6 @@
 <selise-start-nav></selise-start-nav>
 <ng-container *ngIf="(team$ | async).teamState as team">
-  <ng-container *ngIf="(users$ | async).usersState as users">
+  <ng-container *ngIf="users">
     <h1>{{team.teamName | titlecase}} Details</h1>
     <hr/>
     <form [formGroup]="editTeamForm" style="display: flex; flex-direction: column">
