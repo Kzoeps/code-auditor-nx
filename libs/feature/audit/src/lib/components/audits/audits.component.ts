@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuditFacadeService } from '../../services/audit-facade.service';
 import { Observable } from 'rxjs';
 import { AuditStoreState } from '../../models/audit';
-import { ObservableStore } from '@codewithdan/observable-store';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 @UntilDestroy()

@@ -1,6 +1,6 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuditFacadeService } from '../../services/audit-facade.service';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Audit } from '../../models/audit';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { FormGroup } from '@angular/forms';
@@ -13,7 +13,7 @@ import { User } from '@selise-start/user';
   templateUrl: './memo-comp.component.html',
   styleUrls: ['./memo-comp.component.css']
 })
-export class MemoCompComponent implements OnInit{
+export class MemoCompComponent implements OnInit {
 
   private _audit = new BehaviorSubject<Audit>(new Audit());
   @Input()
@@ -32,7 +32,7 @@ export class MemoCompComponent implements OnInit{
   editStatus: boolean;
 
   constructor(
-    private auditFacadeService: AuditFacadeService,
+    private auditFacadeService: AuditFacadeService
   ) {
   }
 

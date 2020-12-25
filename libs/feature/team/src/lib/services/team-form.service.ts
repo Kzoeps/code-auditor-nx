@@ -14,7 +14,6 @@ export class TeamFormService {
   constructor(private fb: FormBuilder, private teamStateService: TeamStateService) {
   }
 
-  // TODO: rename functions.
   createAddTeamForm() {
     const addTeamForm = this.fb.group({});
     const formValues = ADD_TEAM_FORM;

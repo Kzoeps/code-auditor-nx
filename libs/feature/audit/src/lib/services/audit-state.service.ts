@@ -3,7 +3,6 @@ import { Audit, AuditStoreState } from '../models/audit';
 import { ObservableStore } from '@codewithdan/observable-store';
 import { Team } from '@selise-start/team';
 import { Memo } from '../models/memo';
-import { audit, auditTime } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
