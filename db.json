@@ -23,7 +23,9 @@
       "confirmPassword": "doge123",
       "role": "BA",
       "memberOnTeams": [
-        1
+        1,
+        2,
+        3
       ],
       "approved": true,
       "id": 2
@@ -37,7 +39,9 @@
       "confirmPassword": "admin123",
       "role": "FE",
       "memberOnTeams": [
-        1
+        1,
+        2,
+        3
       ],
       "approved": true,
       "admin": true,
@@ -51,7 +55,10 @@
       "lastName": "choden",
       "confirmPassword": "doge123",
       "role": "BA",
-      "memberOnTeams": [],
+      "memberOnTeams": [
+        2,
+        3
+      ],
       "admin": false,
       "approved": true,
       "id": 4
@@ -140,7 +147,629 @@
         }
       ],
       "id": 1
+    },
+    {
+      "teamName": "expelliarmus",
+      "dateEstd": "2020-12-24T18:00:00.000Z",
+      "teamLead": {
+        "email": "yc@c.com",
+        "password": "$2a$10$pQV9l0naXsAde34S5WkMhur4sEGXHcQC59zYV/6uGr1r1uhgg31bm",
+        "firstName": "yeshi",
+        "profileName": "yeshi choden",
+        "lastName": "choden",
+        "confirmPassword": "doge123",
+        "role": "BA",
+        "memberOnTeams": [],
+        "admin": false,
+        "approved": true,
+        "id": 4
+      },
+      "teamMembers": [
+        {
+          "email": "admin@admin.com",
+          "password": "$2a$10$ZDBjdtfUyjx.4/L8fJFAEOF5HGrFF5RfMPEpcyyq.vEmjBY0gV09e",
+          "firstName": "admin",
+          "profileName": "admin ki",
+          "lastName": "ki",
+          "confirmPassword": "admin123",
+          "role": "FE",
+          "memberOnTeams": [
+            1
+          ],
+          "approved": true,
+          "admin": true,
+          "id": 3
+        },
+        {
+          "email": "td@d.com",
+          "password": "$2a$10$s1h2/g8DBfdMinqVVgusdexEf1jZfKdu8SHq5IaDCwN4bOrypIQ9a",
+          "firstName": "dema",
+          "profileName": "dema tenzin",
+          "lastName": "tenzin",
+          "confirmPassword": "doge123",
+          "role": "BA",
+          "memberOnTeams": [
+            1
+          ],
+          "approved": true,
+          "id": 2
+        }
+      ],
+      "allMembers": [
+        {
+          "email": "admin@admin.com",
+          "password": "$2a$10$ZDBjdtfUyjx.4/L8fJFAEOF5HGrFF5RfMPEpcyyq.vEmjBY0gV09e",
+          "firstName": "admin",
+          "profileName": "admin ki",
+          "lastName": "ki",
+          "confirmPassword": "admin123",
+          "role": "FE",
+          "memberOnTeams": [
+            1
+          ],
+          "approved": true,
+          "admin": true,
+          "id": 3
+        },
+        {
+          "email": "td@d.com",
+          "password": "$2a$10$s1h2/g8DBfdMinqVVgusdexEf1jZfKdu8SHq5IaDCwN4bOrypIQ9a",
+          "firstName": "dema",
+          "profileName": "dema tenzin",
+          "lastName": "tenzin",
+          "confirmPassword": "doge123",
+          "role": "BA",
+          "memberOnTeams": [
+            1
+          ],
+          "approved": true,
+          "id": 2
+        },
+        {
+          "email": "yc@c.com",
+          "password": "$2a$10$pQV9l0naXsAde34S5WkMhur4sEGXHcQC59zYV/6uGr1r1uhgg31bm",
+          "firstName": "yeshi",
+          "profileName": "yeshi choden",
+          "lastName": "choden",
+          "confirmPassword": "doge123",
+          "role": "BA",
+          "memberOnTeams": [],
+          "admin": false,
+          "approved": true,
+          "id": 4
+        }
+      ],
+      "id": 2
+    },
+    {
+      "teamName": "joke",
+      "dateEstd": "2020-12-29T18:00:00.000Z",
+      "teamLead": {
+        "email": "admin@admin.com",
+        "password": "$2a$10$ZDBjdtfUyjx.4/L8fJFAEOF5HGrFF5RfMPEpcyyq.vEmjBY0gV09e",
+        "firstName": "admin",
+        "profileName": "admin ki",
+        "lastName": "ki",
+        "confirmPassword": "admin123",
+        "role": "FE",
+        "memberOnTeams": [
+          1,
+          2
+        ],
+        "approved": true,
+        "admin": true,
+        "id": 3
+      },
+      "teamMembers": [
+        {
+          "email": "td@d.com",
+          "password": "$2a$10$s1h2/g8DBfdMinqVVgusdexEf1jZfKdu8SHq5IaDCwN4bOrypIQ9a",
+          "firstName": "dema",
+          "profileName": "dema tenzin",
+          "lastName": "tenzin",
+          "confirmPassword": "doge123",
+          "role": "BA",
+          "memberOnTeams": [
+            1,
+            2
+          ],
+          "approved": true,
+          "id": 2
+        },
+        {
+          "email": "yc@c.com",
+          "password": "$2a$10$pQV9l0naXsAde34S5WkMhur4sEGXHcQC59zYV/6uGr1r1uhgg31bm",
+          "firstName": "yeshi",
+          "profileName": "yeshi choden",
+          "lastName": "choden",
+          "confirmPassword": "doge123",
+          "role": "BA",
+          "memberOnTeams": [
+            2
+          ],
+          "admin": false,
+          "approved": true,
+          "id": 4
+        }
+      ],
+      "allMembers": [
+        {
+          "email": "td@d.com",
+          "password": "$2a$10$s1h2/g8DBfdMinqVVgusdexEf1jZfKdu8SHq5IaDCwN4bOrypIQ9a",
+          "firstName": "dema",
+          "profileName": "dema tenzin",
+          "lastName": "tenzin",
+          "confirmPassword": "doge123",
+          "role": "BA",
+          "memberOnTeams": [
+            1,
+            2
+          ],
+          "approved": true,
+          "id": 2
+        },
+        {
+          "email": "yc@c.com",
+          "password": "$2a$10$pQV9l0naXsAde34S5WkMhur4sEGXHcQC59zYV/6uGr1r1uhgg31bm",
+          "firstName": "yeshi",
+          "profileName": "yeshi choden",
+          "lastName": "choden",
+          "confirmPassword": "doge123",
+          "role": "BA",
+          "memberOnTeams": [
+            2
+          ],
+          "admin": false,
+          "approved": true,
+          "id": 4
+        },
+        {
+          "email": "admin@admin.com",
+          "password": "$2a$10$ZDBjdtfUyjx.4/L8fJFAEOF5HGrFF5RfMPEpcyyq.vEmjBY0gV09e",
+          "firstName": "admin",
+          "profileName": "admin ki",
+          "lastName": "ki",
+          "confirmPassword": "admin123",
+          "role": "FE",
+          "memberOnTeams": [
+            1,
+            2
+          ],
+          "approved": true,
+          "admin": true,
+          "id": 3
+        }
+      ],
+      "id": 3
     }
   ],
-  "audits": []
+  "audits": [
+    {
+      "auditee": {
+        "teamName": "expelliarmus",
+        "dateEstd": "2020-12-24T18:00:00.000Z",
+        "teamLead": {
+          "email": "yc@c.com",
+          "password": "$2a$10$pQV9l0naXsAde34S5WkMhur4sEGXHcQC59zYV/6uGr1r1uhgg31bm",
+          "firstName": "yeshi",
+          "profileName": "yeshi choden",
+          "lastName": "choden",
+          "confirmPassword": "doge123",
+          "role": "BA",
+          "memberOnTeams": [],
+          "admin": false,
+          "approved": true,
+          "id": 4
+        },
+        "teamMembers": [
+          {
+            "email": "admin@admin.com",
+            "password": "$2a$10$ZDBjdtfUyjx.4/L8fJFAEOF5HGrFF5RfMPEpcyyq.vEmjBY0gV09e",
+            "firstName": "admin",
+            "profileName": "admin ki",
+            "lastName": "ki",
+            "confirmPassword": "admin123",
+            "role": "FE",
+            "memberOnTeams": [
+              1
+            ],
+            "approved": true,
+            "admin": true,
+            "id": 3
+          },
+          {
+            "email": "td@d.com",
+            "password": "$2a$10$s1h2/g8DBfdMinqVVgusdexEf1jZfKdu8SHq5IaDCwN4bOrypIQ9a",
+            "firstName": "dema",
+            "profileName": "dema tenzin",
+            "lastName": "tenzin",
+            "confirmPassword": "doge123",
+            "role": "BA",
+            "memberOnTeams": [
+              1
+            ],
+            "approved": true,
+            "id": 2
+          }
+        ],
+        "allMembers": [
+          {
+            "email": "admin@admin.com",
+            "password": "$2a$10$ZDBjdtfUyjx.4/L8fJFAEOF5HGrFF5RfMPEpcyyq.vEmjBY0gV09e",
+            "firstName": "admin",
+            "profileName": "admin ki",
+            "lastName": "ki",
+            "confirmPassword": "admin123",
+            "role": "FE",
+            "memberOnTeams": [
+              1
+            ],
+            "approved": true,
+            "admin": true,
+            "id": 3
+          },
+          {
+            "email": "td@d.com",
+            "password": "$2a$10$s1h2/g8DBfdMinqVVgusdexEf1jZfKdu8SHq5IaDCwN4bOrypIQ9a",
+            "firstName": "dema",
+            "profileName": "dema tenzin",
+            "lastName": "tenzin",
+            "confirmPassword": "doge123",
+            "role": "BA",
+            "memberOnTeams": [
+              1
+            ],
+            "approved": true,
+            "id": 2
+          },
+          {
+            "email": "yc@c.com",
+            "password": "$2a$10$pQV9l0naXsAde34S5WkMhur4sEGXHcQC59zYV/6uGr1r1uhgg31bm",
+            "firstName": "yeshi",
+            "profileName": "yeshi choden",
+            "lastName": "choden",
+            "confirmPassword": "doge123",
+            "role": "BA",
+            "memberOnTeams": [],
+            "admin": false,
+            "approved": true,
+            "id": 4
+          }
+        ],
+        "id": 2
+      },
+      "auditors": [
+        {
+          "teamName": "xodus",
+          "dateEstd": "2020-12-24T18:00:00.000Z",
+          "teamLead": {
+            "email": "kzoeps@gmail.com",
+            "password": "$2a$10$WntzJaL4ktLQcHPkXqQPtuflS0uC0h40G50olp1INXNJLaOUjRgoC",
+            "firstName": "karma",
+            "profileName": "karma yoezer",
+            "lastName": "yoezer",
+            "confirmPassword": "kzoeps123",
+            "role": "FE",
+            "memberOnTeams": [],
+            "approved": true,
+            "id": 1
+          },
+          "teamMembers": [
+            {
+              "email": "admin@admin.com",
+              "password": "$2a$10$ZDBjdtfUyjx.4/L8fJFAEOF5HGrFF5RfMPEpcyyq.vEmjBY0gV09e",
+              "firstName": "admin",
+              "profileName": "admin ki",
+              "lastName": "ki",
+              "confirmPassword": "admin123",
+              "role": "FE",
+              "memberOnTeams": [],
+              "approved": true,
+              "admin": true,
+              "id": 3
+            },
+            {
+              "email": "td@d.com",
+              "password": "$2a$10$s1h2/g8DBfdMinqVVgusdexEf1jZfKdu8SHq5IaDCwN4bOrypIQ9a",
+              "firstName": "dema",
+              "profileName": "dema tenzin",
+              "lastName": "tenzin",
+              "confirmPassword": "doge123",
+              "role": "BA",
+              "memberOnTeams": [],
+              "approved": true,
+              "id": 2
+            }
+          ],
+          "allMembers": [
+            {
+              "email": "admin@admin.com",
+              "password": "$2a$10$ZDBjdtfUyjx.4/L8fJFAEOF5HGrFF5RfMPEpcyyq.vEmjBY0gV09e",
+              "firstName": "admin",
+              "profileName": "admin ki",
+              "lastName": "ki",
+              "confirmPassword": "admin123",
+              "role": "FE",
+              "memberOnTeams": [],
+              "approved": true,
+              "admin": true,
+              "id": 3
+            },
+            {
+              "email": "td@d.com",
+              "password": "$2a$10$s1h2/g8DBfdMinqVVgusdexEf1jZfKdu8SHq5IaDCwN4bOrypIQ9a",
+              "firstName": "dema",
+              "profileName": "dema tenzin",
+              "lastName": "tenzin",
+              "confirmPassword": "doge123",
+              "role": "BA",
+              "memberOnTeams": [],
+              "approved": true,
+              "id": 2
+            },
+            {
+              "email": "kzoeps@gmail.com",
+              "password": "$2a$10$WntzJaL4ktLQcHPkXqQPtuflS0uC0h40G50olp1INXNJLaOUjRgoC",
+              "firstName": "karma",
+              "profileName": "karma yoezer",
+              "lastName": "yoezer",
+              "confirmPassword": "kzoeps123",
+              "role": "FE",
+              "memberOnTeams": [],
+              "approved": true,
+              "id": 1
+            }
+          ],
+          "id": 1
+        }
+      ],
+      "auditStartDate": "2020-12-24T18:00:00.000Z",
+      "status": "on-going",
+      "id": 1,
+      "memos": [
+        {
+          "id": "b18573f2-a343-412c-a3a9-37cd8cf60e1a",
+          "description": "second one pls work",
+          "assignedTo": [
+            {
+              "email": "td@d.com",
+              "password": "$2a$10$s1h2/g8DBfdMinqVVgusdexEf1jZfKdu8SHq5IaDCwN4bOrypIQ9a",
+              "firstName": "dema",
+              "profileName": "dema tenzin",
+              "lastName": "tenzin",
+              "confirmPassword": "doge123",
+              "role": "BA",
+              "memberOnTeams": [
+                1
+              ],
+              "approved": true,
+              "id": 2
+            }
+          ],
+          "section": "",
+          "newMemoAssignee": ""
+        }
+      ],
+      "resolved": [],
+      "tbd": [
+        {
+          "id": "d5e6f4fe-0e35-4177-ae17-f0de14960a46",
+          "description": "hi first memeo",
+          "assignedTo": [
+            {
+              "email": "admin@admin.com",
+              "password": "$2a$10$ZDBjdtfUyjx.4/L8fJFAEOF5HGrFF5RfMPEpcyyq.vEmjBY0gV09e",
+              "firstName": "admin",
+              "profileName": "admin ki",
+              "lastName": "ki",
+              "confirmPassword": "admin123",
+              "role": "FE",
+              "memberOnTeams": [
+                1
+              ],
+              "approved": true,
+              "admin": true,
+              "id": 3
+            }
+          ],
+          "section": "tbd",
+          "newMemoAssignee": ""
+        }
+      ]
+    },
+    {
+      "auditee": {
+        "teamName": "xodus",
+        "dateEstd": "2020-12-24T18:00:00.000Z",
+        "teamLead": {
+          "email": "kzoeps@gmail.com",
+          "password": "$2a$10$WntzJaL4ktLQcHPkXqQPtuflS0uC0h40G50olp1INXNJLaOUjRgoC",
+          "firstName": "karma",
+          "profileName": "karma yoezer",
+          "lastName": "yoezer",
+          "confirmPassword": "kzoeps123",
+          "role": "FE",
+          "memberOnTeams": [],
+          "approved": true,
+          "id": 1
+        },
+        "teamMembers": [
+          {
+            "email": "admin@admin.com",
+            "password": "$2a$10$ZDBjdtfUyjx.4/L8fJFAEOF5HGrFF5RfMPEpcyyq.vEmjBY0gV09e",
+            "firstName": "admin",
+            "profileName": "admin ki",
+            "lastName": "ki",
+            "confirmPassword": "admin123",
+            "role": "FE",
+            "memberOnTeams": [],
+            "approved": true,
+            "admin": true,
+            "id": 3
+          },
+          {
+            "email": "td@d.com",
+            "password": "$2a$10$s1h2/g8DBfdMinqVVgusdexEf1jZfKdu8SHq5IaDCwN4bOrypIQ9a",
+            "firstName": "dema",
+            "profileName": "dema tenzin",
+            "lastName": "tenzin",
+            "confirmPassword": "doge123",
+            "role": "BA",
+            "memberOnTeams": [],
+            "approved": true,
+            "id": 2
+          }
+        ],
+        "allMembers": [
+          {
+            "email": "admin@admin.com",
+            "password": "$2a$10$ZDBjdtfUyjx.4/L8fJFAEOF5HGrFF5RfMPEpcyyq.vEmjBY0gV09e",
+            "firstName": "admin",
+            "profileName": "admin ki",
+            "lastName": "ki",
+            "confirmPassword": "admin123",
+            "role": "FE",
+            "memberOnTeams": [],
+            "approved": true,
+            "admin": true,
+            "id": 3
+          },
+          {
+            "email": "td@d.com",
+            "password": "$2a$10$s1h2/g8DBfdMinqVVgusdexEf1jZfKdu8SHq5IaDCwN4bOrypIQ9a",
+            "firstName": "dema",
+            "profileName": "dema tenzin",
+            "lastName": "tenzin",
+            "confirmPassword": "doge123",
+            "role": "BA",
+            "memberOnTeams": [],
+            "approved": true,
+            "id": 2
+          },
+          {
+            "email": "kzoeps@gmail.com",
+            "password": "$2a$10$WntzJaL4ktLQcHPkXqQPtuflS0uC0h40G50olp1INXNJLaOUjRgoC",
+            "firstName": "karma",
+            "profileName": "karma yoezer",
+            "lastName": "yoezer",
+            "confirmPassword": "kzoeps123",
+            "role": "FE",
+            "memberOnTeams": [],
+            "approved": true,
+            "id": 1
+          }
+        ],
+        "id": 1
+      },
+      "auditors": [
+        {
+          "teamName": "joke",
+          "dateEstd": "2020-12-29T18:00:00.000Z",
+          "teamLead": {
+            "email": "admin@admin.com",
+            "password": "$2a$10$ZDBjdtfUyjx.4/L8fJFAEOF5HGrFF5RfMPEpcyyq.vEmjBY0gV09e",
+            "firstName": "admin",
+            "profileName": "admin ki",
+            "lastName": "ki",
+            "confirmPassword": "admin123",
+            "role": "FE",
+            "memberOnTeams": [
+              1,
+              2
+            ],
+            "approved": true,
+            "admin": true,
+            "id": 3
+          },
+          "teamMembers": [
+            {
+              "email": "td@d.com",
+              "password": "$2a$10$s1h2/g8DBfdMinqVVgusdexEf1jZfKdu8SHq5IaDCwN4bOrypIQ9a",
+              "firstName": "dema",
+              "profileName": "dema tenzin",
+              "lastName": "tenzin",
+              "confirmPassword": "doge123",
+              "role": "BA",
+              "memberOnTeams": [
+                1,
+                2
+              ],
+              "approved": true,
+              "id": 2
+            },
+            {
+              "email": "yc@c.com",
+              "password": "$2a$10$pQV9l0naXsAde34S5WkMhur4sEGXHcQC59zYV/6uGr1r1uhgg31bm",
+              "firstName": "yeshi",
+              "profileName": "yeshi choden",
+              "lastName": "choden",
+              "confirmPassword": "doge123",
+              "role": "BA",
+              "memberOnTeams": [
+                2
+              ],
+              "admin": false,
+              "approved": true,
+              "id": 4
+            }
+          ],
+          "allMembers": [
+            {
+              "email": "td@d.com",
+              "password": "$2a$10$s1h2/g8DBfdMinqVVgusdexEf1jZfKdu8SHq5IaDCwN4bOrypIQ9a",
+              "firstName": "dema",
+              "profileName": "dema tenzin",
+              "lastName": "tenzin",
+              "confirmPassword": "doge123",
+              "role": "BA",
+              "memberOnTeams": [
+                1,
+                2
+              ],
+              "approved": true,
+              "id": 2
+            },
+            {
+              "email": "yc@c.com",
+              "password": "$2a$10$pQV9l0naXsAde34S5WkMhur4sEGXHcQC59zYV/6uGr1r1uhgg31bm",
+              "firstName": "yeshi",
+              "profileName": "yeshi choden",
+              "lastName": "choden",
+              "confirmPassword": "doge123",
+              "role": "BA",
+              "memberOnTeams": [
+                2
+              ],
+              "admin": false,
+              "approved": true,
+              "id": 4
+            },
+            {
+              "email": "admin@admin.com",
+              "password": "$2a$10$ZDBjdtfUyjx.4/L8fJFAEOF5HGrFF5RfMPEpcyyq.vEmjBY0gV09e",
+              "firstName": "admin",
+              "profileName": "admin ki",
+              "lastName": "ki",
+              "confirmPassword": "admin123",
+              "role": "FE",
+              "memberOnTeams": [
+                1,
+                2
+              ],
+              "approved": true,
+              "admin": true,
+              "id": 3
+            }
+          ],
+          "id": 3
+        }
+      ],
+      "auditStartDate": "2020-12-25T18:00:00.000Z",
+      "status": "cancelled",
+      "id": 2,
+      "memos": [],
+      "resolved": [],
+      "tbd": []
+    }
+  ]
 }
