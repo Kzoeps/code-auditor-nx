@@ -1,0 +1,146 @@
+{
+  "users": [
+    {
+      "email": "kzoeps@gmail.com",
+      "password": "$2a$10$WntzJaL4ktLQcHPkXqQPtuflS0uC0h40G50olp1INXNJLaOUjRgoC",
+      "firstName": "karma",
+      "profileName": "karma yoezer",
+      "lastName": "yoezer",
+      "confirmPassword": "kzoeps123",
+      "role": "FE",
+      "memberOnTeams": [
+        1
+      ],
+      "approved": true,
+      "id": 1
+    },
+    {
+      "email": "td@d.com",
+      "password": "$2a$10$s1h2/g8DBfdMinqVVgusdexEf1jZfKdu8SHq5IaDCwN4bOrypIQ9a",
+      "firstName": "dema",
+      "profileName": "dema tenzin",
+      "lastName": "tenzin",
+      "confirmPassword": "doge123",
+      "role": "BA",
+      "memberOnTeams": [
+        1
+      ],
+      "approved": true,
+      "id": 2
+    },
+    {
+      "email": "admin@admin.com",
+      "password": "$2a$10$ZDBjdtfUyjx.4/L8fJFAEOF5HGrFF5RfMPEpcyyq.vEmjBY0gV09e",
+      "firstName": "admin",
+      "profileName": "admin ki",
+      "lastName": "ki",
+      "confirmPassword": "admin123",
+      "role": "FE",
+      "memberOnTeams": [
+        1
+      ],
+      "approved": true,
+      "admin": true,
+      "id": 3
+    },
+    {
+      "email": "yc@c.com",
+      "password": "$2a$10$pQV9l0naXsAde34S5WkMhur4sEGXHcQC59zYV/6uGr1r1uhgg31bm",
+      "firstName": "yeshi",
+      "profileName": "yeshi choden",
+      "lastName": "choden",
+      "confirmPassword": "doge123",
+      "role": "BA",
+      "memberOnTeams": [],
+      "admin": false,
+      "approved": true,
+      "id": 4
+    }
+  ],
+  "teams": [
+    {
+      "teamName": "xodus",
+      "dateEstd": "2020-12-24T18:00:00.000Z",
+      "teamLead": {
+        "email": "kzoeps@gmail.com",
+        "password": "$2a$10$WntzJaL4ktLQcHPkXqQPtuflS0uC0h40G50olp1INXNJLaOUjRgoC",
+        "firstName": "karma",
+        "profileName": "karma yoezer",
+        "lastName": "yoezer",
+        "confirmPassword": "kzoeps123",
+        "role": "FE",
+        "memberOnTeams": [],
+        "approved": true,
+        "id": 1
+      },
+      "teamMembers": [
+        {
+          "email": "admin@admin.com",
+          "password": "$2a$10$ZDBjdtfUyjx.4/L8fJFAEOF5HGrFF5RfMPEpcyyq.vEmjBY0gV09e",
+          "firstName": "admin",
+          "profileName": "admin ki",
+          "lastName": "ki",
+          "confirmPassword": "admin123",
+          "role": "FE",
+          "memberOnTeams": [],
+          "approved": true,
+          "admin": true,
+          "id": 3
+        },
+        {
+          "email": "td@d.com",
+          "password": "$2a$10$s1h2/g8DBfdMinqVVgusdexEf1jZfKdu8SHq5IaDCwN4bOrypIQ9a",
+          "firstName": "dema",
+          "profileName": "dema tenzin",
+          "lastName": "tenzin",
+          "confirmPassword": "doge123",
+          "role": "BA",
+          "memberOnTeams": [],
+          "approved": true,
+          "id": 2
+        }
+      ],
+      "allMembers": [
+        {
+          "email": "admin@admin.com",
+          "password": "$2a$10$ZDBjdtfUyjx.4/L8fJFAEOF5HGrFF5RfMPEpcyyq.vEmjBY0gV09e",
+          "firstName": "admin",
+          "profileName": "admin ki",
+          "lastName": "ki",
+          "confirmPassword": "admin123",
+          "role": "FE",
+          "memberOnTeams": [],
+          "approved": true,
+          "admin": true,
+          "id": 3
+        },
+        {
+          "email": "td@d.com",
+          "password": "$2a$10$s1h2/g8DBfdMinqVVgusdexEf1jZfKdu8SHq5IaDCwN4bOrypIQ9a",
+          "firstName": "dema",
+          "profileName": "dema tenzin",
+          "lastName": "tenzin",
+          "confirmPassword": "doge123",
+          "role": "BA",
+          "memberOnTeams": [],
+          "approved": true,
+          "id": 2
+        },
+        {
+          "email": "kzoeps@gmail.com",
+          "password": "$2a$10$WntzJaL4ktLQcHPkXqQPtuflS0uC0h40G50olp1INXNJLaOUjRgoC",
+          "firstName": "karma",
+          "profileName": "karma yoezer",
+          "lastName": "yoezer",
+          "confirmPassword": "kzoeps123",
+          "role": "FE",
+          "memberOnTeams": [],
+          "approved": true,
+          "id": 1
+        }
+      ],
+      "id": 1
+    }
+  ],
+  "audits": []
+}

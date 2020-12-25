@@ -1,0 +1,43 @@
+<selise-start-nav></selise-start-nav>
+<span *ngIf="(userState$ |async).userState as user">
+  <h1>Edit {{user.profileName}}</h1>
+  <form [formGroup]="editUserForm" style="display: flex; flex-direction: column">
+    <mat-form-field appearance="outline">
+      <mat-label>
+        First Name
+      </mat-label>
+      <input matInput placeholder="Ex.Kam" formControlName="firstName">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>
+        Last Name
+      </mat-label>
+      <input matInput placeholder="ex. yoez" formControlName="lastName">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>
+        Profile Name
+      </mat-label>
+      <input matInput placeholder="ex. ky" formControlName="profileName">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>
+        Email
+      </mat-label>
+      <input matInput placeholder="ex.g@gm.com" formControlName="email">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>
+        Role
+      </mat-label>
+      <mat-select formControlName="role">
+        <mat-option *ngFor="let role of roles" [value]="role">
+          {{role}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-flat-button color="primary" (click)="updateUser()">
+      Update
+    </button>
+  </form>
+</span>

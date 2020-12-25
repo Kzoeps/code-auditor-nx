@@ -16,7 +16,16 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@selise-start/test": ["libs/feature/test/src/index.ts"]
+      "@selise-start/test": ["libs/feature/test/src/index.ts"],
+      "@selise-start/user": ["libs/feature/user/src/index.ts"],
+      "@selise-start/user/model": ["libs/feature/user/src/lib/models"],
+      "@selise-start/user/service": [
+        "libs/feature/user/src/lib/services/user-facade.service.ts"
+      ],
+      "@selise-start/audit": ["libs/feature/audit/src/index.ts"],
+      "@selise-start/team": ["libs/feature/team/src/index.ts"],
+      "@selise-start/auth": ["libs/feature/auth/src/index.ts"],
+      "@selise-start/shared": ["libs/feature/shared/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

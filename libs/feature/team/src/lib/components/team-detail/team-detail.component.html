@@ -1,0 +1,26 @@
+<selise-start-nav></selise-start-nav>
+<ng-container *ngIf="(team$ | async).teamState as team">
+  <div style="display: flex; justify-content: space-between">
+    <h1>{{team.teamName | titlecase}} Details</h1>
+    <button mat-flat-button color="primary" style="width: 150px; height: 45px; margin-top: 30px;" routerLink="/teams/{{team.id}}/edit-team">
+      Edit
+    </button>
+  </div>
+  <hr/>
+  <div>
+    <div style="display: flex; width: 400px; justify-content: space-between">
+      <h3>Date of Establishment : </h3>
+      <h5>{{team.dateEstd | date}}</h5>
+    </div>
+    <div style="display: flex; width: 400px; justify-content: space-between">
+      <h3>Team Lead : </h3>
+      <h5>{{team.teamLead.profileName}}</h5>
+    </div>
+    <div style="display: flex; width: 400px; justify-content: space-between">
+      <h3>Team Members</h3>
+      <div *ngFor="let teamMember of team.teamMembers">
+        <h5>{{teamMember.profileName}}</h5>
+      </div>
+    </div>
+  </div>
+</ng-container>

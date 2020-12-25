@@ -1,0 +1,51 @@
+<div *ngIf="unAuthenticated"><h1>Signup</h1>
+  <form [formGroup]="signUpForm" style="display: flex;flex-direction: column">
+    <mat-form-field appearance="outline">
+      <mat-label>
+        First Name
+      </mat-label>
+      <input matInput placeholder="Ex. Ming" type="text" formControlName="firstName">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>
+        Last Name
+      </mat-label>
+      <input matInput placeholder="Ex. Dorji" type="text" formControlName="lastName">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>
+        Email
+      </mat-label>
+      <input matInput placeholder="Ex. abc@abc.com" type="email" formControlName="email">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>
+        Password
+      </mat-label>
+      <input matInput type="password" formControlName="password">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>
+        Confirm Password
+      </mat-label>
+      <input matInput type="password" formControlName="confirmPassword">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>
+        Role
+      </mat-label>
+      <mat-select formControlName="role">
+        <mat-option *ngFor="let role of roles" [value]="role">
+          {{role}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-flat-button color="primary" (click)="register()">
+      Register
+    </button>
+    <h1>OR</h1>
+    <button mat-flat-button color="primary" routerLink="/auth/login">
+      Login
+    </button>
+  </form>
+</div>

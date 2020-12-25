@@ -1,0 +1,27 @@
+<selise-start-nav></selise-start-nav>
+<ng-container *ngIf="(auditStoreState$ | async).auditState as audit">
+  <h1>Auditee: {{audit.auditee.teamName | titlecase}} Details</h1>
+  <hr/>
+  <div style="display: flex; flex-direction: column">
+    <mat-card style="margin-top: 10px;">
+      <mat-card-title>Auditee</mat-card-title>
+      <mat-card-content>{{audit.auditee.teamName | titlecase}}</mat-card-content>
+    </mat-card>
+    <mat-card style="margin-top: 10px;">
+      <mat-card-title>Audit Start Date</mat-card-title>
+      <mat-card-content>{{audit.auditStartDate | date}}</mat-card-content>
+    </mat-card>
+    <div style="display: flex; flex-direction: column; margin-top: 10px;">
+      <mat-card>
+        <mat-card-title>Auditors</mat-card-title>
+        <mat-card-content style="display: flex; flex-direction: column">
+          <mat-card *ngFor="let auditor of audit.auditors" style="margin-top: 10px;">
+            <mat-card-content>{{auditor.teamName | titlecase}}</mat-card-content>
+          </mat-card>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <selise-start-memo-comp [audit]="audit">
+  </selise-start-memo-comp>
+</ng-container>

@@ -1,0 +1,14 @@
+<selise-start-nav></selise-start-nav>
+<h1>Pending User Approval</h1>
+<span *ngIf="(usersStoreState | async).usersState as users">
+  <ul>
+    <mat-card *ngFor="let user of users" style="display: flex; justify-content: space-between; margin-top: 30px;">
+      <mat-card-content>
+        {{user.profileName}}
+      </mat-card-content>
+      <button mat-flat-button style="width: 140px; height: 45px" color="primary" (click)="approve(user)">
+        Approve
+      </button>
+    </mat-card>
+  </ul>
+</span>

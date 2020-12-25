@@ -21,7 +21,10 @@
               "apps/code-auditor/src/favicon.ico",
               "apps/code-auditor/src/assets"
             ],
-            "styles": ["apps/code-auditor/src/styles.css"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/code-auditor/src/styles.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -118,6 +121,136 @@
           }
         }
       }
+    },
+    "user": {
+      "projectType": "library",
+      "root": "libs/feature/user",
+      "sourceRoot": "libs/feature/user/src",
+      "prefix": "selise-start",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/feature/user/tsconfig.lib.json",
+              "libs/feature/user/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/feature/user/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/feature/user/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "audit": {
+      "projectType": "library",
+      "root": "libs/feature/audit",
+      "sourceRoot": "libs/feature/audit/src",
+      "prefix": "selise-start",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/feature/audit/tsconfig.lib.json",
+              "libs/feature/audit/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/feature/audit/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/feature/audit/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "team": {
+      "projectType": "library",
+      "root": "libs/feature/team",
+      "sourceRoot": "libs/feature/team/src",
+      "prefix": "selise-start",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/feature/team/tsconfig.lib.json",
+              "libs/feature/team/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/feature/team/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/feature/team/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "auth": {
+      "projectType": "library",
+      "root": "libs/feature/auth",
+      "sourceRoot": "libs/feature/auth/src",
+      "prefix": "selise-start",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/feature/auth/tsconfig.lib.json",
+              "libs/feature/auth/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/feature/auth/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/feature/auth/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "shared": {
+      "projectType": "library",
+      "root": "libs/feature/shared",
+      "sourceRoot": "libs/feature/shared/src",
+      "prefix": "selise-start",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/feature/shared/tsconfig.lib.json",
+              "libs/feature/shared/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/feature/shared/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/feature/shared/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

@@ -1,0 +1,57 @@
+<selise-start-nav></selise-start-nav>
+<ng-container *ngIf="(team$ | async).teamState as team">
+  <ng-container *ngIf="users">
+    <h1>{{team.teamName | titlecase}} Details</h1>
+    <hr/>
+    <form [formGroup]="editTeamForm" style="display: flex; flex-direction: column">
+      <h3>Team ID: {{team.id}}</h3>
+      <mat-form-field appearance="outline">
+        <mat-label>Team Name</mat-label>
+        <input matInput placeholder="Ex. Xodus" formControlName="teamName">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Date of Establishment</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dateEstd">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Team Lead</mat-label>
+        <mat-select formControlName="teamLead" [compareWith]="byId" [value]="team.teamLead" (ngModelChange)="updateTeamLead()">
+          <mat-option *ngFor="let user of users" [value]="user">
+            {{user.profileName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div style="display: flex; justify-content: space-between">
+        <mat-form-field appearance="outline" style="width: 400px;">
+          <mat-label>Team Member</mat-label>
+          <mat-select formControlName="teamMembers">
+            <mat-option *ngFor="let user of users" [value]="user">
+              {{user.profileName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-flat-button color="primary" style="width: 150px; height: 55px" (click)="addMember()">
+          Add Member
+        </button>
+      </div>
+      <span *ngIf="addMemberSuccess == false" style="color: red">
+        Team Lead Cannot Be A Team Member
+      </span>
+      <div style="display: flex; justify-content: space-between;">
+        <mat-card *ngFor="let teamMember of team.teamMembers" style="display: flex; justify-content: space-between; width: 350px; margin-bottom: 40px">
+          <span>{{teamMember.profileName}}</span>
+          <mat-card-actions>
+            <button mat-flat-button color="warn" (click)="removeMember(teamMember)">
+              Remove
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <button mat-flat-button color="primary" (click)="updateTeam()">
+        Update Team
+      </button>
+    </form>
+  </ng-container>
+</ng-container>

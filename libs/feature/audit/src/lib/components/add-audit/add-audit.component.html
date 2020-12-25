@@ -1,0 +1,66 @@
+<selise-start-nav></selise-start-nav>
+<ng-container *ngIf="auditState$ | async as auditStoreState">
+  <h1>Create an Audit</h1>
+  <hr/>
+  <form style="display: flex; flex-direction: column;" [formGroup]="addAuditForm">
+    <span *ngIf="errorMessage" style="color: red">
+      {{errorMessage}}
+    </span>
+    <mat-form-field appearance="outline">
+      <mat-label>
+        Auditee
+      </mat-label>
+      <mat-select formControlName="auditee">
+        <mat-option *ngFor="let team of auditStoreState.teamsState" [value]="team">
+          {{team.teamName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <span *ngIf="addAuditForm.invalid && (addAuditForm.controls.auditee.dirty || addAuditForm.controls.auditee.touched)">
+      <span *ngIf="addAuditForm.controls.auditee.errors?.required">
+        Auditee Required!
+      </span>
+   </span>
+    <span style="display: flex; justify-content: space-between">
+      <mat-form-field appearance="outline" style="width: 300px">
+        <mat-label>
+          Auditor
+        </mat-label>
+        <mat-select formControlName="auditors">
+          <mat-option *ngFor="let team of auditStoreState.teamsState" [value]="team">
+            {{team.teamName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-flat-button color="primary" style="height: 40px" (click)="addAuditor()">
+        Add Auditor
+      </button>
+    </span>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Audit Start Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="auditStartDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <span *ngIf="addAuditForm.controls.auditStartDate.dirty || addAuditForm.controls.auditStartDate.touched">
+      <span *ngIf="addAuditForm.controls.auditStartDate.errors?.required">
+      Audit Start Date Required!
+    </span></span>
+    <div style="display: flex; justify-content: space-between; width: 100%" *ngIf="auditStoreState.auditState.auditors">
+      <mat-card *ngFor="let auditor of auditStoreState.auditState.auditors"
+                style="display: flex; justify-content: space-between; width: 300px; margin-bottom: 40px">
+        <span>{{auditor.teamName}}</span>
+        <mat-card-actions>
+          <button mat-flat-button color="warn" (click)="removeAuditor(auditor)">
+            Remove
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <h3>Status : On-Going</h3>
+    <button mat-flat-button color="primary" (click)="createAudit()">
+      Create Audit
+    </button>
+  </form>
+</ng-container>

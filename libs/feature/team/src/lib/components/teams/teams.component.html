@@ -1,0 +1,10 @@
+<selise-start-nav></selise-start-nav>
+<ng-container *ngIf="(team$ | async).teamsState as teams">
+  <h3>List of all teams</h3>
+  <hr/>
+  <ul>
+    <li *ngFor="let team of teams">
+      <a routerLink="/teams/{{team.id}}">{{team.teamName}}</a>
+    </li>
+  </ul>
+</ng-container>

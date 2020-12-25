@@ -1,0 +1,13 @@
+<selise-start-nav></selise-start-nav>
+<ng-container *ngIf="(auditStoreState$ | async).auditsState as audits">
+  <h3>List Of All Audits</h3>
+  <hr/>
+  <div style="display: flex; flex-direction: column;">
+    <mat-list>
+      <mat-list-item *ngFor="let audit of audits" style="display: flex; flex-direction: column">
+        <a routerLink="/audits/{{audit.id}}"><h4>Auditee: {{audit.auditee.teamName}}</h4></a>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</ng-container>

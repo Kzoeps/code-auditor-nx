@@ -29,6 +29,21 @@
     "code-auditor-e2e": {
       "tags": [],
       "implicitDependencies": ["code-auditor"]
+    },
+    "user": {
+      "tags": []
+    },
+    "audit": {
+      "tags": []
+    },
+    "team": {
+      "tags": []
+    },
+    "auth": {
+      "tags": []
+    },
+    "shared": {
+      "tags": []
     }
   },
   "workspaceLayout": {

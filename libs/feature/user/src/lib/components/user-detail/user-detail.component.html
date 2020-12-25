@@ -1,0 +1,49 @@
+<selise-start-nav></selise-start-nav>
+<ng-container *ngIf="(storeState$ | async).userState as user">
+  <div style="display: flex; justify-content: space-between; width: 100%">
+    <h1>{{user.profileName | titlecase}} Details</h1>
+    <button mat-flat-button color="primary" style="height: 40px; width: 100px; margin-top: 20px;" routerLink="/users/{{user.id}}/edit-user">
+      Edit User
+    </button>
+  </div>
+  <hr/>
+    <h4>User ID: {{user.id}}</h4>
+  <mat-card style="margin-top: 30px;">
+    <mat-card-content>
+      First Name: {{user.firstName}}
+    </mat-card-content>
+  </mat-card>
+  <mat-card style="margin-top: 30px;">
+    <mat-card-content>
+      Last Name: {{user.lastName}}
+    </mat-card-content>
+  </mat-card>
+  <mat-card style="margin-top: 30px;">
+    <mat-card-content>
+      Profile Name: {{user.profileName}}
+    </mat-card-content>
+  </mat-card>
+  <mat-card style="margin-top: 30px;">
+    <mat-card-content>
+      Email : {{user.email}}
+    </mat-card-content>
+  </mat-card>
+  <mat-card style="margin-top: 30px;">
+    <mat-card-content>
+      Role: {{user.role}}
+    </mat-card-content>
+  </mat-card>
+  <mat-card style="margin-top: 10px;" *ngIf="(storeState$ | async).teams as teams">
+    <mat-card-title>
+      Teams
+    </mat-card-title>
+    <mat-card *ngFor="let team of teams" style="margin-top: 10px">
+      <mat-card-content style="display: flex; justify-content: space-between">
+        {{team.teamName}}
+        <span *ngIf="team.teamLead.id === user.id">
+          Team Lead
+        </span>
+      </mat-card-content>
+    </mat-card>
+  </mat-card>
+</ng-container>
