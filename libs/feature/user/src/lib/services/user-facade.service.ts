@@ -41,6 +41,9 @@ export class UserFacadeService {
 
   getUsers(): Observable<User[]> {
     return this.userApiService.getUsers().pipe(
+      map((users) => {
+        return users.filter((eachUser) => eachUser.approved === true);
+      }),
       tap(users => {
         this.userStateService.updateUsers(users);
       })

@@ -28,6 +28,7 @@ export class AddTeamComponent implements OnInit {
   createTeamSuccess: boolean;
 
   ngOnInit(): void {
+    this.teamFacadeService.initialState();
     this.createForm();
     this.getUsers();
   }
@@ -65,7 +66,7 @@ export class AddTeamComponent implements OnInit {
             this.teamFacadeService.clearForm(this.addTeamForm);
             this.createTeamSuccess = true;
           }
-        });
+        })
     } else {
       this.createTeamSuccess = false;
     }

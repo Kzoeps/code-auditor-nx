@@ -9,7 +9,6 @@ import { TeamStoreState } from '../../models/team';
 import { FormGroup } from '@angular/forms';
 import { User, UserStoreState } from '../../../../../user/src/lib/models/user';
 import { tap } from 'rxjs/operators';
-import { invalid } from '@angular/compiler/src/render3/view/util';
 
 @UntilDestroy()
 @Component({
@@ -20,14 +19,13 @@ import { invalid } from '@angular/compiler/src/render3/view/util';
 export class EditTeamComponent implements OnInit {
 
   team$: Observable<TeamStoreState>;
-  users$: Observable<UserStoreState>;
+  users: User[];
   editTeamForm: FormGroup;
   addMemberSuccess: boolean;
 
   constructor(
     private route: ActivatedRoute,
     private teamFacadeService: TeamFacadeService,
-    private userFacadeService: UserFacadeService
   ) {
   }
 
@@ -39,12 +37,11 @@ export class EditTeamComponent implements OnInit {
   }
 
   getUsers(): void {
-    this.userFacadeService.getUsers()
+    this.teamFacadeService.getUsers()
       .pipe(
         untilDestroyed(this)
       )
-      .subscribe();
-    this.users$ = this.userFacadeService.stateChange();
+      .subscribe( (users) => this.users = users);
   }
 
   getTeam(id: number): void {

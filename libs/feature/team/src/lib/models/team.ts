@@ -3,6 +3,7 @@ import { User } from '@selise-start/user';
 export interface TeamStoreState {
   teamsState: Team[];
   teamState: Team;
+  previousTeamMembers: User[];
 }
 
 export class Team {
@@ -11,6 +12,7 @@ export class Team {
   dateEstd: string;
   teamLead: User;
   teamMembers: User[];
+  allMembers: User[]; // includes the team lead as well
 
   constructor() {
     this.id = undefined;
@@ -18,6 +20,7 @@ export class Team {
     this.dateEstd = undefined;
     this.teamLead = new User();
     this.teamMembers = [];
+    this.allMembers = [];
   }
 
 }

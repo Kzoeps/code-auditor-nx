@@ -24,6 +24,7 @@ export class User {
     this.confirmPassword = undefined;
     this.role = undefined;
     this.memberOnTeams = [];
+    this.admin = false;
   }
 }
 
