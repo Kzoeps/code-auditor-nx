@@ -12,49 +12,37 @@ export class SharedServiceService {
 
   private usersURL = `${this.appConfig.apiURL}/users`;
   private teamsURL = `${this.appConfig.apiURL}/teams`;
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Authorization': 'Bearer '+this.getToken()
-    })
-  };
+
   constructor(
     @Inject(APP_CONFIG) private appConfig: any,
     private http: HttpClient
-  ) { }
-
-  getToken(): Object|'' {
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (user) {
-      return user.token;
-    } else {
-      return ''
-    }
+  ) {
   }
 
-  getUsers(): Observable<User[]>{
-    return this.http.get<User[]>(this.usersURL, this.httpOptions);
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.usersURL);
   }
 
   getUser(id: number): Observable<User> {
     const usersURL = `${this.usersURL}/${id}`;
-    return this.http.get<User>(usersURL, this.httpOptions);
+    return this.http.get<User>(usersURL);
   }
 
   updateUser(user: User): Observable<User> {
     const url = `${this.usersURL}/${user.id}`;
-    return this.http.patch<User>(url,user,this.httpOptions);
+    return this.http.patch<User>(url, user);
   }
 
   getTeam(id: number): Observable<Team> {
     const url = `${this.teamsURL}/${id}`;
-    return this.http.get<Team>(url, this.httpOptions);
+    return this.http.get<Team>(url);
   }
 
   getTeams(): Observable<Team[]> {
-    return this.http.get<Team[]>(this.teamsURL, this.httpOptions);
+    return this.http.get<Team[]>(this.teamsURL);
   }
 
-  getUserFromStorage(): User{
+  getUserFromStorage(): User {
     return JSON.parse(localStorage.getItem('user'));
   }
 }

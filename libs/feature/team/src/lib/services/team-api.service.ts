@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Team } from '../models/team';
 import { APP_CONFIG } from '@selise-start/app-config';
@@ -10,12 +10,6 @@ import { APP_CONFIG } from '@selise-start/app-config';
 export class TeamApiService {
 
   private url = `${this.appConfig.apiURL}/teams`;
-  private token = JSON.parse(localStorage.getItem('user')).token;
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Authorization': 'Bearer '+this.token
-    })
-  };
 
   constructor(
     @Inject(APP_CONFIG) private appConfig: any,
@@ -23,20 +17,20 @@ export class TeamApiService {
   ) { }
 
   getTeams(): Observable<Team[]>{
-    return this.http.get<Team[]>(this.url, this.httpOptions)
+    return this.http.get<Team[]>(this.url)
   }
 
   getTeam(id: number): Observable<Team> {
     const teamURL = `${this.url}/${id}`;
-    return this.http.get<Team>(teamURL, this.httpOptions);
+    return this.http.get<Team>(teamURL);
   }
 
   createTeam(team: Team): Observable<Team> {
-    return this.http.post<Team>(this.url, team, this.httpOptions);
+    return this.http.post<Team>(this.url, team);
   }
 
   updateTeam(team: Team): Observable<Team> {
     const url = `${this.url}/${team.id}`;
-    return this.http.patch<Team>(url, team, this.httpOptions);
+    return this.http.patch<Team>(url, team);
   }
 }

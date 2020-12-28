@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatSliderModule } from '@angular/material/slider';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -25,6 +25,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { SharedModule } from '@selise-start/shared';
 import { APP_CONFIG } from '@selise-start/app-config';
 import { environment } from '../environments/environment';
+import { HeaderInterceptor } from './header-interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -59,7 +60,10 @@ import { environment } from '../environments/environment';
       }
     })
   ],
-  providers: [{ provide: APP_CONFIG, useValue: environment}],
+  providers: [
+    { provide: APP_CONFIG, useValue: environment},
+    { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true}
+    ],
   bootstrap: [AppComponent],
   exports: []
 })
