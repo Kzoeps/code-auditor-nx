@@ -23,6 +23,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { JwtModule } from '@auth0/angular-jwt';
 import { SharedModule } from '@selise-start/shared';
+import { APP_CONFIG } from '@selise-start/app-config';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -57,7 +59,7 @@ import { SharedModule } from '@selise-start/shared';
       }
     })
   ],
-  providers: [],
+  providers: [{ provide: APP_CONFIG, useValue: environment}],
   bootstrap: [AppComponent],
   exports: []
 })

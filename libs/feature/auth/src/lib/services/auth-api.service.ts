@@ -1,29 +1,32 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '@selise-start/user';
 import { Observable } from 'rxjs';
+import { APP_CONFIG } from '@selise-start/app-config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthApiService {
 
-  private url = 'http://localhost:3000'
   httpOptions = {
     headers: new  HttpHeaders({
       'Content-Type':'application/json'
     })
   }
 
-  constructor( private http: HttpClient ) { }
+  constructor(
+    @Inject(APP_CONFIG) private appConfig: any,
+    private http: HttpClient
+  ) { }
 
   register(user: User): Observable<User> {
-    const registerURL = `${this.url}/register`;
+    const registerURL = `${this.appConfig.apiURL}/register`;
     return this.http.post<User>(registerURL, user, this.httpOptions);
   }
 
   login(loginCredentials: Object): Observable<Object> {
-    const loginURL = `${this.url}/login`;
+    const loginURL = `${this.appConfig.apiURL}/login`;
     return this.http.post<Object>(loginURL, loginCredentials, this.httpOptions);
   }
 }

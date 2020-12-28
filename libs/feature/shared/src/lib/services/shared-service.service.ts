@@ -1,23 +1,24 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '@selise-start/user';
 import { Team } from '@selise-start/team';
+import { APP_CONFIG } from '@selise-start/app-config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedServiceService {
 
-  private usersURL = 'http://localhost:3000/users';
-  private teamsURL = 'http://localhost:3000/teams';
+  private usersURL = `${this.appConfig.apiURL}/users`;
+  private teamsURL = `${this.appConfig.apiURL}/teams`;
   httpOptions = {
     headers: new HttpHeaders({
-      'Authorization': 'Bearer '+this.getToken(),
-      'Content-Type': 'application/json'
+      'Authorization': 'Bearer '+this.getToken()
     })
   };
   constructor(
+    @Inject(APP_CONFIG) private appConfig: any,
     private http: HttpClient
   ) { }
 

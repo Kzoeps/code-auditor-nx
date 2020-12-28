@@ -1,23 +1,26 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { APP_CONFIG } from '@selise-start/app-config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserApiService {
 
-  private url = 'http://localhost:3000/users';
+  private url = `${this.appConfig.apiURL}/users`;
   private token = this.getToken();
   httpOptions = {
     headers: new HttpHeaders({
-      'Authorization': 'Bearer '+this.token,
-      'Content-Type': 'application/json'
+      'Authorization': 'Bearer '+this.token
     })
   };
 
-  constructor( private http: HttpClient ) { }
+  constructor(
+    @Inject(APP_CONFIG) private appConfig: any,
+    private http: HttpClient
+  ) { }
 
   getToken(): Object|'' {
     const user = JSON.parse(localStorage.getItem('user'));

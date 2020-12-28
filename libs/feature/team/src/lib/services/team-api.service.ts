@@ -1,23 +1,26 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Team } from '../models/team';
+import { APP_CONFIG } from '@selise-start/app-config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeamApiService {
 
-  private url = 'http://localhost:3000/teams';
+  private url = `${this.appConfig.apiURL}/teams`;
   private token = JSON.parse(localStorage.getItem('user')).token;
   httpOptions = {
     headers: new HttpHeaders({
-      'Authorization': 'Bearer '+this.token,
-      'Content-Type': 'application/json'
+      'Authorization': 'Bearer '+this.token
     })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    @Inject(APP_CONFIG) private appConfig: any,
+    private http: HttpClient
+  ) { }
 
   getTeams(): Observable<Team[]>{
     return this.http.get<Team[]>(this.url, this.httpOptions)

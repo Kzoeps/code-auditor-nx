@@ -1,23 +1,26 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Audit } from '../models/audit';
+import { APP_CONFIG } from '@selise-start/app-config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuditApiService {
 
-  private url = 'http://localhost:3000/audits';
+  private url = `${this.appConfig.apiURL}/audits`;
   private token = JSON.parse(localStorage.getItem('user')).token;
   httpOptions = {
     headers: new HttpHeaders({
-      'Authorization': 'Bearer ' + this.token,
-      'Content-Type': 'application/json'
+      'Authorization': 'Bearer ' + this.token
     })
   }
 
-  constructor( private http: HttpClient ) { }
+  constructor(
+    @Inject(APP_CONFIG) private appConfig: any,
+    private http: HttpClient
+  ) { }
 
   getAudits(): Observable<Audit[]> {
     return this.http.get<Audit[]>(this.url, this.httpOptions);
