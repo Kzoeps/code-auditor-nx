@@ -7,7 +7,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Observable } from 'rxjs';
 import { TeamStoreState } from '../../models/team';
 import { FormGroup } from '@angular/forms';
-import { User, UserStoreState } from '../../../../../user/src/lib/models/user';
+import { User } from '@selise-start/user';
 import { tap } from 'rxjs/operators';
 
 @UntilDestroy()

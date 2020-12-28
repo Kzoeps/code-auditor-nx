@@ -1,7 +1,6 @@
-# auth
+# auth Library
 
-This library was generated with [Nx](https://nx.dev).
-
-## Running unit tests
-
-Run `nx test auth` to execute the unit tests.
+## Components: 
+1. `login`
+1. `sign-up`
+1. `unapproved-user` : a registered user who isnt approved by admin logins – redirected to this component.

@@ -4,7 +4,7 @@ import { TeamStateService } from './team-state.service';
 import { TeamFormService } from './team-form.service';
 import { forkJoin, Observable, of } from 'rxjs';
 import { Team, TeamStoreState } from '../models/team';
-import { concatMap, switchMap, tap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
 import { FormGroup } from '@angular/forms';
 // @ts-ignore
 import { User } from '@selise-start/user';

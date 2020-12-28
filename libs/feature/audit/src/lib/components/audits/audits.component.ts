@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuditFacadeService } from '../../services/audit-facade.service';
 import { Observable } from 'rxjs';
 import { AuditStoreState } from '../../models/audit';
-import { ObservableStore } from '@codewithdan/observable-store';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 @UntilDestroy()
@@ -13,7 +12,8 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 })
 export class AuditsComponent implements OnInit {
 
-  constructor( private auditFacadeService: AuditFacadeService ) { }
+  constructor(private auditFacadeService: AuditFacadeService) {
+  }
 
   auditStoreState$: Observable<AuditStoreState>;
 
@@ -30,7 +30,7 @@ export class AuditsComponent implements OnInit {
       .pipe(
         untilDestroyed(this)
       )
-      .subscribe()
+      .subscribe();
     this.auditStoreState$ = this.auditFacadeService.stateChange();
   }
 

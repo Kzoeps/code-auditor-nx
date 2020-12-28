@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { EDIT_AUDIT_FORMARRAYS, MEMO_FORM } from '../constants/constants';
 import { Team } from '@selise-start/team';
 import { Audit } from '../models/audit';
@@ -43,7 +43,7 @@ export class AuditFormService {
         const formArrayValues = form.get(controlName).value;
         const array = form.get(controlName) as FormArray;
         formValues[controlName].forEach((eachMemo) => {
-          if(!(this.findMember(formArrayValues, eachMemo))){
+          if (!(this.findMember(formArrayValues, eachMemo))) {
             const memoForm = this.createForm(MEMO_FORM);
             this.setForm(memoForm, eachMemo);
             array.push(memoForm);
@@ -79,7 +79,7 @@ export class AuditFormService {
     form.reset();
   }
 
-  findMember(memoAssignees: User[] | Memo[], memoAssignee: User|Memo): boolean {
+  findMember(memoAssignees: User[] | Memo[], memoAssignee: User | Memo): boolean {
     let found = false;
     memoAssignees.forEach((eachAssignee) => {
       if (eachAssignee.id === memoAssignee.id) {
@@ -103,7 +103,7 @@ export class AuditFormService {
     }
   }
 
-  addAssigneeToMemo(auditForm: FormGroup, section: 'memos'|'resolved'|'tbd'|'',index: number): void {
+  addAssigneeToMemo(auditForm: FormGroup, section: 'memos' | 'resolved' | 'tbd' | '', index: number): void {
     const memoAssignees = auditForm.get(section).value[index].assignedTo;
     const newAssignee = auditForm.get(section).value[index].newMemoAssignee;
     if (!(this.findMember(memoAssignees, newAssignee))) {

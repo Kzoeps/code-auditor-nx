@@ -120,7 +120,6 @@
           </mat-card>
         </span>
       </span>
-    <!--    TODO: BIG TIME: make this into its separate components if theres time.-->
       <h1>Resolved</h1>
       <span formArrayName="resolved" *ngFor="let eachMemo of auditForm.controls.resolved?.controls;let i = index">
         <span [formGroup]="eachMemo">

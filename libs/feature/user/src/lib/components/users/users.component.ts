@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UserStoreState } from '../../models/user';
 import "@angular/compiler"
-import { UserFacadeService } from '../../services/user-facade.service';
+import { UserFacadeService } from '@selise-start/user/service';
 import { Observable } from 'rxjs';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 

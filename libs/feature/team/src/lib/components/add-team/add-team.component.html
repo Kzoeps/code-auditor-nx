@@ -17,7 +17,6 @@
     <br/>
     <mat-form-field appearance="outline">
       <mat-label>Team Lead</mat-label>
-<!--      TODO: optimize (ngModelChange) it calls every time there's a change-->
       <mat-select formControlName="teamLead" (ngModelChange)="updateTeamLead()">
         <mat-option *ngFor="let user of users" [value]="user">
           {{user.profileName}}
@@ -39,7 +38,6 @@
     </button>
     </span>
     <br/>
-<!--    TODO: remove == logic from template.-->
     <span *ngIf="addMemberSuccess == false" style="color: red">
       Team Lead Cannot Be A Team Member
     </span>

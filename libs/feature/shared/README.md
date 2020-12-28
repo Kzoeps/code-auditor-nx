@@ -1,7 +1,9 @@
-# shared
+# shared Lib
 
-This library was generated with [Nx](https://nx.dev).
+## Components
+1. `nav-bar`
 
-## Running unit tests
+## Services
+1. `shared-service`: has api calls from `user-api.service` and `team-api.service` to prevent circular dependency and warnings from appearing on console.
 
-Run `nx test shared` to execute the unit tests.
+

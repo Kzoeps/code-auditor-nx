@@ -5,6 +5,7 @@ import { FORM_TYPES } from '../../constants/constants';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { switchMap, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { User } from '@selise-start/user';
 
 @UntilDestroy()
 @Component({
@@ -20,8 +21,9 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authFacadeService: AuthFacadeService,
-    private router: Router,
-  ) { }
+    private router: Router
+  ) {
+  }
 
   ngOnInit(): void {
     this.initializer();
@@ -37,43 +39,47 @@ export class LoginComponent implements OnInit {
   }
 
   createForm(): void {
-    this.loginForm = this.authFacadeService.createForm(FORM_TYPES.LOGINFORM)
+    this.loginForm = this.authFacadeService.createForm(FORM_TYPES.LOGINFORM);
   }
 
-  login(): void{
-    let tokenPayload;
-    let tokenAccess;
-    let uid;
+  login(): void {
+    let tokenPayload, tokenAccess, uid;
     this.authFacadeService.login(this.loginForm)
       .pipe(
         untilDestroyed(this),
-        tap ((token) => {
+        tap((token) => {
           // @ts-ignore
           tokenAccess = token.accessToken;
           // @ts-ignore
           tokenPayload = this.authFacadeService.decodeJWT(token.accessToken);
-          // @ts-ignore
           uid = +tokenPayload.sub;
         }),
         switchMap(() => this.authFacadeService.getUser(uid))
       )
       .subscribe((user) => {
-        this.error = ''
-        if (user.approved) {
-          const currentUser = {
-            token: tokenAccess,
-            email: user.email,
-            id: user.id,
-            admin: user.admin,
-            approved: user.approved,
-          }
-          localStorage.setItem('user', JSON.stringify(currentUser));
-          this.router.navigate(['users'])
-        } else {
-          this.router.navigate(['auth/unapproved'])
-        }
-      },() => {
-        this.error = "Sorry :( Credentials Dont Match!"
-      })
+        this.error = '';
+        this.navigateUser(user, tokenAccess);
+      }, () => {
+        this.error = 'Sorry :( Credentials Dont Match!';
+      });
+  }
+
+  setUser(user: User, tokenAccess): void {
+    const currentUser = {
+      token: tokenAccess,
+      email: user.email,
+      id: user.id,
+      admin: user.admin,
+      approved: user.approved
+    };
+    localStorage.setItem('user', JSON.stringify(currentUser));
+    this.router.navigate(['users']);
+  }
+  navigateUser(user: User, tokenAccess): void {
+    if (user.approved) {
+      this.setUser(user, tokenAccess);
+    } else {
+      this.router.navigate(['auth/unapproved']);
+    }
   }
 }

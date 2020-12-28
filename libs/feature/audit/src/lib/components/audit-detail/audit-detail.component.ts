@@ -37,9 +37,4 @@ export class AuditDetailComponent implements OnInit {
       .subscribe();
     this.auditStoreState$ = this.auditFacadeService.stateChange();
   }
-
-  test(memo): void{
-    console.log(typeof memo)
-    console.log(memo)
-  }
 }
