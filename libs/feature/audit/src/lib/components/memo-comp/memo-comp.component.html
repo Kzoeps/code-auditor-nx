@@ -26,7 +26,7 @@
           assign to
         </mat-label>
         <mat-select formControlName="createMemoAssignee">
-          <mat-option *ngFor="let teamMember of audit.auditee.teamMembers" [value]="teamMember">
+          <mat-option *ngFor="let teamMember of audit.auditee.allMembers" [value]="teamMember">
             {{teamMember.profileName}}
           </mat-option>
         </mat-select>
@@ -91,7 +91,7 @@
                     Assign To
                   </mat-label>
                   <mat-select formControlName="newMemoAssignee">
-                    <mat-option *ngFor="let teamMember of audit.auditee.teamMembers" [value]="teamMember">
+                    <mat-option *ngFor="let teamMember of audit.auditee.allMembers" [value]="teamMember">
                       {{teamMember.profileName}}
                     </mat-option>
                   </mat-select>
@@ -159,7 +159,7 @@
                     Assign To
                   </mat-label>
                   <mat-select formControlName="newMemoAssignee">
-                    <mat-option *ngFor="let teamMember of audit.auditee.teamMembers" [value]="teamMember">
+                    <mat-option *ngFor="let teamMember of audit.auditee.allMembers" [value]="teamMember">
                       {{teamMember.profileName}}
                     </mat-option>
                   </mat-select>
@@ -228,7 +228,7 @@
                     Assign To
                   </mat-label>
                   <mat-select formControlName="newMemoAssignee">
-                    <mat-option *ngFor="let teamMember of audit.auditee.teamMembers" [value]="teamMember">
+                    <mat-option *ngFor="let teamMember of audit.auditee.allMembers" [value]="teamMember">
                       {{teamMember.profileName}}
                     </mat-option>
                   </mat-select>
