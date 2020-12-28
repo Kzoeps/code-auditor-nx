@@ -101,9 +101,4 @@ export class TeamStateService extends ObservableStore<TeamStoreState> {
     return teamStoreState.teamState.teamMembers;
   }
 
-  addTeam(team: Team): void {
-    const teamState = this.getState();
-    teamState.teamsState.push(team);
-    this.setState({ teamsState: teamState.teamsState }, 'ADD_TEAM');
-  }
 }

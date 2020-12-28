@@ -8,7 +8,9 @@
       "lastName": "ki",
       "confirmPassword": "admin123",
       "role": "FE",
-      "memberOnTeams": [],
+      "memberOnTeams": [
+        2
+      ],
       "approved": true,
       "admin": true,
       "id": 3
@@ -21,12 +23,300 @@
       "lastName": "dorji",
       "confirmPassword": "jdj123",
       "role": "BE",
-      "memberOnTeams": [],
+      "memberOnTeams": [
+        2
+      ],
       "admin": false,
       "approved": true,
       "id": 4
     }
   ],
-  "teams": [],
-  "audits": []
+  "teams": [
+    {
+      "teamName": "hope",
+      "dateEstd": "2020-12-28T18:00:00.000Z",
+      "teamLead": {
+        "email": "jd@j.com",
+        "password": "$2a$10$YI/jdTIOYZ1Mho.Jd6hj7uKSnt4XEvM.sLJBRmjdM0KSAZgycUgJK",
+        "firstName": "jigme",
+        "profileName": "jigme dorji",
+        "lastName": "dorji",
+        "confirmPassword": "jdj123",
+        "role": "BE",
+        "memberOnTeams": [],
+        "admin": false,
+        "approved": true,
+        "id": 4
+      },
+      "teamMembers": [
+        {
+          "email": "admin@admin.com",
+          "password": "$2a$10$ZDBjdtfUyjx.4/L8fJFAEOF5HGrFF5RfMPEpcyyq.vEmjBY0gV09e",
+          "firstName": "admin",
+          "profileName": "admin ki",
+          "lastName": "ki",
+          "confirmPassword": "admin123",
+          "role": "FE",
+          "memberOnTeams": [],
+          "approved": true,
+          "admin": true,
+          "id": 3
+        }
+      ],
+      "allMembers": [
+        {
+          "email": "admin@admin.com",
+          "password": "$2a$10$ZDBjdtfUyjx.4/L8fJFAEOF5HGrFF5RfMPEpcyyq.vEmjBY0gV09e",
+          "firstName": "admin",
+          "profileName": "admin ki",
+          "lastName": "ki",
+          "confirmPassword": "admin123",
+          "role": "FE",
+          "memberOnTeams": [],
+          "approved": true,
+          "admin": true,
+          "id": 3
+        },
+        {
+          "email": "jd@j.com",
+          "password": "$2a$10$YI/jdTIOYZ1Mho.Jd6hj7uKSnt4XEvM.sLJBRmjdM0KSAZgycUgJK",
+          "firstName": "jigme",
+          "profileName": "jigme dorji",
+          "lastName": "dorji",
+          "confirmPassword": "jdj123",
+          "role": "BE",
+          "memberOnTeams": [],
+          "admin": false,
+          "approved": true,
+          "id": 4
+        }
+      ],
+      "id": 1
+    },
+    {
+      "teamName": "tgif",
+      "dateEstd": "2020-12-28T18:00:00.000Z",
+      "teamLead": {
+        "email": "jd@j.com",
+        "password": "$2a$10$YI/jdTIOYZ1Mho.Jd6hj7uKSnt4XEvM.sLJBRmjdM0KSAZgycUgJK",
+        "firstName": "jigme",
+        "profileName": "jigme dorji",
+        "lastName": "dorji",
+        "confirmPassword": "jdj123",
+        "role": "BE",
+        "memberOnTeams": [],
+        "admin": false,
+        "approved": true,
+        "id": 4
+      },
+      "teamMembers": [
+        {
+          "email": "admin@admin.com",
+          "password": "$2a$10$ZDBjdtfUyjx.4/L8fJFAEOF5HGrFF5RfMPEpcyyq.vEmjBY0gV09e",
+          "firstName": "admin",
+          "profileName": "admin ki",
+          "lastName": "ki",
+          "confirmPassword": "admin123",
+          "role": "FE",
+          "memberOnTeams": [
+            2
+          ],
+          "approved": true,
+          "admin": true,
+          "id": 3
+        }
+      ],
+      "allMembers": [
+        {
+          "email": "admin@admin.com",
+          "password": "$2a$10$ZDBjdtfUyjx.4/L8fJFAEOF5HGrFF5RfMPEpcyyq.vEmjBY0gV09e",
+          "firstName": "admin",
+          "profileName": "admin ki",
+          "lastName": "ki",
+          "confirmPassword": "admin123",
+          "role": "FE",
+          "memberOnTeams": [
+            2
+          ],
+          "approved": true,
+          "admin": true,
+          "id": 3
+        },
+        {
+          "email": "jd@j.com",
+          "password": "$2a$10$YI/jdTIOYZ1Mho.Jd6hj7uKSnt4XEvM.sLJBRmjdM0KSAZgycUgJK",
+          "firstName": "jigme",
+          "profileName": "jigme dorji",
+          "lastName": "dorji",
+          "confirmPassword": "jdj123",
+          "role": "BE",
+          "memberOnTeams": [],
+          "admin": false,
+          "approved": true,
+          "id": 4
+        }
+      ],
+      "id": 2
+    }
+  ],
+  "audits": [
+    {
+      "auditee": {
+        "teamName": "hope",
+        "dateEstd": "2020-12-28T18:00:00.000Z",
+        "teamLead": {
+          "email": "jd@j.com",
+          "password": "$2a$10$YI/jdTIOYZ1Mho.Jd6hj7uKSnt4XEvM.sLJBRmjdM0KSAZgycUgJK",
+          "firstName": "jigme",
+          "profileName": "jigme dorji",
+          "lastName": "dorji",
+          "confirmPassword": "jdj123",
+          "role": "BE",
+          "memberOnTeams": [],
+          "admin": false,
+          "approved": true,
+          "id": 4
+        },
+        "teamMembers": [
+          {
+            "email": "admin@admin.com",
+            "password": "$2a$10$ZDBjdtfUyjx.4/L8fJFAEOF5HGrFF5RfMPEpcyyq.vEmjBY0gV09e",
+            "firstName": "admin",
+            "profileName": "admin ki",
+            "lastName": "ki",
+            "confirmPassword": "admin123",
+            "role": "FE",
+            "memberOnTeams": [],
+            "approved": true,
+            "admin": true,
+            "id": 3
+          }
+        ],
+        "allMembers": [
+          {
+            "email": "admin@admin.com",
+            "password": "$2a$10$ZDBjdtfUyjx.4/L8fJFAEOF5HGrFF5RfMPEpcyyq.vEmjBY0gV09e",
+            "firstName": "admin",
+            "profileName": "admin ki",
+            "lastName": "ki",
+            "confirmPassword": "admin123",
+            "role": "FE",
+            "memberOnTeams": [],
+            "approved": true,
+            "admin": true,
+            "id": 3
+          },
+          {
+            "email": "jd@j.com",
+            "password": "$2a$10$YI/jdTIOYZ1Mho.Jd6hj7uKSnt4XEvM.sLJBRmjdM0KSAZgycUgJK",
+            "firstName": "jigme",
+            "profileName": "jigme dorji",
+            "lastName": "dorji",
+            "confirmPassword": "jdj123",
+            "role": "BE",
+            "memberOnTeams": [],
+            "admin": false,
+            "approved": true,
+            "id": 4
+          }
+        ],
+        "id": 1
+      },
+      "auditors": [
+        {
+          "teamName": "tgif",
+          "dateEstd": "2020-12-28T18:00:00.000Z",
+          "teamLead": {
+            "email": "jd@j.com",
+            "password": "$2a$10$YI/jdTIOYZ1Mho.Jd6hj7uKSnt4XEvM.sLJBRmjdM0KSAZgycUgJK",
+            "firstName": "jigme",
+            "profileName": "jigme dorji",
+            "lastName": "dorji",
+            "confirmPassword": "jdj123",
+            "role": "BE",
+            "memberOnTeams": [],
+            "admin": false,
+            "approved": true,
+            "id": 4
+          },
+          "teamMembers": [
+            {
+              "email": "admin@admin.com",
+              "password": "$2a$10$ZDBjdtfUyjx.4/L8fJFAEOF5HGrFF5RfMPEpcyyq.vEmjBY0gV09e",
+              "firstName": "admin",
+              "profileName": "admin ki",
+              "lastName": "ki",
+              "confirmPassword": "admin123",
+              "role": "FE",
+              "memberOnTeams": [
+                2
+              ],
+              "approved": true,
+              "admin": true,
+              "id": 3
+            }
+          ],
+          "allMembers": [
+            {
+              "email": "admin@admin.com",
+              "password": "$2a$10$ZDBjdtfUyjx.4/L8fJFAEOF5HGrFF5RfMPEpcyyq.vEmjBY0gV09e",
+              "firstName": "admin",
+              "profileName": "admin ki",
+              "lastName": "ki",
+              "confirmPassword": "admin123",
+              "role": "FE",
+              "memberOnTeams": [
+                2
+              ],
+              "approved": true,
+              "admin": true,
+              "id": 3
+            },
+            {
+              "email": "jd@j.com",
+              "password": "$2a$10$YI/jdTIOYZ1Mho.Jd6hj7uKSnt4XEvM.sLJBRmjdM0KSAZgycUgJK",
+              "firstName": "jigme",
+              "profileName": "jigme dorji",
+              "lastName": "dorji",
+              "confirmPassword": "jdj123",
+              "role": "BE",
+              "memberOnTeams": [],
+              "admin": false,
+              "approved": true,
+              "id": 4
+            }
+          ],
+          "id": 2
+        }
+      ],
+      "auditStartDate": "2020-12-28T18:00:00.000Z",
+      "status": "on-going",
+      "id": 1,
+      "memos": [],
+      "resolved": [
+        {
+          "id": "a8e54566-1f13-4179-aa65-0ebb78e114b5",
+          "description": "asdfadsf",
+          "assignedTo": [
+            {
+              "email": "admin@admin.com",
+              "password": "$2a$10$ZDBjdtfUyjx.4/L8fJFAEOF5HGrFF5RfMPEpcyyq.vEmjBY0gV09e",
+              "firstName": "admin",
+              "profileName": "admin ki",
+              "lastName": "ki",
+              "confirmPassword": "admin123",
+              "role": "FE",
+              "memberOnTeams": [],
+              "approved": true,
+              "admin": true,
+              "id": 3
+            }
+          ],
+          "section": "resolved",
+          "newMemoAssignee": ""
+        }
+      ],
+      "tbd": []
+    }
+  ]
 }

@@ -29,10 +29,6 @@ export class UserFormService {
   setMatchingPasswordValidator(control: AbstractControl, password: AbstractControl): void {
     control.setValidators([Validators.required, matchingPasswords(password)]);
   }
-
-  validForm(form: FormGroup): boolean {
-    return form.valid;
-  }
 }
 export function matchingPasswords(password: AbstractControl): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
