@@ -12,7 +12,8 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 })
 export class AuditsComponent implements OnInit {
 
-  constructor( private auditFacadeService: AuditFacadeService ) { }
+  constructor(private auditFacadeService: AuditFacadeService) {
+  }
 
   auditStoreState$: Observable<AuditStoreState>;
 
@@ -29,7 +30,7 @@ export class AuditsComponent implements OnInit {
       .pipe(
         untilDestroyed(this)
       )
-      .subscribe()
+      .subscribe();
     this.auditStoreState$ = this.auditFacadeService.stateChange();
   }
 

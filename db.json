@@ -8,15 +8,25 @@
       "lastName": "ki",
       "confirmPassword": "admin123",
       "role": "FE",
-      "memberOnTeams": [
-      ],
+      "memberOnTeams": [],
       "approved": true,
       "admin": true,
       "id": 3
+    },
+    {
+      "email": "jd@j.com",
+      "password": "$2a$10$YI/jdTIOYZ1Mho.Jd6hj7uKSnt4XEvM.sLJBRmjdM0KSAZgycUgJK",
+      "firstName": "jigme",
+      "profileName": "jigme dorji",
+      "lastName": "dorji",
+      "confirmPassword": "jdj123",
+      "role": "BE",
+      "memberOnTeams": [],
+      "admin": false,
+      "approved": true,
+      "id": 4
     }
   ],
-  "teams": [
-  ],
-  "audits": [
-  ]
+  "teams": [],
+  "audits": []
 }

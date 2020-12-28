@@ -209,14 +209,6 @@ export class AuditFacadeService {
     }
   }
 
-  // removeMemoFromState(memo: Memo): void {
-  //   this.auditStateService.removeMemo(memo);
-  // }
-
-  moveMemoFromState(memo: Memo, fromSection: string, section: 'memos' | 'resolved' | 'tbd'): void {
-    this.auditStateService.moveMemo(memo, fromSection, section);
-  }
-
   addControlToArray(arrayName: string, form: FormGroup, formToAdd: FormGroup): void {
     this.auditFormService.addControlToArray(arrayName, form, formToAdd);
   }
@@ -251,10 +243,6 @@ export class AuditFacadeService {
     this.auditFormService.removeMemo(index, section, auditForm);
   }
 
-  // removeMemoFromState(memoIndex: number, section: 'resolved' | 'memos' | 'tbd') {
-  //   this.auditStateService.removeMemo(memoIndex, section);
-  // }
-
   moveMemo(memoIndex: number, fromSection: 'memos' | 'resolved' | 'tbd', auditForm: FormGroup): void {
     this.auditFormService.moveMemo(memoIndex, fromSection, auditForm);
   }
@@ -265,8 +253,6 @@ export class AuditFacadeService {
 
   isStatusEditable(auditors: Team[]): boolean{
     const currentUserID = this.getUserFromStorage().id;
-    // auditors.filter((eachAuditor) => {eachAuditor.teamLead.id === currentUserID).length};
     return auditors.filter((eachAuditor) => eachAuditor.teamLead.id === currentUserID).length > 0
   }
 }
-
