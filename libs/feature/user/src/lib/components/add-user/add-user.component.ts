@@ -39,8 +39,11 @@ export class AddUserComponent implements OnInit {
           untilDestroyed(this)
         )
         .subscribe(
-          (token) => {
-            console.log(token);
+          {
+            complete: () => {
+              this.userFacadeService.snackBar('Successfully added user!');
+              this.addUserForm.reset();
+            }
           }
         )
     }
